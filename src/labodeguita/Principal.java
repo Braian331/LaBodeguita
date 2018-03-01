@@ -57,15 +57,15 @@ public class Principal extends javax.swing.JFrame {
         hora.setForeground(new java.awt.Color(255, 255, 255));
         hora.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         hora.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        getContentPane().add(hora, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 60, 220, 60));
+        getContentPane().add(hora, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 60, 220, 60));
 
         fecha.setFont(new java.awt.Font("Century Gothic", 0, 36)); // NOI18N
         fecha.setForeground(new java.awt.Color(255, 255, 255));
         fecha.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         fecha.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        getContentPane().add(fecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 60, 360, 60));
+        getContentPane().add(fecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 60, 360, 60));
 
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel1.setIcon(new javax.swing.JLabel() {
             public javax.swing.Icon getIcon() {
                 try {
@@ -77,8 +77,8 @@ public class Principal extends javax.swing.JFrame {
                 return null;
             }
         }.getIcon());
-        jLabel1.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 750, -1));
+        jLabel1.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 750, 410));
 
         jMenuBar1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "La Bodeguita", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Century Gothic", 0, 14), new java.awt.Color(255, 51, 51))); // NOI18N
 
@@ -86,6 +86,11 @@ public class Principal extends javax.swing.JFrame {
         jMenu1.setText("Inicio");
         jMenu1.setContentAreaFilled(false);
         jMenu1.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        jMenu1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu1ActionPerformed(evt);
+            }
+        });
         jMenuBar1.add(jMenu1);
 
         jMenu5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 5));
@@ -193,7 +198,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenu3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu3MouseClicked
-        
+        this.dispose();
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenu3MouseClicked
 
@@ -201,6 +206,12 @@ public class Principal extends javax.swing.JFrame {
         
         // TODO add your handling code here cojines, cachuate del rey vivoras
     }//GEN-LAST:event_jMenu3ActionPerformed
+
+    private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
+        Principal obj=new Principal();
+        obj.setVisible(true);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenu1ActionPerformed
 
     /**
      * @param args the command line arguments
