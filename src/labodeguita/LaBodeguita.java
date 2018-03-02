@@ -13,7 +13,7 @@ public class LaBodeguita {
     //referencia de archivo agregado
     private static final String user="root";
     private static final String password="";
-    private static final String url="jdbc:mysql://localhost:3306/LaBodeguita";
+    private static final String url="jdbc:mysql://localhost:3306/jugueteria";
     
     //creando constructor de clase
     public LaBodeguita() {
@@ -21,7 +21,7 @@ public class LaBodeguita {
         try {
           Class.forName(driver);
           //codigo de acceso para la base de datos
-          conn =DriverManager.getConnection(url, user, password);
+          conn =DriverManager.getConnection(url,user, password);
           //2.validacion de BD
           
           if(conn!=null){
@@ -45,3 +45,5 @@ public class LaBodeguita {
         }
     }
 }
+
+// PADILLA ES EL FAV DEL DE PROGRAMACION :V (GUAS JIR)
