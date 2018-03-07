@@ -21,14 +21,14 @@ c) Diseñar un sistema informático de acuerdo a las necesidades con el fin de q
 # Propuesta de solución
 La intención del proyecto es mejorar el manejo y la comodidad de todos los registros pertenecientes a “la bodeguita” siendo este un control de productos, personal, reportes, registro de proveedores. Así mismo, implementar la función automática ABC, de que lo que trata esta función es, que al ingresar un nuevo producto al stock junto con su cantidad, se refleje al mismo tiempo en la base de datos sin necesidad de modificar nada manualmente en ella misma, de la misma manera en la compra/eliminación de un producto, al hacer compra se hace petición de la cantidad deseada y esta misma hará la resta de lo que contábamos en el registro, sobre la eliminación será parcial, sin importar de la cantidad que contenga el registro se eliminaran todas si así se desea. También con la nueva función de reportes, lo cual es beneficioso al ser generado por el mismo programa, ya que al hacer conteo doble sobre el stock (del registro y físico) para inspeccionar que todo esté bien, es agotador, este programa simplifica lo que haría ello. También implementamos el acceso a determinadas áreas según sea el usuario, (administrador, cajero) siendo el administrador quien tenga control de todo y el cajero únicamente de la venta.
 # Propuesta
-<h3>Objetivo general</h3><br>
+Objetivo general<br>
 a) Diseñar un sistema informático para el control de inventarios que se adapte a las necesidades actuales de abarrotes “La bodeguita” con el fin de que se desarrolle e implemente, mejorando la gestión de inventarios
-<h3>Objetivos especificos</h3><br>
+Objetivos especificos<br>
 a) Identificar los requerimientos del sistema, mediante entrevistas con el usuario<br>
 b) Determinar los atributos necesarios a registrar en el sistema<br>
 c) Plantear el diseño lógico del sistema de información (Base de datos)<br>
 d) Desarrollar la interfaz del sistema<br>
-e) Elaborar un manual de usuario para el manejo del sistema
+e) Elaborar un manual de usuario para el manejo del sistema<br></br>
 # Alcance del proyecto la bodeguita
 # Limitaciones del proyecto la bodeguita
 # Diagrama de Gantt
