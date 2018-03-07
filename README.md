@@ -6,10 +6,5 @@ Obil – Base de datos: registro, eliminación y modificación de un registro, a
 Canjay – Código: Manejo interno del programa, asignándole función y direccionamiento a cada tipo de acción dentro de la interfaz o sus diferentes pestañas procedentes de esta, de igual manera encargado de controlar la conexión a la base de datos y su correcto funcionamiento asignándole a cada usuario un diferente manejo de la aplicación.
 # LABODEGUITA
 <html>
-
-<title>Documentacion</title>
-<body>
-
 <center><font size='+6' style="font-family:Century Gothic;color:ffffff"><span style="background-color:#000000;">Documentacion</font></center></span>
-
 </html>
