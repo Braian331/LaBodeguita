@@ -24,14 +24,12 @@ La intención del proyecto es mejorar el manejo y la comodidad de todos los regi
 <h3>Objetivo general</h3><br>
 a) Diseñar un sistema informático para el control de inventarios que se adapte a las necesidades actuales de abarrotes “La bodeguita” con el fin de que se desarrolle e implemente, mejorando la gestión de inventarios
 <h3>Objetivos especificos</h3><br>
-a) Identificar los requerimientos del sistema, mediante entrevistas con el usuario
-b) Determinar los atributos necesarios a registrar en el sistema
-c) Plantear el diseño lógico del sistema de información (Base de datos)
-d) Desarrollar la interfaz del sistema
+a) Identificar los requerimientos del sistema, mediante entrevistas con el usuario<br>
+b) Determinar los atributos necesarios a registrar en el sistema<br>
+c) Plantear el diseño lógico del sistema de información (Base de datos)<br>
+d) Desarrollar la interfaz del sistema<br>
 e) Elaborar un manual de usuario para el manejo del sistema
-
-
-
-
-
-
+# Alcance del proyecto la bodeguita
+# Limitaciones del proyecto la bodeguita
+# Diagrama de Gantt
+# Diagrama de EDT
