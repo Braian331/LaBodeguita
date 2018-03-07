@@ -1,5 +1,5 @@
 # LaBodeguita
-# Roles
+# Roles del equipo
 Eli – Documentación: Registro y seguimiento del progreso y la modificación de la aplicación, así como una breve descripción de los objetivos y motivos del origen de la idea.
 <p>Padilla – Diseño: encargado de dar cuerpo e imagen del proyecto dándole un fácil manejo de la interfaz para cualquier usuario, siendo este organizado y modificado las funciones según desee el cliente</p>
 <p>Obil – Base de datos: registro, eliminación y modificación de un registro, así como control de trabajadores, productos, usuarios y sus respectivos registros de trabajadores.</p>
