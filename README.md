@@ -4,7 +4,7 @@ Eli – Documentación: Registro y seguimiento del progreso y la modificación d
 <p>Padilla – Diseño: encargado de dar cuerpo e imagen del proyecto dándole un fácil manejo de la interfaz para cualquier usuario, siendo este organizado y modificado las funciones según desee el cliente
 <p>Obil – Base de datos: registro, eliminación y modificación de un registro, así como control de trabajadores, productos, usuarios y sus respectivos registros de trabajadores.
 <p>Canjay – Código: Manejo interno del programa, asignándole función y direccionamiento a cada tipo de acción dentro de la interfaz o sus diferentes pestañas procedentes de esta, de igual manera encargado de controlar la conexión a la base de datos y su correcto funcionamiento asignándole a cada usuario un diferente manejo de la aplicación.</p>
-# Problemática del proyecto
+# Problemática del proyecto <br>
 <p>Abarrotes “La Bodeguita” es una tienda la cual se encuentra con problemas de organización de sus productos. De los cuales uno es el control de inventario; ya que se desconoce la cantidad de gasto en la compra de insumos, debido a que no se lleva a cabo un registro de adquisición y proveedores.
 </p>
 # Justificación del proyecto
