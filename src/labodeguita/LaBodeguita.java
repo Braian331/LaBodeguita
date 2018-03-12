@@ -13,7 +13,7 @@ public class LaBodeguita {
     //referencia de archivo agregado
     private static final String user="root";
     private static final String password="";
-    private static final String url="jdbc:mysql://localhost:3306/LaBodeguita";
+    private static final String url="jdbc:mysql://localhost:3306/jugueteria";
     
     //creando constructor de clase
     public LaBodeguita() {
