@@ -13,7 +13,7 @@ public class LaBodeguita {
     //referencia de archivo agregado
     private static final String user="root";
     private static final String password="";
-    private static final String url="jdbc:mysql://localhost:3306/jugueteria";
+    private static final String url="jdbc:mysql://localhost:3306/LaBodeguita";
     
     //creando constructor de clase
     public LaBodeguita() {
@@ -45,5 +45,3 @@ public class LaBodeguita {
         }
     }
 }
-
-// PADILLA ES EL FAV DEL DE PROGRAMACION :V (GUAS JIR)

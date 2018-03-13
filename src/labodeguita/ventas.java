@@ -1,14 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package labodeguita;
-
-/**
- *
- * @author Braian Canjay
- */
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
 public class ventas extends javax.swing.JFrame {
 
     /**
@@ -16,6 +13,106 @@ public class ventas extends javax.swing.JFrame {
      */
     public ventas() {
         initComponents();
+        this.setLocationRelativeTo(null);
+        mostrardatosVenta("");
+    }
+    void mostrardatosVenta(String valor){
+       DefaultTableModel modelo= new DefaultTableModel();
+       modelo.addColumn("CODIGO");
+       modelo.addColumn("NOMBRE");
+       modelo.addColumn("APELLIDOS");
+       modelo.addColumn("CORREO");
+       modelo.addColumn("FECHA");
+       modelo.addColumn("DESCRIPCION");
+       modelo.addColumn("CANTIDAD");
+       modelo.addColumn("PRECIO");
+       modelo.addColumn("TOTAL");
+    tbdatos.setModel(modelo);
+    String sql="";
+    if(valor.equals(""))
+    {
+        sql="SELECT * FROM ventas";
+    }
+    else{
+        sql="SELECT * FROM ventas WHERE cod='"+valor+"'";
+    }
+ 
+    String []datos = new String [20];
+        try {
+            Statement st = cn.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            while(rs.next()){
+                datos[0]=rs.getString("cod");
+                datos[1]=rs.getString("nom");
+                datos[2]=rs.getString("ape");
+                datos[3]=rs.getString("correo");
+                datos[4]=rs.getString("fecha");
+                datos[5]=rs.getString("des");
+                datos[6]=rs.getString("cant");
+                datos[7]=rs.getString("precio");
+                datos[8]=rs.getString("total");
+                datos[0]=rs.getString("cod");
+                modelo.addRow(datos);
+            }
+            tbdatos.setModel(modelo);
+        } catch (SQLException ex) {
+            Logger.getLogger(ventas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void buscar(String filtro){
+    DefaultTableModel model= new DefaultTableModel();
+        model.addColumn("CODIGO");
+        model.addColumn("NOMBRE");
+        model.addColumn("APELLIDOS");
+        model.addColumn("CORREO");
+        model.addColumn("FECHA");
+        model.addColumn("DESCRIPCION");
+        model.addColumn("CANTIDAD");
+        model.addColumn("PRECIO");
+        model.addColumn("TOTAL");
+        tbdatos.setModel(model);
+
+        String consultar=null;
+        if (filtro.equals("Codigo")) {
+            consultar="SELECT * FROM ventas WHERE cod LIKE '%"+txtbuscar.getText() + "%'";
+        }
+        else if (filtro.equals("Nombre")) {
+            consultar="SELECT * FROM ventas WHERE nom LIKE '%"+txtbuscar.getText() + "%'";
+        }
+        else if (filtro.equals("Apellidos")) {
+            consultar="SELECT * FROM ventas WHERE ape LIKE '%"+txtbuscar.getText() + "%'";
+        }
+        else if (filtro.equals("Descripcion")) {
+            consultar="SELECT * FROM ventas WHERE des LIKE '%"+txtbuscar.getText() + "%'";
+        }
+        else if (filtro.equals("Fecha")) {
+            consultar="SELECT * FROM ventas WHERE fecha LIKE '%"+txtbuscar.getText() + "%'";
+        }
+
+        String []datos= new String[15];
+        try {
+            Statement st=cn.createStatement();
+            ResultSet rs=st.executeQuery(consultar);
+            while(rs.next())
+            {
+                datos[0]=rs.getString("cod");
+                datos[1]=rs.getString("nom");
+                datos[2]=rs.getString("ape");
+                datos[3]=rs.getString("correo");
+                datos[4]=rs.getString("fecha");
+                datos[5]=rs.getString("des");
+                datos[6]=rs.getString("cant");
+                datos[7]=rs.getString("precio");
+                datos[8]=rs.getString("total");
+
+                model.addRow(datos);
+            }
+            tbdatos.setModel(model);
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -27,21 +124,98 @@ public class ventas extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jPanel2 = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        btexit = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tbdatos = new javax.swing.JTable();
+        txtbuscar = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel2.setBackground(new java.awt.Color(51, 255, 153));
+
+        jLabel8.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setText("Control de Ventas");
+        jPanel2.add(jLabel8);
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 750, 40));
+
+        jPanel1.setBackground(new java.awt.Color(0, 204, 102));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btexit.setBackground(new java.awt.Color(255, 0, 0));
+        btexit.setForeground(new java.awt.Color(255, 255, 255));
+        btexit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x-1.png"))); // NOI18N
+        btexit.setToolTipText("Slir");
+        btexit.setContentAreaFilled(false);
+        btexit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btexitActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btexit, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 0, 50, 50));
+
+        tbdatos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane1.setViewportView(tbdatos);
+
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 790, 290));
+
+        txtbuscar.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        txtbuscar.setToolTipText("Buscar por codigo, nombre, correo o ");
+        txtbuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtbuscarActionPerformed(evt);
+            }
+        });
+        txtbuscar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtbuscarKeyPressed(evt);
+            }
+        });
+        jPanel1.add(txtbuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 100, 290, -1));
+
+        jLabel1.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Buscar");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 100, -1, -1));
+
+        jComboBox1.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Codigo", "Nombre", "Apellido", "Descripcion", "Correo", "Fecha" }));
+        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 100, -1, -1));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 480));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btexitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btexitActionPerformed
+        //salir
+        this.dispose();
+    }//GEN-LAST:event_btexitActionPerformed
+
+    private void txtbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtbuscarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtbuscarActionPerformed
+
+    private void txtbuscarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtbuscarKeyPressed
+               // TODO add your handling code here:
+    }//GEN-LAST:event_txtbuscarKeyPressed
 
     /**
      * @param args the command line arguments
@@ -79,5 +253,16 @@ public class ventas extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btexit;
+    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable tbdatos;
+    private javax.swing.JTextField txtbuscar;
     // End of variables declaration//GEN-END:variables
+LaBodeguita cc=new LaBodeguita();
+Connection cn = cc.getConnection();
 }
