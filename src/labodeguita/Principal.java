@@ -53,9 +53,9 @@ public class Principal extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        hora.setFont(new java.awt.Font("Century Gothic", 0, 36)); // NOI18N
-        hora.setForeground(new java.awt.Color(255, 255, 255));
+        hora.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         hora.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        hora.setText("Para arreglar los errores que salen en los layout cambienlo a null, y si esta en nul regresenlo a absolute");
         hora.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         getContentPane().add(hora, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 60, 220, 60));
 
