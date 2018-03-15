@@ -1,4 +1,13 @@
 package labodeguita;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -11,6 +20,98 @@ public class ControlDeVentas extends javax.swing.JFrame {
      */
     public ControlDeVentas() {
         initComponents();
+        this.setLocationRelativeTo(null);
+        mostrardatosVenta("");
+    }
+    
+    void mostrardatosVenta(String valor){
+       DefaultTableModel modelo= new DefaultTableModel();
+       modelo.addColumn("CODIGO");
+       modelo.addColumn("NOMBRE");
+       modelo.addColumn("DESCRIPCION");
+       modelo.addColumn("EMPRESA");
+       modelo.addColumn("CANTIDAD");
+       modelo.addColumn("PRECIO");
+       modelo.addColumn("TOTAL");
+       modelo.addColumn("FECHA");
+    tbdatos.setModel(modelo);
+    String sql="";
+    if(valor.equals(""))
+    {
+        sql="SELECT * FROM ventas";
+    }
+    else{
+        sql="SELECT * FROM ventas WHERE codVent='"+valor+"'";
+    }
+ 
+    String []datos = new String [20];
+        try {
+            Statement st = cn.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            while(rs.next()){
+                datos[0]=rs.getString("codVent");
+                datos[1]=rs.getString("nomVent");
+                datos[2]=rs.getString("desVent");
+                datos[3]=rs.getString("nomEmp");
+                datos[4]=rs.getString("cantVent");
+                datos[5]=rs.getString("preVent");
+                datos[6]=rs.getString("totalVent");
+                datos[7]=rs.getString("feVent");
+                modelo.addRow(datos);
+            }
+            tbdatos.setModel(modelo);
+        } catch (SQLException ex) {
+            Logger.getLogger(ControlDeVentas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void buscar(String filtro){
+    DefaultTableModel modelo= new DefaultTableModel();
+       modelo.addColumn("CODIGO");
+       modelo.addColumn("NOMBRE");
+       modelo.addColumn("DESCRIPCION");
+       modelo.addColumn("EMPRESA");
+       modelo.addColumn("CANTIDAD");
+       modelo.addColumn("PRECIO");
+       modelo.addColumn("TOTAL");
+       modelo.addColumn("FECHA");
+       tbdatos.setModel(modelo);
+
+       String consultar=null;
+       if (filtro.equals("Codigo")) {
+           consultar="SELECT * FROM ventas WHERE codVent LIKE '%"+txtbuscar.getText() + "%'";
+       }
+       else if (filtro.equals("Nombre")) {
+           consultar="SELECT * FROM ventas WHERE nomVent LIKE '%"+txtbuscar.getText() + "%'";
+       }
+       else if (filtro.equals("Descripcion")) {
+           consultar="SELECT * FROM ventas WHERE desVent LIKE '%"+txtbuscar.getText() + "%'";
+       }
+       else if (filtro.equals("Fecha")) {
+           consultar="SELECT * FROM ventas WHERE feVent LIKE '%"+txtbuscar.getText() + "%'";
+       }
+
+       String []datos= new String[15];
+       try {
+           Statement st=cn.createStatement();
+            ResultSet rs=st.executeQuery(consultar);
+            while(rs.next())
+            {
+                datos[0]=rs.getString("codVent");
+                datos[1]=rs.getString("nomVent");
+                datos[2]=rs.getString("desVent");
+                datos[3]=rs.getString("nomEmp");
+                datos[4]=rs.getString("cantVent");
+                datos[5]=rs.getString("preVent");
+                datos[6]=rs.getString("totalVent");
+                datos[7]=rs.getString("feVent");
+                modelo.addRow(datos);
+            }
+            tbdatos.setModel(modelo);
+
+        } catch (SQLException ex) {
+            Logger.getLogger(registro.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -22,68 +123,103 @@ public class ControlDeVentas extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPopupMenu1 = new javax.swing.JPopupMenu();
+        jMenuItem2 = new javax.swing.JMenuItem();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jTextField1 = new javax.swing.JTextField();
+        txtbuscar = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        combo = new javax.swing.JComboBox<>();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tbdatos = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
+        jMenuItem2.setText("Eliminar");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(jMenuItem2);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(null);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 102, 102));
-        jPanel1.setLayout(null);
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel2.setBackground(new java.awt.Color(255, 204, 204));
-        jPanel2.setLayout(null);
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTable1.setAutoCreateColumnsFromModel(false);
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-
+        txtbuscar.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        txtbuscar.setToolTipText("Buscar por");
+        txtbuscar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtbuscarKeyPressed(evt);
             }
-        ));
-        jScrollPane1.setViewportView(jTable1);
-
-        jPanel2.add(jScrollPane1);
-        jScrollPane1.setBounds(10, 63, 603, 243);
-        jPanel2.add(jTextField1);
-        jTextField1.setBounds(157, 15, 286, 20);
+        });
+        jPanel2.add(txtbuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 20, 286, 30));
 
         jLabel1.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         jLabel1.setText("Busqueda");
-        jPanel2.add(jLabel1);
-        jLabel1.setBounds(77, 14, 70, 19);
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, -1, 30));
 
-        jComboBox1.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Descripcion", "Codigo", "Nombre", "Fecha" }));
-        jPanel2.add(jComboBox1);
-        jComboBox1.setBounds(467, 11, 110, 25);
+        combo.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        combo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Codigo", "Nombre", "Descripcion", "Fecha" }));
+        jPanel2.add(combo, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 19, 110, 30));
 
-        jPanel1.add(jPanel2);
-        jPanel2.setBounds(0, 70, 630, 350);
+        tbdatos.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        tbdatos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        tbdatos.setComponentPopupMenu(jPopupMenu1);
+        jScrollPane2.setViewportView(tbdatos);
+
+        jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 810, 250));
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 880, 350));
 
         jButton1.setText("Back");
-        jPanel1.add(jButton1);
-        jButton1.setBounds(10, 10, 60, 40);
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 60, 40));
 
         jLabel2.setFont(new java.awt.Font("Century Gothic", 0, 36)); // NOI18N
         jLabel2.setText("Control de ventas");
-        jPanel1.add(jLabel2);
-        jLabel2.setBounds(150, 10, 315, 45);
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 10, -1, -1));
 
-        getContentPane().add(jPanel1);
-        jPanel1.setBounds(0, 0, 630, 490);
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 880, 490));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txtbuscarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtbuscarKeyPressed
+            buscar(combo.getSelectedItem().toString());
+        
+    }//GEN-LAST:event_txtbuscarKeyPressed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        int fila = tbdatos.getSelectedRow();
+        String cod="";
+        cod=tbdatos.getValueAt(fila, 0).toString();
+
+        try {
+            PreparedStatement pst = cn.prepareStatement("DELETE FROM ventas WHERE codVent='"+cod+"'");
+            pst.executeUpdate();
+
+            JOptionPane.showMessageDialog(null,"Registro eliminado");
+            mostrardatosVenta("");
+
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -121,14 +257,18 @@ public class ControlDeVentas extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> combo;
     private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JPopupMenu jPopupMenu1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable tbdatos;
+    private javax.swing.JTextField txtbuscar;
     // End of variables declaration//GEN-END:variables
+LaBodeguita cc=new LaBodeguita();
+Connection cn = cc.getConnection();
 }
