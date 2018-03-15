@@ -135,20 +135,22 @@ public class ventas extends javax.swing.JFrame {
         jComboBox1 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getContentPane().setLayout(null);
 
         jPanel2.setBackground(new java.awt.Color(51, 255, 153));
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel2.setLayout(null);
 
         jLabel8.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Control de Ventas");
-        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(278, 5, -1, -1));
+        jPanel2.add(jLabel8);
+        jLabel8.setBounds(278, 5, 193, 29);
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 750, 40));
+        getContentPane().add(jPanel2);
+        jPanel2.setBounds(40, 20, 750, 40);
 
         jPanel1.setBackground(new java.awt.Color(0, 204, 102));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel1.setLayout(null);
 
         btexit.setBackground(new java.awt.Color(255, 0, 0));
         btexit.setForeground(new java.awt.Color(255, 255, 255));
@@ -160,7 +162,8 @@ public class ventas extends javax.swing.JFrame {
                 btexitActionPerformed(evt);
             }
         });
-        jPanel1.add(btexit, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 0, 50, 50));
+        jPanel1.add(btexit);
+        btexit.setBounds(800, 0, 50, 50);
 
         tbdatos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -175,7 +178,8 @@ public class ventas extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tbdatos);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 790, 290));
+        jPanel1.add(jScrollPane1);
+        jScrollPane1.setBounds(30, 160, 790, 290);
 
         txtbuscar.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         txtbuscar.setToolTipText("Buscar por codigo, nombre, correo o ");
@@ -189,18 +193,22 @@ public class ventas extends javax.swing.JFrame {
                 txtbuscarKeyPressed(evt);
             }
         });
-        jPanel1.add(txtbuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 100, 290, -1));
+        jPanel1.add(txtbuscar);
+        txtbuscar.setBounds(240, 100, 290, 25);
 
         jLabel1.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Buscar");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 100, -1, -1));
+        jPanel1.add(jLabel1);
+        jLabel1.setBounds(160, 100, 57, 23);
 
         jComboBox1.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Codigo", "Nombre", "Apellido", "Descripcion", "Correo", "Fecha" }));
-        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 100, -1, -1));
+        jPanel1.add(jComboBox1);
+        jComboBox1.setBounds(550, 100, 110, 25);
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 870, 500));
+        getContentPane().add(jPanel1);
+        jPanel1.setBounds(0, 0, 870, 480);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

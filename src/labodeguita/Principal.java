@@ -51,19 +51,20 @@ public class Principal extends javax.swing.JFrame {
         jMenu3 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getContentPane().setLayout(null);
 
         hora.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         hora.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        hora.setText("Para arreglar los errores que salen en los layout cambienlo a null, y si esta en nul regresenlo a absolute");
         hora.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        getContentPane().add(hora, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 60, 220, 60));
+        getContentPane().add(hora);
+        hora.setBounds(60, 60, 220, 60);
 
         fecha.setFont(new java.awt.Font("Century Gothic", 0, 36)); // NOI18N
         fecha.setForeground(new java.awt.Color(255, 255, 255));
         fecha.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         fecha.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        getContentPane().add(fecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 60, 360, 60));
+        getContentPane().add(fecha);
+        fecha.setBounds(340, 60, 360, 60);
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel1.setIcon(new javax.swing.JLabel() {
@@ -78,7 +79,8 @@ public class Principal extends javax.swing.JFrame {
             }
         }.getIcon());
         jLabel1.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 750, 410));
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(0, 0, 750, 410);
 
         jMenuBar1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "La Bodeguita", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Century Gothic", 0, 14), new java.awt.Color(255, 51, 51))); // NOI18N
 

@@ -52,49 +52,61 @@ public class registro extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Control de Productos");
         setName("eli"); // NOI18N
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getContentPane().setLayout(null);
 
         jLabel1.setBackground(new java.awt.Color(204, 0, 204));
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel1.setText("Nombre");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 77, 83, -1));
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(10, 77, 83, 17);
 
         jLabel3.setBackground(new java.awt.Color(204, 0, 204));
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setText("Descripcion");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 125, -1, -1));
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(10, 125, 70, 17);
 
         jLabel4.setBackground(new java.awt.Color(204, 0, 204));
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setText("Genero");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 176, 83, -1));
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(10, 176, 83, 17);
 
         jLabel5.setBackground(new java.awt.Color(204, 0, 204));
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel5.setText("Precio");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 219, 70, -1));
+        getContentPane().add(jLabel5);
+        jLabel5.setBounds(10, 219, 70, 17);
 
         jLabel6.setBackground(new java.awt.Color(204, 0, 204));
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel6.setText("Stock");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 268, 43, -1));
+        getContentPane().add(jLabel6);
+        jLabel6.setBounds(10, 268, 43, 17);
 
         jLabel7.setBackground(new java.awt.Color(204, 0, 204));
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel7.setText("Codigo");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 325, -1, -1));
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(97, 77, 132, -1));
-        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(97, 128, 207, -1));
-        getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(97, 176, 132, -1));
-        getContentPane().add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(97, 219, 132, -1));
-        getContentPane().add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(97, 265, 132, -1));
+        getContentPane().add(jLabel7);
+        jLabel7.setBounds(10, 325, 43, 17);
+        getContentPane().add(jTextField1);
+        jTextField1.setBounds(97, 77, 132, 20);
+        getContentPane().add(jTextField2);
+        jTextField2.setBounds(97, 128, 207, 20);
+        getContentPane().add(jTextField3);
+        jTextField3.setBounds(97, 176, 132, 20);
+        getContentPane().add(jTextField4);
+        jTextField4.setBounds(97, 219, 132, 20);
+        getContentPane().add(jTextField5);
+        jTextField5.setBounds(97, 265, 132, 20);
 
         jTextField6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField6ActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(97, 322, 132, -1));
+        getContentPane().add(jTextField6);
+        jTextField6.setBounds(97, 322, 132, 20);
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -104,7 +116,8 @@ public class registro extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3"
             }
         ));
-        getContentPane().add(jTable1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 60, 520, 270));
+        getContentPane().add(jTable1);
+        jTable1.setBounds(310, 60, 520, 270);
 
         jButton1.setBackground(new java.awt.Color(0, 51, 255));
         jButton1.setForeground(new java.awt.Color(51, 51, 255));
@@ -124,10 +137,12 @@ public class registro extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 340, 60, 50));
+        getContentPane().add(jButton1);
+        jButton1.setBounds(260, 340, 60, 50);
 
         jButton2.setToolTipText("INICIO");
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 340, 60, 50));
+        getContentPane().add(jButton2);
+        jButton2.setBounds(650, 340, 60, 50);
 
         jButton3.setToolTipText("INSERTAR");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -135,16 +150,19 @@ public class registro extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 340, 60, 50));
+        getContentPane().add(jButton3);
+        jButton3.setBounds(450, 340, 60, 50);
 
         jButton4.setToolTipText("ELIMINAR");
-        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 340, 60, 50));
+        getContentPane().add(jButton4);
+        jButton4.setBounds(350, 340, 60, 50);
 
         jButton5.setToolTipText("BUSCAR");
-        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 340, 60, 50));
+        getContentPane().add(jButton5);
+        jButton5.setBounds(550, 340, 60, 50);
 
         jPanel1.setBackground(new java.awt.Color(102, 255, 255));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel1.setLayout(null);
 
         jLabel2.setBackground(new java.awt.Color(0, 255, 255));
         jLabel2.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
@@ -152,9 +170,11 @@ public class registro extends javax.swing.JFrame {
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Control Productos");
         jLabel2.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(128, 11, 664, 40));
+        jPanel1.add(jLabel2);
+        jLabel2.setBounds(128, 11, 664, 40);
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 840, 440));
+        getContentPane().add(jPanel1);
+        jPanel1.setBounds(0, 0, 840, 440);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

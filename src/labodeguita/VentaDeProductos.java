@@ -51,13 +51,13 @@ public class VentaDeProductos extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getContentPane().setLayout(null);
 
         jPanel1.setBackground(new java.awt.Color(0, 204, 204));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel1.setLayout(null);
 
         jPanel2.setBackground(new java.awt.Color(153, 255, 204));
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel2.setLayout(null);
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -72,55 +72,76 @@ public class VentaDeProductos extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 22, 604, 213));
-        jPanel2.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(512, 344, 100, -1));
-        jPanel2.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(63, 306, 87, -1));
-        jPanel2.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(63, 344, 87, -1));
-        jPanel2.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(238, 344, 97, -1));
+        jPanel2.add(jScrollPane1);
+        jScrollPane1.setBounds(22, 22, 604, 213);
+        jPanel2.add(jTextField1);
+        jTextField1.setBounds(512, 344, 100, 20);
+        jPanel2.add(jTextField2);
+        jTextField2.setBounds(63, 306, 87, 20);
+        jPanel2.add(jTextField3);
+        jTextField3.setBounds(63, 344, 87, 20);
+        jPanel2.add(jTextField4);
+        jTextField4.setBounds(238, 344, 97, 20);
 
         jLabel1.setText("Cantidad");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(451, 347, -1, -1));
+        jPanel2.add(jLabel1);
+        jLabel1.setBounds(451, 347, 43, 14);
 
         jLabel2.setText("Precio");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 309, -1, -1));
+        jPanel2.add(jLabel2);
+        jLabel2.setBounds(24, 309, 29, 14);
 
         jLabel3.setText("Fecha");
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 347, -1, -1));
+        jPanel2.add(jLabel3);
+        jLabel3.setBounds(24, 347, 29, 14);
 
         jLabel4.setText("Hora");
-        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(205, 347, -1, -1));
+        jPanel2.add(jLabel4);
+        jLabel4.setBounds(205, 347, 23, 14);
 
         jTextField5.setToolTipText("buscar");
-        jPanel2.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(116, 268, 510, -1));
+        jPanel2.add(jTextField5);
+        jTextField5.setBounds(116, 268, 510, 20);
 
         jLabel5.setText("Nombre o descripcion");
-        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 271, -1, -1));
-        jPanel2.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(238, 306, 97, -1));
+        jPanel2.add(jLabel5);
+        jLabel5.setBounds(10, 271, 102, 14);
+        jPanel2.add(jTextField6);
+        jTextField6.setBounds(238, 306, 97, 20);
 
         jLabel6.setText("Total");
-        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(204, 309, -1, -1));
-        jPanel2.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(512, 306, 100, -1));
+        jPanel2.add(jLabel6);
+        jLabel6.setBounds(204, 309, 24, 14);
+        jPanel2.add(jTextField7);
+        jTextField7.setBounds(512, 306, 100, 20);
 
         jLabel7.setText("Codigo Producto");
-        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(415, 309, -1, -1));
+        jPanel2.add(jLabel7);
+        jLabel7.setBounds(415, 309, 79, 14);
 
         jButton1.setText("Aceptar");
-        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(159, 402, -1, -1));
+        jPanel2.add(jButton1);
+        jButton1.setBounds(159, 402, 71, 23);
 
         jButton2.setText("Cancelar");
-        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(276, 402, -1, -1));
+        jPanel2.add(jButton2);
+        jButton2.setBounds(276, 402, 75, 23);
 
         jButton3.setText("Stock");
         jButton3.setToolTipText("Control De Productos");
-        jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(399, 402, -1, -1));
+        jPanel2.add(jButton3);
+        jButton3.setBounds(399, 402, 59, 23);
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 650, 450));
+        jPanel1.add(jPanel2);
+        jPanel2.setBounds(0, 70, 650, 450);
 
         jLabel8.setFont(new java.awt.Font("Century Gothic", 0, 36)); // NOI18N
         jLabel8.setText("Venta De Productos");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 10, -1, -1));
+        jPanel1.add(jLabel8);
+        jLabel8.setBounds(130, 10, 353, 45);
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 670, 570));
+        getContentPane().add(jPanel1);
+        jPanel1.setBounds(0, 0, 650, 560);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
