@@ -195,7 +195,7 @@ public class ControlDeVentas extends javax.swing.JFrame {
         jLabel2.setText("Control de ventas");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 10, -1, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 880, 490));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 880, 470));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
