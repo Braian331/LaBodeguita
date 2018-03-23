@@ -36,3 +36,4 @@ e) Elaborar un manual de usuario para el manejo del sistema<br>
 <img src="DiagramGantt.jpg">
 
 # Diagrama de EDT
+<img src="DiagramaEDT.jpg">
