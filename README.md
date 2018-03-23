@@ -32,6 +32,7 @@ e) Elaborar un manual de usuario para el manejo del sistema<br>
 # Alcance del proyecto la bodeguita
 # Limitaciones del proyecto la bodeguita
 # Diagrama de Gantt
+<img src="TablaGantt.jpg">
 <img src="DiagramGantt.jpg">
 
 # Diagrama de EDT
