@@ -30,7 +30,9 @@ c) Plantear el diseño lógico del sistema de información (Base de datos)<br>
 d) Desarrollar la interfaz del sistema<br>
 e) Elaborar un manual de usuario para el manejo del sistema<br>
 # Alcance del proyecto la bodeguita
+El proyecto tiene como alcance en desarrollar una aplicación capaz de cubrir las necesidades del abarrote la “bodeguita”, en donde a partir de este software  podrán tener el control de las venta, el programa proporciona los siguientes tanto en front-end como en back-end, seguridad al  ingresar al software bloqueo con usuario y contraseña, el programa será desarrollado en lenguaje Java, el cual obtendrá múltiples ventana de manera gráficos, algunos de ellos serán para la consulta de productos, registró de productos, filtro, realización de venta, tablas para los productos en stock  para el mejor interacción de usuario como el cliente, su diseño se adaptara de acuerdo al requerimiento del cliente basando y respetando el acuerdo establecido durante la entrevista, el programa estará conectada a una base de datos de servidor  local para el almacenamiento de datos misma que será instalado por los integrantes o desarrolladores del proyecto.
 # Limitaciones del proyecto la bodeguita
+
 # Diagrama de Gantt
 <img src="TablaGantt.jpg">
 <img src="DiagramGantt.jpg">
