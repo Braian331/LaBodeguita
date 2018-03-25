@@ -34,6 +34,8 @@ public class ControlDeVentas extends javax.swing.JFrame {
        modelo.addColumn("PRECIO");
        modelo.addColumn("TOTAL");
        modelo.addColumn("FECHA");
+       modelo.addColumn("ID PROD");
+       modelo.addColumn("ST");
     tbdatos.setModel(modelo);
     String sql="";
     if(valor.equals(""))
@@ -57,6 +59,8 @@ public class ControlDeVentas extends javax.swing.JFrame {
                 datos[5]=rs.getString("preVent");
                 datos[6]=rs.getString("totalVent");
                 datos[7]=rs.getString("feVent");
+                datos[8]=rs.getString("cod_prod");
+                datos[9]=rs.getString("Nstock");
                 modelo.addRow(datos);
             }
             tbdatos.setModel(modelo);
@@ -75,6 +79,8 @@ public class ControlDeVentas extends javax.swing.JFrame {
        modelo.addColumn("PRECIO");
        modelo.addColumn("TOTAL");
        modelo.addColumn("FECHA");
+       modelo.addColumn("ID PROD");
+       modelo.addColumn("ST");
        tbdatos.setModel(modelo);
 
        String consultar=null;
@@ -89,6 +95,9 @@ public class ControlDeVentas extends javax.swing.JFrame {
        }
        else if (filtro.equals("Fecha")) {
            consultar="SELECT * FROM ventas WHERE feVent LIKE '%"+txtbuscar.getText() + "%'";
+       }
+       else if (filtro.equals("Total")) {
+           consultar="SELECT * FROM ventas WHERE totalVent LIKE '%"+txtbuscar.getText() + "%'";
        }
 
        String []datos= new String[15];
@@ -105,6 +114,8 @@ public class ControlDeVentas extends javax.swing.JFrame {
                 datos[5]=rs.getString("preVent");
                 datos[6]=rs.getString("totalVent");
                 datos[7]=rs.getString("feVent");
+                datos[8]=rs.getString("cod_prod");
+                datos[9]=rs.getString("Nstock");
                 modelo.addRow(datos);
             }
             tbdatos.setModel(modelo);
@@ -126,14 +137,20 @@ public class ControlDeVentas extends javax.swing.JFrame {
         jPopupMenu1 = new javax.swing.JPopupMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
         jPanel1 = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         txtbuscar = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         combo = new javax.swing.JComboBox<>();
         jScrollPane2 = new javax.swing.JScrollPane();
         tbdatos = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        stock = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        newStock = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        code = new javax.swing.JTextField();
 
         jMenuItem2.setText("Eliminar");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
@@ -146,28 +163,38 @@ public class ControlDeVentas extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(255, 102, 102));
+        jPanel1.setBackground(new java.awt.Color(255, 153, 153));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel2.setBackground(new java.awt.Color(255, 204, 204));
+        jButton1.setText("Salir");
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 10, 60, 30));
+
+        jLabel2.setFont(new java.awt.Font("Century Gothic", 0, 30)); // NOI18N
+        jLabel2.setText("Control de ventas");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, -1, -1));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1060, 60));
+
+        jPanel2.setBackground(new java.awt.Color(153, 0, 0));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txtbuscar.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
-        txtbuscar.setToolTipText("Buscar por");
+        txtbuscar.setToolTipText("Enter para buscar");
         txtbuscar.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtbuscarKeyPressed(evt);
             }
         });
-        jPanel2.add(txtbuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 20, 286, 30));
+        jPanel2.add(txtbuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 20, 320, 30));
 
-        jLabel1.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Busqueda");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, -1, 30));
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 20, -1, 30));
 
         combo.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
-        combo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Codigo", "Nombre", "Descripcion", "Fecha" }));
-        jPanel2.add(combo, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 19, 110, 30));
+        combo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Codigo", "Nombre", "Descripcion", "Total", "Fecha" }));
+        jPanel2.add(combo, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 20, 150, 30));
 
         tbdatos.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         tbdatos.setModel(new javax.swing.table.DefaultTableModel(
@@ -184,18 +211,27 @@ public class ControlDeVentas extends javax.swing.JFrame {
         tbdatos.setComponentPopupMenu(jPopupMenu1);
         jScrollPane2.setViewportView(tbdatos);
 
-        jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 810, 250));
+        jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 1000, 250));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 880, 350));
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Stock");
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 390, -1, -1));
+        jPanel2.add(stock, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 420, 140, -1));
 
-        jButton1.setText("Back");
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 60, 40));
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("nuevo Stock");
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 390, -1, -1));
+        jPanel2.add(newStock, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 420, 140, -1));
 
-        jLabel2.setFont(new java.awt.Font("Century Gothic", 0, 36)); // NOI18N
-        jLabel2.setText("Control de ventas");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 10, -1, -1));
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("Cod");
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 390, -1, -1));
+        jPanel2.add(code, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 420, 140, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 880, 470));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 1060, 500));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -207,12 +243,32 @@ public class ControlDeVentas extends javax.swing.JFrame {
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         int fila = tbdatos.getSelectedRow();
+        int cantidad,stockNew,nuevo;
         String cod="";
         cod=tbdatos.getValueAt(fila, 0).toString();
+        
+        
+        if(fila>=0){
+            stock.setText(tbdatos.getValueAt(fila, 4).toString());
+            code.setText(tbdatos.getValueAt(fila, 8).toString());
+            newStock.setText(tbdatos.getValueAt(fila, 9).toString());
+            }
+        else{
+            JOptionPane.showMessageDialog(null,"no seleciono fila");
+        }
+        
+            cantidad = Integer.parseInt(stock.getText());
+            stockNew = Integer.parseInt(newStock.getText());
+
+            nuevo=stockNew+cantidad;
+
+            newStock.setText(""+nuevo);
 
         try {
             PreparedStatement pst = cn.prepareStatement("DELETE FROM ventas WHERE codVent='"+cod+"'");
             pst.executeUpdate();
+            PreparedStatement pst2 = cn.prepareStatement("UPDATE productos SET stock_prod='"+newStock.getText()+"' WHERE cod_prod='"+code.getText()+"'");
+            pst2.executeUpdate();
 
             JOptionPane.showMessageDialog(null,"Registro eliminado");
             mostrardatosVenta("");
@@ -257,15 +313,21 @@ public class ControlDeVentas extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField code;
     private javax.swing.JComboBox<String> combo;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextField newStock;
+    private javax.swing.JTextField stock;
     private javax.swing.JTable tbdatos;
     private javax.swing.JTextField txtbuscar;
     // End of variables declaration//GEN-END:variables
