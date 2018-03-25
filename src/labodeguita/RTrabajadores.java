@@ -1,5 +1,15 @@
 package labodeguita;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 public class RTrabajadores extends javax.swing.JFrame {
 
     /**
@@ -7,6 +17,168 @@ public class RTrabajadores extends javax.swing.JFrame {
      */
     public RTrabajadores() {
         initComponents();
+        this.setLocationRelativeTo(null);
+        
+        ico1.setVisible(false);
+        ico2.setVisible(false);
+        ico3.setVisible(false);
+        ico4.setVisible(false);
+        ico5.setVisible(false);
+        ico6.setVisible(false);
+        ico7.setVisible(false);
+        ico8.setVisible(false);
+        
+        mostrardatos("");
+        
+        nuevo.setEnabled(true);
+        guardar.setEnabled(false);
+        actualizar.setEnabled(false);
+        cancelar.setEnabled(false);
+        
+        bloquear();
+    }
+    
+    int cont=0;
+    public void validar(){
+        if(txtnom.getText().equals("")){ico1.setVisible(true);cont++;}              else{ico1.setVisible(false);}
+        if(txtape.getText().equals("")){ico2.setVisible(true);cont++;}              else{ico2.setVisible(false);}
+        if(txtpass.getText().equals("")){ico3.setVisible(true);cont++;}              else{ico3.setVisible(false);}
+        if(txtsex.getText().equals("")){ico4.setVisible(true);cont++;}              else{ico4.setVisible(false);}
+        if(txtfechaNacim.getText().equals("")){ico5.setVisible(true);cont++;}              else{ico5.setVisible(false);}
+        if(txttelefono.getText().equals("")){ico6.setVisible(true);cont++;}              else{ico6.setVisible(false);}
+        if(txtturno.getText().equals("")){ico7.setVisible(true);cont++;}              else{ico7.setVisible(false);}
+        if(txtcargo.getText().equals("")){ico8.setVisible(true);cont++;}              else{ico8.setVisible(false);}
+    }
+    
+    void mostrardatos(String valor){
+    DefaultTableModel modelo= new DefaultTableModel();
+       modelo.addColumn("ID");
+       modelo.addColumn("NOMBRE");
+       modelo.addColumn("APELLIDO");
+       modelo.addColumn("SEXO");
+       modelo.addColumn("TELEFONO");
+       modelo.addColumn("TURNO");
+       modelo.addColumn("FECHA NACIM");
+       modelo.addColumn("PASSWORD");
+       modelo.addColumn("CARGO");
+    tbdatos.setModel(modelo);
+    String sql="";
+    if(valor.equals(""))
+    {
+        sql="SELECT * FROM trabajadores";
+    }
+    else{
+        sql="SELECT * FROM trabajadores WHERE id_trab='"+valor+"'";
+    }
+ 
+    String []datos = new String [9];
+        try {
+            Statement st = cn.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            while(rs.next()){
+                datos[0]=rs.getString("id_trab");
+                datos[1]=rs.getString("nom_trab");
+                datos[2]=rs.getString("apellidos_trab");
+                datos[3]=rs.getString("sexo_trab");
+                datos[4]=rs.getString("telefono_trab");
+                datos[5]=rs.getString("turno_trab");
+                datos[6]=rs.getString("fNacim_trab");
+                datos[7]=rs.getString("password");
+                datos[8]=rs.getString("cargo");
+                modelo.addRow(datos);
+            }
+            tbdatos.setModel(modelo);
+        } catch (SQLException ex) {
+            Logger.getLogger(ControlDeVentas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void buscar(String filtro){
+    DefaultTableModel modelo= new DefaultTableModel();
+       modelo.addColumn("ID");
+       modelo.addColumn("NOMBRE");
+       modelo.addColumn("APELLIDO");
+       modelo.addColumn("SEXO");
+       modelo.addColumn("TELEFONO");
+       modelo.addColumn("TURNO");
+       modelo.addColumn("FECHA NACIM");
+       modelo.addColumn("PASSWORD");
+       modelo.addColumn("CARGO");
+       tbdatos.setModel(modelo);
+
+       String consultar=null;
+       if (filtro.equals("Codigo")) {
+           consultar="SELECT * FROM trabajadores WHERE id_trab LIKE '%"+txtbuscar.getText() + "%'";
+       }
+       else if (filtro.equals("Telefono")) {
+           consultar="SELECT * FROM trabajadores WHERE telefono_trab LIKE '%"+txtbuscar.getText() + "%'";
+       }
+       else if (filtro.equals("Nombre")) {
+           consultar="SELECT * FROM trabajadores WHERE nom_trab LIKE '%"+txtbuscar.getText() + "%'";
+       }
+       else if (filtro.equals("Apellido")) {
+           consultar="SELECT * FROM trabajadores WHERE apellidos_trab LIKE '%"+txtbuscar.getText() + "%'";
+       }
+       else if (filtro.equals("Cargo")) {
+           consultar="SELECT * FROM trabajadores WHERE cargo LIKE '%"+txtbuscar.getText() + "%'";
+       }
+
+       String []datos= new String[15];
+       try {
+           Statement st=cn.createStatement();
+            ResultSet rs=st.executeQuery(consultar);
+            while(rs.next())
+            {
+                datos[0]=rs.getString("id_trab");
+                datos[1]=rs.getString("nom_trab");
+                datos[2]=rs.getString("apellidos_trab");
+                datos[3]=rs.getString("sexo_trab");
+                datos[4]=rs.getString("telefono_trab");
+                datos[5]=rs.getString("turno_trab");
+                datos[6]=rs.getString("fNacim_trab");
+                datos[7]=rs.getString("password");
+                datos[8]=rs.getString("cargo");
+                modelo.addRow(datos);
+            }
+            tbdatos.setModel(modelo);
+
+        } catch (SQLException ex) {
+            Logger.getLogger(registro.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    void bloquear(){
+        txtnom.setEnabled(false);
+        txtape.setEnabled(false);
+        txtpass.setEnabled(false);
+        txtsex.setEnabled(false);
+        txtfechaNacim.setEnabled(false);
+        txttelefono.setEnabled(false);
+        txtturno.setEnabled(false);
+        txtcargo.setEnabled(false);
+    }
+    
+    void desbloquear(){
+        txtnom.setEnabled(true);
+        txtape.setEnabled(true);
+        txtpass.setEnabled(true);
+        txtsex.setEnabled(true);
+        txtfechaNacim.setEnabled(true);
+        txttelefono.setEnabled(true);
+        txtturno.setEnabled(true);
+        txtcargo.setEnabled(true);
+    }
+    
+    void limpiar(){
+        txtnom.setText("");
+        txtape.setText("");
+        txtpass.setText("");
+        txtsex.setText("");
+        txtfechaNacim.setText("");
+        txttelefono.setText("");
+        txtturno.setText("");
+        txtcargo.setText("");
+        txtcod.setText("");
     }
 
     /**
@@ -18,207 +190,376 @@ public class RTrabajadores extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel11 = new javax.swing.JLabel();
-        txtfechanacimiento1 = new javax.swing.JTextField();
+        jPopupMenu1 = new javax.swing.JPopupMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
         jPanel1 = new javax.swing.JPanel();
         txtnom = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        txtape = new javax.swing.JTextField();
+        txtsex = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        txtemail = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
         txttelefono = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        txtfechanacimiento = new javax.swing.JTextField();
+        txtturno = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        listsexo = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
-        btguardar = new javax.swing.JButton();
-        btlimpiar = new javax.swing.JButton();
-        btnuevo = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
-        txtcemp = new javax.swing.JTextField();
+        actualizar = new javax.swing.JButton();
+        cancelar = new javax.swing.JButton();
+        nuevo = new javax.swing.JButton();
+        txtpass = new javax.swing.JPasswordField();
+        jLabel10 = new javax.swing.JLabel();
+        txtcod = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        txtuser = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        txtpassword = new javax.swing.JPasswordField();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
         jLabel13 = new javax.swing.JLabel();
-        listturno = new javax.swing.JComboBox<>();
-        listcargo1 = new javax.swing.JComboBox<>();
+        txtape = new javax.swing.JTextField();
+        txtcargo = new javax.swing.JTextField();
+        txtfechaNacim = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tbdatos = new javax.swing.JTable();
+        guardar = new javax.swing.JButton();
+        ico1 = new javax.swing.JLabel();
+        ico2 = new javax.swing.JLabel();
+        ico3 = new javax.swing.JLabel();
+        ico4 = new javax.swing.JLabel();
+        ico5 = new javax.swing.JLabel();
+        ico6 = new javax.swing.JLabel();
+        ico7 = new javax.swing.JLabel();
+        ico8 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
         btsalir = new javax.swing.JButton();
-        txtbusqueda = new javax.swing.JTextField();
-        listcargo = new javax.swing.JComboBox<>();
-        jPanel4 = new javax.swing.JPanel();
+        txtbuscar = new javax.swing.JTextField();
+        combo = new javax.swing.JComboBox<>();
 
-        jLabel11.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel11.setText("Fecha de nacimiento");
+        jMenuItem1.setText("Modificar");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(jMenuItem1);
+
+        jMenuItem2.setText("Eliminar");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(jMenuItem2);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Registro de trabajadores");
-        getContentPane().setLayout(null);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(0, 255, 255));
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED), "Datos basicos", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 12))); // NOI18N
+        jPanel1.setBackground(new java.awt.Color(51, 204, 0));
         jPanel1.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel1.setLayout(null);
-        jPanel1.add(txtnom);
-        txtnom.setBounds(10, 50, 119, 20);
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtnom.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jPanel1.add(txtnom, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 230, 160, -1));
+
+        jLabel1.setFont(new java.awt.Font("Century Gothic", 0, 13)); // NOI18N
         jLabel1.setText("Nombre");
-        jPanel1.add(jLabel1);
-        jLabel1.setBounds(10, 30, 45, 15);
-        jPanel1.add(txtape);
-        txtape.setBounds(150, 50, 119, 20);
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 230, -1, 20));
 
-        jLabel2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtsex.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jPanel1.add(txtsex, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 230, 160, -1));
+
+        jLabel2.setFont(new java.awt.Font("Century Gothic", 0, 13)); // NOI18N
         jLabel2.setText("Apellido");
-        jPanel1.add(jLabel2);
-        jLabel2.setBounds(150, 30, 44, 15);
-        jPanel1.add(txtemail);
-        txtemail.setBounds(10, 100, 119, 20);
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 270, -1, 20));
 
-        jLabel3.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel3.setText("Correo");
-        jPanel1.add(jLabel3);
-        jLabel3.setBounds(10, 80, 38, 15);
-        jPanel1.add(txttelefono);
-        txttelefono.setBounds(150, 100, 119, 20);
+        txttelefono.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jPanel1.add(txttelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 310, 160, -1));
 
-        jLabel5.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Century Gothic", 0, 13)); // NOI18N
         jLabel5.setText("Tel/Cel");
-        jPanel1.add(jLabel5);
-        jLabel5.setBounds(150, 80, 39, 15);
-        jPanel1.add(txtfechanacimiento);
-        txtfechanacimiento.setBounds(10, 160, 119, 20);
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 310, -1, 20));
 
-        jLabel6.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtturno.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jPanel1.add(txtturno, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 230, 160, -1));
+
+        jLabel6.setFont(new java.awt.Font("Century Gothic", 0, 13)); // NOI18N
         jLabel6.setText("Fecha de nacimiento");
-        jPanel1.add(jLabel6);
-        jLabel6.setBounds(10, 140, 115, 15);
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 270, -1, 20));
 
-        listsexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "especifique genero...", "Hombre", "Mujer" }));
-        jPanel1.add(listsexo);
-        listsexo.setBounds(140, 160, 150, 20);
-
-        jLabel7.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Century Gothic", 0, 13)); // NOI18N
         jLabel7.setText("Sexo");
-        jPanel1.add(jLabel7);
-        jLabel7.setBounds(150, 140, 27, 15);
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 230, -1, 20));
 
-        btguardar.setText("Guardar");
-        jPanel1.add(btguardar);
-        btguardar.setBounds(10, 210, 71, 23);
+        actualizar.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        actualizar.setText("Actualizar");
+        actualizar.setToolTipText("Actualizar registro");
+        actualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                actualizarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(actualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 390, 100, 40));
 
-        btlimpiar.setText("Limpiar");
-        jPanel1.add(btlimpiar);
-        btlimpiar.setBounds(90, 210, 65, 23);
+        cancelar.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        cancelar.setText("Cancelar");
+        cancelar.setToolTipText("Limpiar o cancelar registro");
+        cancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 390, 90, 40));
 
-        btnuevo.setText("Nuevo");
-        jPanel1.add(btnuevo);
-        btnuevo.setBounds(160, 210, 63, 23);
+        nuevo.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        nuevo.setText("Nuevo");
+        nuevo.setToolTipText("Crear nuevo registro");
+        nuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nuevoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(nuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 390, 80, 40));
 
-        getContentPane().add(jPanel1);
-        jPanel1.setBounds(0, 70, 300, 280);
+        txtpass.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jPanel1.add(txtpass, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 310, 160, -1));
 
-        jPanel2.setBackground(new java.awt.Color(0, 255, 255));
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED), "Datos basicos", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 12))); // NOI18N
-        jPanel2.setLayout(null);
-        jPanel2.add(txtcemp);
-        txtcemp.setBounds(20, 50, 119, 20);
-
-        jLabel4.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel4.setText("C.Empleado");
-        jPanel2.add(jLabel4);
-        jLabel4.setBounds(20, 30, 69, 15);
-
-        jLabel8.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel8.setText("Cargo");
-        jPanel2.add(jLabel8);
-        jLabel8.setBounds(30, 230, 34, 15);
-        jPanel2.add(txtuser);
-        txtuser.setBounds(20, 150, 119, 20);
-
-        jLabel9.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel9.setText("Usuario");
-        jPanel2.add(jLabel9);
-        jLabel9.setBounds(20, 130, 44, 15);
-
-        jLabel10.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Century Gothic", 0, 13)); // NOI18N
         jLabel10.setText("Contraseña");
-        jPanel2.add(jLabel10);
-        jLabel10.setBounds(20, 180, 65, 15);
-        jPanel2.add(txtpassword);
-        txtpassword.setBounds(20, 200, 120, 20);
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 310, -1, 20));
 
-        jTable1.setBackground(new java.awt.Color(204, 204, 255));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        txtcod.setEditable(false);
+        txtcod.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        txtcod.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jPanel1.add(txtcod, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 310, 70, -1));
+
+        jLabel4.setFont(new java.awt.Font("Century Gothic", 0, 13)); // NOI18N
+        jLabel4.setText("Codigo");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 310, -1, 20));
+
+        jLabel8.setFont(new java.awt.Font("Century Gothic", 0, 13)); // NOI18N
+        jLabel8.setText("Cargo");
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 270, -1, 20));
+
+        jLabel13.setFont(new java.awt.Font("Century Gothic", 0, 13)); // NOI18N
+        jLabel13.setText("Turno");
+        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 230, -1, 20));
+
+        txtape.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jPanel1.add(txtape, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 270, 160, -1));
+
+        txtcargo.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jPanel1.add(txtcargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 270, 160, -1));
+
+        txtfechaNacim.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jPanel1.add(txtfechaNacim, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 270, 160, -1));
+
+        tbdatos.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        tbdatos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {},
-                {},
-                {},
-                {}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-
+                "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        tbdatos.setComponentPopupMenu(jPopupMenu1);
+        jScrollPane1.setViewportView(tbdatos);
 
-        jPanel2.add(jScrollPane1);
-        jScrollPane1.setBounds(160, 10, 620, 250);
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 1040, 150));
 
-        jLabel13.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel13.setText("Turno");
-        jPanel2.add(jLabel13);
-        jLabel13.setBounds(20, 80, 32, 15);
+        guardar.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        guardar.setText("Guardar");
+        guardar.setToolTipText("Guardar nuevo registro");
+        guardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                guardarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 390, 90, 40));
 
-        listturno.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "elija su cargo...", "Matutino", "Vespertino", " ", " " }));
-        jPanel2.add(listturno);
-        listturno.setBounds(20, 100, 100, 20);
+        ico1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Braian Canjay\\Desktop\\DES AP 1\\32x32.png")); // NOI18N
+        jPanel1.add(ico1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 230, -1, 20));
 
-        listcargo1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "elija su cargo...", "Cajero", "Almacen", "Gerente", "Administrador", " " }));
-        jPanel2.add(listcargo1);
-        listcargo1.setBounds(30, 250, 100, 20);
+        ico2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Braian Canjay\\Desktop\\DES AP 1\\32x32.png")); // NOI18N
+        jPanel1.add(ico2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 270, -1, 20));
 
-        getContentPane().add(jPanel2);
-        jPanel2.setBounds(300, 70, 790, 280);
+        ico3.setIcon(new javax.swing.ImageIcon("C:\\Users\\Braian Canjay\\Desktop\\DES AP 1\\32x32.png")); // NOI18N
+        jPanel1.add(ico3, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 310, -1, 20));
 
-        jPanel3.setBackground(new java.awt.Color(0, 102, 102));
-        jPanel3.setLayout(null);
+        ico4.setIcon(new javax.swing.ImageIcon("C:\\Users\\Braian Canjay\\Desktop\\DES AP 1\\32x32.png")); // NOI18N
+        jPanel1.add(ico4, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 230, -1, 20));
 
-        jLabel12.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        ico5.setIcon(new javax.swing.ImageIcon("C:\\Users\\Braian Canjay\\Desktop\\DES AP 1\\32x32.png")); // NOI18N
+        jPanel1.add(ico5, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 270, -1, 20));
+
+        ico6.setIcon(new javax.swing.ImageIcon("C:\\Users\\Braian Canjay\\Desktop\\DES AP 1\\32x32.png")); // NOI18N
+        jPanel1.add(ico6, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 310, -1, 20));
+
+        ico7.setIcon(new javax.swing.ImageIcon("C:\\Users\\Braian Canjay\\Desktop\\DES AP 1\\32x32.png")); // NOI18N
+        jPanel1.add(ico7, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 230, -1, 20));
+
+        ico8.setIcon(new javax.swing.ImageIcon("C:\\Users\\Braian Canjay\\Desktop\\DES AP 1\\32x32.png")); // NOI18N
+        jPanel1.add(ico8, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 270, -1, 20));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 1090, 460));
+
+        jPanel3.setBackground(new java.awt.Color(0, 153, 51));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel12.setFont(new java.awt.Font("Century Gothic", 0, 30)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("Registro de trabajadores");
-        jPanel3.add(jLabel12);
-        jLabel12.setBounds(263, 11, 264, 29);
+        jPanel3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, -1, -1));
 
         btsalir.setText("Salir");
-        jPanel3.add(btsalir);
-        btsalir.setBounds(1044, 20, 36, 23);
-        jPanel3.add(txtbusqueda);
-        txtbusqueda.setBounds(772, 21, 239, 20);
+        jPanel3.add(btsalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 20, 70, -1));
 
-        listcargo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "tipo de busqueda...", "Codigo", "Telefono", "Nombre", "Apellido", " " }));
-        jPanel3.add(listcargo);
-        listcargo.setBounds(642, 21, 120, 20);
+        txtbuscar.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        txtbuscar.setToolTipText("Enter para buscar");
+        txtbuscar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtbuscarKeyPressed(evt);
+            }
+        });
+        jPanel3.add(txtbuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 20, 200, -1));
 
-        getContentPane().add(jPanel3);
-        jPanel3.setBounds(0, 20, 1090, 50);
+        combo.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        combo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Codigo", "Telefono", "Nombre", "Apellido", "Cargo" }));
+        jPanel3.add(combo, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 20, 110, -1));
 
-        jPanel4.setBackground(new java.awt.Color(0, 255, 255));
-        jPanel4.setLayout(null);
-        getContentPane().add(jPanel4);
-        jPanel4.setBounds(0, 0, 1090, 20);
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1090, 60));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizarActionPerformed
+        cont=0;
+        validar();
+        //si todos son invisibles hacer update si no, mensaje de llenar campos
+        if (ico1.isVisible() || ico2.isVisible() || ico3.isVisible() || ico4.isVisible() 
+            || ico5.isVisible() || ico6.isVisible() || ico7.isVisible() || ico8.isVisible()) {
+            JOptionPane.showMessageDialog(null,"Llenó todos los campos?");
+        }
+        else{
+            try {
+            PreparedStatement pst = cn.prepareStatement("UPDATE trabajadores SET nom_trab='"+txtnom.getText()+"', apellidos_trab='"+txtape.getText()+"', sexo_trab='"+txtsex.getText()+"', telefono_trab='"+txttelefono.getText()+"',  "
+                            + "turno_trab='"+txtturno.getText()+"',  fNacim_trab='"+txtfechaNacim.getText()+"',  password='"+txtpass.getText()+"',  cargo='"+txtcargo.getText()+"' WHERE id_trab='"+txtcod.getText()+"'");
+            pst.executeUpdate();
+            mostrardatos("");
+            JOptionPane.showMessageDialog(null,"Registro actualizado");
+            
+            limpiar();
+            bloquear();
+            nuevo.setEnabled(true);
+            guardar.setEnabled(false);
+            actualizar.setEnabled(false);
+            cancelar.setEnabled(false);
+            
+            }catch (Exception e) {
+                System.out.print(e.getMessage());
+            }
+        }
+    }//GEN-LAST:event_actualizarActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+        int fila= tbdatos.getSelectedRow();
+        if(fila>=0){
+            txtcod.setText(tbdatos.getValueAt(fila, 0).toString());
+            txtnom.setText(tbdatos.getValueAt(fila, 1).toString());
+            txtape.setText(tbdatos.getValueAt(fila, 2).toString());
+            txtsex.setText(tbdatos.getValueAt(fila, 3).toString());
+            txttelefono.setText(tbdatos.getValueAt(fila, 4).toString());
+            txtturno.setText(tbdatos.getValueAt(fila, 5).toString());
+            txtfechaNacim.setText(tbdatos.getValueAt(fila, 6).toString());
+            txtpass.setText(tbdatos.getValueAt(fila, 7).toString());
+            txtcargo.setText(tbdatos.getValueAt(fila, 8).toString());
+        }
+        else{
+            JOptionPane.showMessageDialog(null,"no seleciono fila");
+        }
+        nuevo.setEnabled(false);
+        guardar.setEnabled(false);
+        actualizar.setEnabled(true);
+        cancelar.setEnabled(true);
+        desbloquear();
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        // TODO add your handling code here:
+        int fila = tbdatos.getSelectedRow();
+        String cod="";
+        cod=tbdatos.getValueAt(fila, 0).toString();
+
+        try {
+            PreparedStatement pst = cn.prepareStatement("DELETE FROM trabajadores WHERE id_trab='"+cod+"'");
+            pst.executeUpdate();
+
+            JOptionPane.showMessageDialog(null,"Registro eliminado");
+            mostrardatos("");
+
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarActionPerformed
+        cont=0;
+        validar();
+        //si todos son invisibles hacer insert si no, mensaje de llenar campos
+        if (ico1.isVisible() || ico2.isVisible() || ico3.isVisible() || ico4.isVisible() 
+            || ico5.isVisible() || ico6.isVisible() || ico7.isVisible() || ico8.isVisible()) {
+            JOptionPane.showMessageDialog(null,"Llenó todos los campos?");
+        }
+        else {
+            try {
+                PreparedStatement pst = cn.prepareStatement("INSERT INTO trabajadores (nom_trab, apellidos_trab, sexo_trab, telefono_trab, turno_trab, fNacim_trab, password, cargo) VALUES (?,?,?,?,?,?,?,?)");
+                pst.setString(1, txtnom.getText());
+                pst.setString(2, txtape.getText());
+                pst.setString(3, txtsex.getText());
+                pst.setString(4, txttelefono.getText());
+                pst.setString(5, txtturno.getText());
+                pst.setString(6, txtfechaNacim.getText());
+                pst.setString(7, txtpass.getText());
+                pst.setString(8, txtcargo.getText());
+                pst.executeUpdate();
+                mostrardatos("");
+                JOptionPane.showMessageDialog(null,"Registro guardado");
+                
+                nuevo.setEnabled(true);
+                guardar.setEnabled(false);
+                actualizar.setEnabled(false);
+                cancelar.setEnabled(false);
+                
+                bloquear();
+            } catch (Exception e) {
+                System.out.print(e.getMessage());
+            }
+        }
+        
+    }//GEN-LAST:event_guardarActionPerformed
+
+    private void cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActionPerformed
+        limpiar();
+        nuevo.setEnabled(true);
+        guardar.setEnabled(false);
+        actualizar.setEnabled(false);
+        cancelar.setEnabled(false);
+        bloquear();
+    }//GEN-LAST:event_cancelarActionPerformed
+
+    private void nuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nuevoActionPerformed
+        limpiar();
+        desbloquear();
+        nuevo.setEnabled(false);
+        guardar.setEnabled(true);
+        actualizar.setEnabled(false);
+        cancelar.setEnabled(true);
+    }//GEN-LAST:event_nuevoActionPerformed
+
+    private void txtbuscarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtbuscarKeyPressed
+        buscar(combo.getSelectedItem().toString());
+    }//GEN-LAST:event_txtbuscarKeyPressed
 
     /**
      * @param args the command line arguments
@@ -245,7 +586,7 @@ public class RTrabajadores extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(RTrabajadores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
+        //</editor-fold> 
         //</editor-fold>
 
         /* Create and display the form */
@@ -257,42 +598,49 @@ public class RTrabajadores extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btguardar;
-    private javax.swing.JButton btlimpiar;
-    private javax.swing.JButton btnuevo;
+    private javax.swing.JButton actualizar;
     private javax.swing.JButton btsalir;
+    private javax.swing.JButton cancelar;
+    private javax.swing.JComboBox<String> combo;
+    private javax.swing.JButton guardar;
+    private javax.swing.JLabel ico1;
+    private javax.swing.JLabel ico2;
+    private javax.swing.JLabel ico3;
+    private javax.swing.JLabel ico4;
+    private javax.swing.JLabel ico5;
+    private javax.swing.JLabel ico6;
+    private javax.swing.JLabel ico7;
+    private javax.swing.JLabel ico8;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JComboBox<String> listcargo;
-    private javax.swing.JComboBox<String> listcargo1;
-    private javax.swing.JComboBox<String> listsexo;
-    private javax.swing.JComboBox<String> listturno;
+    private javax.swing.JButton nuevo;
+    private javax.swing.JTable tbdatos;
     private javax.swing.JTextField txtape;
-    private javax.swing.JTextField txtbusqueda;
-    private javax.swing.JTextField txtcemp;
-    private javax.swing.JTextField txtemail;
-    private javax.swing.JTextField txtfechanacimiento;
-    private javax.swing.JTextField txtfechanacimiento1;
+    private javax.swing.JTextField txtbuscar;
+    private javax.swing.JTextField txtcargo;
+    private javax.swing.JTextField txtcod;
+    private javax.swing.JTextField txtfechaNacim;
     private javax.swing.JTextField txtnom;
-    private javax.swing.JPasswordField txtpassword;
+    private javax.swing.JPasswordField txtpass;
+    private javax.swing.JTextField txtsex;
     private javax.swing.JTextField txttelefono;
-    private javax.swing.JTextField txtuser;
+    private javax.swing.JTextField txtturno;
     // End of variables declaration//GEN-END:variables
+LaBodeguita cc=new LaBodeguita();
+Connection cn = cc.getConnection();
 }
+
