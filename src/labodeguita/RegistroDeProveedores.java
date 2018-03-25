@@ -1,5 +1,5 @@
 package labodeguita;
-
+//anular campos vacios
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -16,11 +16,32 @@ public class RegistroDeProveedores extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         mostrardatosProve("");
+        
         bloquear();
+        
         nuevo.setEnabled(true);
         guardar.setEnabled(false);
-        modificar.setEnabled(false);
+        actualizar.setEnabled(false);
         cancelar.setEnabled(false);
+        
+        ico1.setVisible(false);
+        ico2.setVisible(false);
+        ico3.setVisible(false);
+        ico4.setVisible(false);
+        ico5.setVisible(false);
+        ico6.setVisible(false);
+        ico7.setVisible(false);
+    }
+    
+    int cont=0;
+    public void validar(){
+        if(nomProv.getText().equals("")){ico1.setVisible(true);cont++;}              else{ico1.setVisible(false);}
+        if(apeProv.getText().equals("")){ico2.setVisible(true);cont++;}              else{ico2.setVisible(false);}
+        if(telProv.getText().equals("")){ico3.setVisible(true);cont++;}              else{ico3.setVisible(false);}
+        if(nomEmpre.getText().equals("")){ico4.setVisible(true);cont++;}              else{ico4.setVisible(false);}
+        if(telEmpre.getText().equals("")){ico5.setVisible(true);cont++;}              else{ico5.setVisible(false);}
+        if(correoEmpre.getText().equals("")){ico6.setVisible(true);cont++;}              else{ico6.setVisible(false);}
+        if(dirEmpre.getText().equals("")){ico7.setVisible(true);cont++;}              else{ico7.setVisible(false);}
     }
     
     void mostrardatosProve(String valor){
@@ -32,6 +53,7 @@ public class RegistroDeProveedores extends javax.swing.JFrame {
        modelo.addColumn("EMPRESA");
        modelo.addColumn("TELEFONO EMPRESA");
        modelo.addColumn("CORREO EMPRESA");
+       modelo.addColumn("DIRECCION EMPRESA");
     tbdatos.setModel(modelo);
     String sql="";
     if(valor.equals(""))
@@ -54,6 +76,7 @@ public class RegistroDeProveedores extends javax.swing.JFrame {
                 datos[4]=rs.getString("nomEmp");
                 datos[5]=rs.getString("tel_emp");
                 datos[6]=rs.getString("correo_emp");
+                datos[7]=rs.getString("dir_emp");
                 modelo.addRow(datos);
             }
             tbdatos.setModel(modelo);
@@ -71,6 +94,7 @@ public class RegistroDeProveedores extends javax.swing.JFrame {
        modelo.addColumn("EMPRESA");
        modelo.addColumn("TELEFONO EMPRESA");
        modelo.addColumn("CORREO EMPRESA");
+       modelo.addColumn("DIRECCION EMPRESA");
        tbdatos.setModel(modelo);
 
        String consultar=null;
@@ -100,6 +124,7 @@ public class RegistroDeProveedores extends javax.swing.JFrame {
                 datos[4]=rs.getString("nomEmp");
                 datos[5]=rs.getString("tel_emp");
                 datos[6]=rs.getString("correo_emp");
+                datos[7]=rs.getString("dir_emp");
                 modelo.addRow(datos);
             }
             tbdatos.setModel(modelo);
@@ -157,6 +182,8 @@ public class RegistroDeProveedores extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        combo = new javax.swing.JComboBox<>();
+        txtbuscar = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         telProv = new javax.swing.JTextField();
@@ -167,22 +194,26 @@ public class RegistroDeProveedores extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tbdatos = new javax.swing.JTable();
         cancelar = new javax.swing.JButton();
-        modificar = new javax.swing.JButton();
+        actualizar = new javax.swing.JButton();
         guardar = new javax.swing.JButton();
         nuevo = new javax.swing.JButton();
-        combo = new javax.swing.JComboBox<>();
-        txtbuscar = new javax.swing.JTextField();
         correoEmpre = new javax.swing.JTextField();
         dirEmpre = new javax.swing.JTextField();
         telEmpre = new javax.swing.JTextField();
         nomEmpre = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
+        ico1 = new javax.swing.JLabel();
+        ico2 = new javax.swing.JLabel();
+        ico3 = new javax.swing.JLabel();
+        ico4 = new javax.swing.JLabel();
+        ico5 = new javax.swing.JLabel();
+        ico6 = new javax.swing.JLabel();
+        ico7 = new javax.swing.JLabel();
 
         jMenuItem1.setText("Modificar");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
@@ -204,46 +235,57 @@ public class RegistroDeProveedores extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel2.setBackground(new java.awt.Color(0, 51, 153));
-        jPanel2.setLayout(null);
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Century Gothic", 0, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Century Gothic", 0, 30)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Registro de proveedores");
-        jPanel2.add(jLabel1);
-        jLabel1.setBounds(120, 10, 300, 31);
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, 380, -1));
 
-        jButton1.setText("jButton1");
-        jPanel2.add(jButton1);
-        jButton1.setBounds(820, 10, 80, 23);
+        jButton1.setText("Salir");
+        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 20, 80, -1));
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 980, 50));
+        combo.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        combo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nombre", "Codigo", "Empresa", "Telefono" }));
+        jPanel2.add(combo, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 20, 110, -1));
 
-        jPanel3.setBackground(new java.awt.Color(0, 153, 255));
+        txtbuscar.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        txtbuscar.setToolTipText("Enter para buscar");
+        txtbuscar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtbuscarKeyPressed(evt);
+            }
+        });
+        jPanel2.add(txtbuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 20, 200, -1));
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1040, 60));
+
+        jPanel3.setBackground(new java.awt.Color(0, 102, 255));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel8.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Direccion de la empresa");
-        jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 360, 190, -1));
+        jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 340, 190, -1));
 
         telProv.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        jPanel3.add(telProv, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 310, 180, 30));
+        jPanel3.add(telProv, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 290, 180, 30));
 
         apeProv.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        jPanel3.add(apeProv, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 270, 180, 30));
+        jPanel3.add(apeProv, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 250, 180, 30));
 
         nomProv.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        jPanel3.add(nomProv, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 230, 180, 30));
+        jPanel3.add(nomProv, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 210, 180, 30));
 
         jLabel13.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(255, 255, 255));
         jLabel13.setText("Codigo");
-        jPanel3.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 360, 60, 20));
+        jPanel3.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 340, 60, 20));
 
         cod.setEditable(false);
         cod.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         cod.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jPanel3.add(cod, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 350, 70, 30));
+        jPanel3.add(cod, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 330, 70, 30));
 
         tbdatos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -259,7 +301,7 @@ public class RegistroDeProveedores extends javax.swing.JFrame {
         tbdatos.setComponentPopupMenu(jPopupMenu1);
         jScrollPane1.setViewportView(tbdatos);
 
-        jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 920, 150));
+        jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 990, 160));
 
         cancelar.setText("Cancelar");
         cancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -267,15 +309,15 @@ public class RegistroDeProveedores extends javax.swing.JFrame {
                 cancelarActionPerformed(evt);
             }
         });
-        jPanel3.add(cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 420, 80, 50));
+        jPanel3.add(cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 400, 80, 50));
 
-        modificar.setText("Modificar");
-        modificar.addActionListener(new java.awt.event.ActionListener() {
+        actualizar.setText("Actualizar");
+        actualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                modificarActionPerformed(evt);
+                actualizarActionPerformed(evt);
             }
         });
-        jPanel3.add(modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 420, 90, 50));
+        jPanel3.add(actualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 400, 90, 50));
 
         guardar.setText("Guardar");
         guardar.addActionListener(new java.awt.event.ActionListener() {
@@ -283,7 +325,7 @@ public class RegistroDeProveedores extends javax.swing.JFrame {
                 guardarActionPerformed(evt);
             }
         });
-        jPanel3.add(guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 420, 80, 50));
+        jPanel3.add(guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 400, 80, 50));
 
         nuevo.setText("Nuevo");
         nuevo.addActionListener(new java.awt.event.ActionListener() {
@@ -291,108 +333,105 @@ public class RegistroDeProveedores extends javax.swing.JFrame {
                 nuevoActionPerformed(evt);
             }
         });
-        jPanel3.add(nuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 420, 70, 50));
-
-        combo.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        combo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nombre", "Codigo", "Empresa", "Telefono" }));
-        jPanel3.add(combo, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 20, 170, -1));
-
-        txtbuscar.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        txtbuscar.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtbuscarKeyPressed(evt);
-            }
-        });
-        jPanel3.add(txtbuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 20, 250, -1));
+        jPanel3.add(nuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 400, 70, 50));
 
         correoEmpre.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        jPanel3.add(correoEmpre, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 310, 180, 30));
+        jPanel3.add(correoEmpre, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 290, 180, 30));
 
         dirEmpre.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        jPanel3.add(dirEmpre, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 350, 180, 30));
+        jPanel3.add(dirEmpre, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 330, 180, 30));
 
         telEmpre.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        jPanel3.add(telEmpre, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 270, 180, 30));
+        jPanel3.add(telEmpre, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 250, 180, 30));
 
         nomEmpre.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        jPanel3.add(nomEmpre, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 230, 180, 30));
+        jPanel3.add(nomEmpre, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 210, 180, 30));
 
         jLabel9.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Telefono del proveedor");
-        jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 320, 190, -1));
-
-        jLabel11.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel11.setText("Busqueda por :");
-        jPanel3.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 20, 120, -1));
+        jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, 190, -1));
 
         jLabel12.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("Telefono de la empresa");
-        jPanel3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 280, 190, -1));
+        jPanel3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 260, 190, -1));
 
         jLabel14.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
         jLabel14.setText("Correo de la empresa");
-        jPanel3.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 320, 170, -1));
+        jPanel3.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 300, 170, -1));
 
         jLabel15.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(255, 255, 255));
         jLabel15.setText("Nombre del proveedor");
-        jPanel3.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, 180, -1));
+        jPanel3.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 180, -1));
 
         jLabel16.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(255, 255, 255));
         jLabel16.setText("Apellido del proveedor");
         jLabel16.setToolTipText("");
-        jPanel3.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 280, 190, -1));
+        jPanel3.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, 190, -1));
 
         jLabel17.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(255, 255, 255));
         jLabel17.setText("Nombre de la empresa");
-        jPanel3.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 240, 180, -1));
+        jPanel3.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 220, 180, -1));
 
-        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 980, 500));
+        ico1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Braian Canjay\\Desktop\\DES AP 1\\32x32.png")); // NOI18N
+        jPanel3.add(ico1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 210, -1, 20));
+
+        ico2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Braian Canjay\\Desktop\\DES AP 1\\32x32.png")); // NOI18N
+        jPanel3.add(ico2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 250, -1, 20));
+
+        ico3.setIcon(new javax.swing.ImageIcon("C:\\Users\\Braian Canjay\\Desktop\\DES AP 1\\32x32.png")); // NOI18N
+        jPanel3.add(ico3, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 290, -1, 20));
+
+        ico4.setIcon(new javax.swing.ImageIcon("C:\\Users\\Braian Canjay\\Desktop\\DES AP 1\\32x32.png")); // NOI18N
+        jPanel3.add(ico4, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 210, -1, 20));
+
+        ico5.setIcon(new javax.swing.ImageIcon("C:\\Users\\Braian Canjay\\Desktop\\DES AP 1\\32x32.png")); // NOI18N
+        jPanel3.add(ico5, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 250, -1, 20));
+
+        ico6.setIcon(new javax.swing.ImageIcon("C:\\Users\\Braian Canjay\\Desktop\\DES AP 1\\32x32.png")); // NOI18N
+        jPanel3.add(ico6, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 290, -1, 20));
+
+        ico7.setIcon(new javax.swing.ImageIcon("C:\\Users\\Braian Canjay\\Desktop\\DES AP 1\\32x32.png")); // NOI18N
+        jPanel3.add(ico7, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 330, -1, 20));
+
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 1040, 490));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void txtbuscarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtbuscarKeyPressed
-        buscar(combo.getSelectedItem().toString());
-    }//GEN-LAST:event_txtbuscarKeyPressed
 
     private void cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActionPerformed
         limpiar();
         nuevo.setEnabled(true);
         guardar.setEnabled(false);
-        modificar.setEnabled(false);
+        actualizar.setEnabled(false);
         cancelar.setEnabled(false);
         bloquear();
         //text off
     }//GEN-LAST:event_cancelarActionPerformed
 
     private void guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarActionPerformed
-        String sql ="";
-        String nom,ape,telPro,nomEm,telEm,correo;
-                
-        nom=nomProv.getText();
-        ape=apeProv.getText();
-        telPro=telProv.getText();
-        nomEm=nomEmpre.getText();
-        telEm=telEmpre.getText();
-        correo=correoEmpre.getText();
-        
-        sql="INSERT INTO proveedores (nom_prove, ape_prove, tel_prove, nomEmp, tel_emp, correo_emp)VALUES (?,?,?,?,?,?)";
-        
+        cont=0;
+        validar();
+        //si todos son invisibles hacer insert si no, mensaje de llenar campos
+        if (ico1.isVisible() || ico2.isVisible() || ico3.isVisible() || ico4.isVisible() 
+            || ico5.isVisible() || ico6.isVisible() || ico7.isVisible()) {
+            JOptionPane.showMessageDialog(null,"Llenó todos los campos?");
+        }
+        else {
         try {
-            PreparedStatement pst = cn.prepareStatement(sql);
-            pst.setString(1, nom);
-            pst.setString(2, ape);
-            pst.setString(3, telPro);
-            pst.setString(4, nomEm);
-            pst.setString(5, telEm);
-            pst.setString(6, correo);
+            PreparedStatement pst = cn.prepareStatement("INSERT INTO proveedores (nom_prove, ape_prove, tel_prove, nomEmp, tel_emp, correo_emp, dir_emp)VALUES (?,?,?,?,?,?,?)");
+            pst.setString(1, nomProv.getText());
+            pst.setString(2, apeProv.getText());
+            pst.setString(3, telProv.getText());
+            pst.setString(4, nomEmpre.getText());
+            pst.setString(5, telEmpre.getText());
+            pst.setString(6, correoEmpre.getText());
+            pst.setString(7, dirEmpre.getText());
             int n=pst.executeUpdate();
             //validacion
             if (n>0){
@@ -402,9 +441,10 @@ public class RegistroDeProveedores extends javax.swing.JFrame {
         mostrardatosProve("");
         nuevo.setEnabled(true);
         guardar.setEnabled(false);
-        modificar.setEnabled(false);
+        actualizar.setEnabled(false);
         cancelar.setEnabled(false);
         bloquear();
+        }
     }//GEN-LAST:event_guardarActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
@@ -418,13 +458,14 @@ public class RegistroDeProveedores extends javax.swing.JFrame {
             nomEmpre.setText(tbdatos.getValueAt(fila, 4).toString());
             telEmpre.setText(tbdatos.getValueAt(fila, 5).toString());
             correoEmpre.setText(tbdatos.getValueAt(fila, 6).toString());
+            dirEmpre.setText(tbdatos.getValueAt(fila, 7).toString());
         }
         else{
             JOptionPane.showMessageDialog(null,"no seleciono fila");
         }
         nuevo.setEnabled(false);
         guardar.setEnabled(false);
-        modificar.setEnabled(true);
+        actualizar.setEnabled(true);
         cancelar.setEnabled(true);
         desbloquear();
     }//GEN-LAST:event_jMenuItem1ActionPerformed
@@ -451,26 +492,38 @@ public class RegistroDeProveedores extends javax.swing.JFrame {
         desbloquear();
         nuevo.setEnabled(false);
         guardar.setEnabled(true);
-        modificar.setEnabled(false);
+        actualizar.setEnabled(false);
         cancelar.setEnabled(true);
     }//GEN-LAST:event_nuevoActionPerformed
 
-    private void modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarActionPerformed
-        try {                                                                                                                           //ape_prove, tel_prove, nomEmp, tel_emp, correo_emp)VALUES (?,?,?,?,?,?)";
-            PreparedStatement pst = cn.prepareStatement("UPDATE proveedores SET nom_prove='"+nomProv.getText()+"', ape_prove='"+apeProv.getText()+"', tel_prove='"+telProv.getText()+"', nomEmp='"+nomEmpre.getText()+"', tel_emp='"+telEmpre.getText()+"', correo_emp='"+correoEmpre.getText()+"' WHERE id_Prove='"+cod.getText()+"'");
-            pst.executeUpdate();
-            mostrardatosProve("");
-            limpiar();
-            bloquear();
-            nuevo.setEnabled(true);
-            guardar.setEnabled(false);
-            modificar.setEnabled(false);
-            cancelar.setEnabled(false);
-        } catch (Exception e) {
-            System.out.print(e.getMessage());
+    private void actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizarActionPerformed
+        cont=0;
+        validar();
+        //si todos son invisibles hacer update si no, mensaje de llenar campos
+        if (ico1.isVisible() || ico2.isVisible() || ico3.isVisible() || ico4.isVisible() 
+            || ico5.isVisible() || ico6.isVisible() || ico7.isVisible()) {
+            JOptionPane.showMessageDialog(null,"Llenó todos los campos?");
         }
-        
-    }//GEN-LAST:event_modificarActionPerformed
+        else{
+            try {                                                                                                                           //ape_prove, tel_prove, nomEmp, tel_emp, correo_emp)VALUES (?,?,?,?,?,?)";
+                PreparedStatement pst = cn.prepareStatement("UPDATE proveedores SET nom_prove='"+nomProv.getText()+"', ape_prove='"+apeProv.getText()+"', tel_prove='"+telProv.getText()+"', nomEmp='"+nomEmpre.getText()+"', tel_emp='"+telEmpre.getText()+"', correo_emp='"+correoEmpre.getText()+"', dir_emp='"+dirEmpre.getText()+"' WHERE id_Prove='"+cod.getText()+"'");
+                pst.executeUpdate();
+                mostrardatosProve("");
+                limpiar();
+                bloquear();
+                nuevo.setEnabled(true);
+                guardar.setEnabled(false);
+                actualizar.setEnabled(false);
+                cancelar.setEnabled(false);
+            } catch (Exception e) {
+                System.out.print(e.getMessage());
+            }
+        }
+    }//GEN-LAST:event_actualizarActionPerformed
+
+    private void txtbuscarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtbuscarKeyPressed
+        buscar(combo.getSelectedItem().toString());
+    }//GEN-LAST:event_txtbuscarKeyPressed
 
     /**
      * @param args the command line arguments
@@ -508,6 +561,7 @@ public class RegistroDeProveedores extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton actualizar;
     private javax.swing.JTextField apeProv;
     private javax.swing.JButton cancelar;
     private javax.swing.JTextField cod;
@@ -515,9 +569,15 @@ public class RegistroDeProveedores extends javax.swing.JFrame {
     private javax.swing.JTextField correoEmpre;
     private javax.swing.JTextField dirEmpre;
     private javax.swing.JButton guardar;
+    private javax.swing.JLabel ico1;
+    private javax.swing.JLabel ico2;
+    private javax.swing.JLabel ico3;
+    private javax.swing.JLabel ico4;
+    private javax.swing.JLabel ico5;
+    private javax.swing.JLabel ico6;
+    private javax.swing.JLabel ico7;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
@@ -532,7 +592,6 @@ public class RegistroDeProveedores extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JButton modificar;
     private javax.swing.JTextField nomEmpre;
     private javax.swing.JTextField nomProv;
     private javax.swing.JButton nuevo;
@@ -544,3 +603,4 @@ public class RegistroDeProveedores extends javax.swing.JFrame {
 LaBodeguita cc=new LaBodeguita();
 Connection cn = cc.getConnection();
 }
+
