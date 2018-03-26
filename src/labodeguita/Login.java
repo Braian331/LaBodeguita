@@ -26,17 +26,18 @@ public class Login extends javax.swing.JFrame {
                     }                    
                     if(car.equals("administrador")){
                     this.setVisible(false);
-                        JOptionPane.showMessageDialog(null, "Bienvenido");
+                        JOptionPane.showMessageDialog(null, "Bienvenido mi lord xdxd");
                         Principal ingreso = new Principal();
                         ingreso.setVisible(true);
                         ingreso.pack();
                     }
                     if(car.equals("invitado")){
                         this.setVisible(false);
-                        JOptionPane.showMessageDialog(null, "Bienvenido");
-                        Principal ingresos = new Principal();
+                        JOptionPane.showMessageDialog(null, "Bienvenido Negro :v");
+                        Principal2 ingresos = new Principal2();
                         ingresos.setVisible(true);
                         ingresos.pack();
+                        
                     }     
                     if ((!car.equals("administrador"))&&(!car.equals("invitado"))){
                         
