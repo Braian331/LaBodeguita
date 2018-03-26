@@ -365,7 +365,7 @@ public class ControlDeTrabajadores extends javax.swing.JFrame {
         jPanel3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, -1, -1));
 
         btsalir.setText("Salir");
-        jPanel3.add(btsalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 20, 70, -1));
+        jPanel3.add(btsalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 13, 90, 30));
 
         txtbuscar.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         txtbuscar.setToolTipText("Enter para buscar");
@@ -374,11 +374,11 @@ public class ControlDeTrabajadores extends javax.swing.JFrame {
                 txtbuscarKeyPressed(evt);
             }
         });
-        jPanel3.add(txtbuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 20, 210, -1));
+        jPanel3.add(txtbuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 12, 210, 30));
 
         combo.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         combo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "tipo de busqueda", "Codigo", "Telefono", "Nombre", "Apellido", "Cargo" }));
-        jPanel3.add(combo, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 20, 130, -1));
+        jPanel3.add(combo, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 12, 130, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
