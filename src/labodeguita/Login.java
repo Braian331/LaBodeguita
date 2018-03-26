@@ -1,6 +1,6 @@
 package labodeguita;
 
-import java.sql.Connection;
+import java.sql.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -23,15 +23,25 @@ public class Login extends javax.swing.JFrame {
                     while (rs.next())
                     {
                      car=rs.getString("cargo");
+                    }                    
+                    if(car.equals("administrador")){
+                    this.setVisible(false);
+                        JOptionPane.showMessageDialog(null, "Bienvenido");
+                        Principal ingreso = new Principal();
+                        ingreso.setVisible(true);
+                        ingreso.pack();
                     }
-                    
-                    if(car.equals("admin")){
-                                                    
-                   this.dispose();
-       }else{
-           JOptionPane.showMessageDialog(null,"usuario o password erroneos");
-       }    
-                                    
+                    if(car.equals("invitado")){
+                        this.setVisible(false);
+                        JOptionPane.showMessageDialog(null, "Bienvenido");
+                        Principal ingresos = new Principal();
+                        ingresos.setVisible(true);
+                        ingresos.pack();
+                    }     
+                    if ((!car.equals("administrador"))&&(!car.equals("invitado"))){
+                        
+            JOptionPane.showMessageDialog(this,"no existe este usuario");
+        }
         } catch (SQLException ex) {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -41,6 +51,8 @@ public class Login extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel2 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
@@ -48,11 +60,19 @@ public class Login extends javax.swing.JFrame {
         txtuser = new javax.swing.JTextField();
         txtpass = new javax.swing.JPasswordField();
         jButton3 = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
+
+        jPanel2.setBackground(new java.awt.Color(0, 153, 255));
+        jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel2.setLayout(null);
+
+        jLabel1.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Inicio de sesion");
+        jPanel2.add(jLabel1);
+        jLabel1.setBounds(60, 10, 260, 40);
 
         jPanel1.setBackground(new java.awt.Color(0, 204, 204));
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -112,21 +132,11 @@ public class Login extends javax.swing.JFrame {
         jPanel1.add(jButton3);
         jButton3.setBounds(60, 130, 80, 30);
 
-        getContentPane().add(jPanel1);
-        jPanel1.setBounds(0, 50, 340, 180);
-
-        jPanel2.setBackground(new java.awt.Color(0, 153, 255));
-        jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jPanel2.setLayout(null);
-
-        jLabel1.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Inicio de sesion");
-        jPanel2.add(jLabel1);
-        jLabel1.setBounds(50, 0, 260, 40);
+        jPanel2.add(jPanel1);
+        jPanel1.setBounds(10, 60, 340, 180);
 
         getContentPane().add(jPanel2);
-        jPanel2.setBounds(0, 0, 340, 50);
+        jPanel2.setBounds(0, 0, 360, 250);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -139,15 +149,9 @@ public class Login extends javax.swing.JFrame {
         String User=txtuser.getText();
         String Pass=txtpass.getText();
         
-        //condicion
-        
-       if(User.equals("admin") && Pass.equals("cisco")){
-          Principal pp= new Principal(); 
-          pp.setVisible(true);
-          this.dispose();
-       }else{
-           JOptionPane.showMessageDialog(null,"usuario o password erroneos");
-       }        // TODO add your handling code here:
+        //llamada del metodo
+        acceder(User, Pass);
+               // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void txtuserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtuserActionPerformed
