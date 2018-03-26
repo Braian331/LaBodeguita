@@ -161,18 +161,25 @@ public class SistFiado extends javax.swing.JFrame {
         jPopupMenu1.add(jMenuItem2);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getContentPane().setLayout(null);
 
         jPanel1.setBackground(new java.awt.Color(255, 153, 0));
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel1.setLayout(null);
 
         jButton1.setText("Salir");
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 10, 60, 30));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1);
+        jButton1.setBounds(970, 10, 60, 30);
 
         jLabel2.setFont(new java.awt.Font("Century Gothic", 0, 30)); // NOI18N
         jLabel2.setText("Control de fiado");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, -1, -1));
+        jPanel1.add(jLabel2);
+        jLabel2.setBounds(50, 10, 242, 38);
 
         txtbuscar.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         txtbuscar.setToolTipText("Enter para buscar");
@@ -186,12 +193,14 @@ public class SistFiado extends javax.swing.JFrame {
                 txtbuscarKeyPressed(evt);
             }
         });
-        jPanel1.add(txtbuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 10, 320, 30));
+        jPanel1.add(txtbuscar);
+        txtbuscar.setBounds(420, 10, 320, 30);
 
         jLabel1.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Busqueda");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 10, -1, 30));
+        jPanel1.add(jLabel1);
+        jLabel1.setBounds(320, 10, 87, 30);
 
         combo.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         combo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "seleccion de busqueda...", "Codigo", "Nombre", "Descripcion", "Total", "Fecha" }));
@@ -200,13 +209,15 @@ public class SistFiado extends javax.swing.JFrame {
                 comboActionPerformed(evt);
             }
         });
-        jPanel1.add(combo, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 10, 210, 30));
+        jPanel1.add(combo);
+        combo.setBounds(740, 10, 210, 30);
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1060, 54));
+        getContentPane().add(jPanel1);
+        jPanel1.setBounds(0, 0, 1060, 54);
 
         jPanel2.setBackground(new java.awt.Color(255, 51, 0));
         jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel2.setLayout(null);
 
         tbdatos.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         tbdatos.setModel(new javax.swing.table.DefaultTableModel(
@@ -222,33 +233,41 @@ public class SistFiado extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(tbdatos);
 
-        jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 1000, 250));
+        jPanel2.add(jScrollPane2);
+        jScrollPane2.setBounds(20, 10, 1000, 250);
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Stock actual");
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 280, -1, -1));
-        jPanel2.add(stock, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 310, 170, 30));
+        jPanel2.add(jLabel3);
+        jLabel3.setBounds(280, 280, 75, 17);
+        jPanel2.add(stock);
+        stock.setBounds(280, 310, 170, 30);
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Nuevo Stock");
-        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 280, -1, -1));
-        jPanel2.add(newStock, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 310, 170, 30));
+        jPanel2.add(jLabel4);
+        jLabel4.setBounds(460, 280, 79, 17);
+        jPanel2.add(newStock);
+        newStock.setBounds(460, 310, 170, 30);
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Codigo del stock");
-        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 280, -1, -1));
+        jPanel2.add(jLabel5);
+        jLabel5.setBounds(650, 280, 101, 17);
 
         code.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 codeActionPerformed(evt);
             }
         });
-        jPanel2.add(code, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 310, 170, 30));
+        jPanel2.add(code);
+        code.setBounds(650, 310, 170, 30);
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 55, 1060, 362));
+        getContentPane().add(jPanel2);
+        jPanel2.setBounds(0, 55, 1060, 362);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -304,6 +323,11 @@ public class SistFiado extends javax.swing.JFrame {
         } catch (Exception e) {
         }
     }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+       Principal obj=new Principal();
+        obj.setVisible(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
