@@ -134,6 +134,8 @@ public class SistFiado extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPopupMenu1 = new javax.swing.JPopupMenu();
+        jMenuItem2 = new javax.swing.JMenuItem();
         jPanel1 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
@@ -149,6 +151,14 @@ public class SistFiado extends javax.swing.JFrame {
         newStock = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         code = new javax.swing.JTextField();
+
+        jMenuItem2.setText("Eliminar");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(jMenuItem2);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -230,6 +240,12 @@ public class SistFiado extends javax.swing.JFrame {
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Codigo del stock");
         jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 280, -1, -1));
+
+        code.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                codeActionPerformed(evt);
+            }
+        });
         jPanel2.add(code, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 310, 170, 30));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 55, 1060, 362));
@@ -238,7 +254,7 @@ public class SistFiado extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtbuscarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtbuscarKeyPressed
-        
+         buscar(combo.getSelectedItem().toString());
 
     }//GEN-LAST:event_txtbuscarKeyPressed
 
@@ -249,6 +265,45 @@ public class SistFiado extends javax.swing.JFrame {
     private void txtbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtbuscarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtbuscarActionPerformed
+
+    private void codeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_codeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_codeActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        int fila = tbdatos.getSelectedRow();
+        int cantidad,stockNew,nuevo;
+        String cod="";
+        cod=tbdatos.getValueAt(fila, 0).toString();
+
+        if(fila>=0){
+            stock.setText(tbdatos.getValueAt(fila, 4).toString());
+            code.setText(tbdatos.getValueAt(fila, 8).toString());
+            newStock.setText(tbdatos.getValueAt(fila, 9).toString());
+        }
+        else{
+            JOptionPane.showMessageDialog(null,"no seleciono fila");
+        }
+
+        cantidad = Integer.parseInt(stock.getText());
+        stockNew = Integer.parseInt(newStock.getText());
+
+        nuevo=stockNew+cantidad;
+
+        newStock.setText(""+nuevo);
+
+        try {
+            PreparedStatement pst = cn.prepareStatement("DELETE FROM ventas WHERE codVent='"+cod+"'");
+            pst.executeUpdate();
+            PreparedStatement pst2 = cn.prepareStatement("UPDATE productos SET stock_prod='"+newStock.getText()+"' WHERE cod_prod='"+code.getText()+"'");
+            pst2.executeUpdate();
+
+            JOptionPane.showMessageDialog(null,"Registro eliminado");
+            mostrardatosVenta("");
+
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -294,8 +349,10 @@ public class SistFiado extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField newStock;
     private javax.swing.JTextField stock;
