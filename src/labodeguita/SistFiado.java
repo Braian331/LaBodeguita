@@ -1,9 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package labodeguita;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -16,6 +20,109 @@ public class SistFiado extends javax.swing.JFrame {
      */
     public SistFiado() {
         initComponents();
+        this.setLocationRelativeTo(null);
+        mostrardatosVenta("");
+    }
+    
+    void mostrardatosVenta(String valor){
+       DefaultTableModel modelo= new DefaultTableModel();
+       modelo.addColumn("CODIGO");
+       modelo.addColumn("NOMBRE");
+       modelo.addColumn("DESCRIPCION");
+       modelo.addColumn("EMPRESA");
+       modelo.addColumn("CANTIDAD");
+       modelo.addColumn("PRECIO");
+       modelo.addColumn("TOTAL");
+       modelo.addColumn("FECHA");
+       modelo.addColumn("ID PROD");
+       modelo.addColumn("ST");
+    tbdatos.setModel(modelo);
+    String sql="";
+    if(valor.equals(""))
+    {
+        sql="SELECT * FROM ventas";
+    }
+    else{
+        sql="SELECT * FROM ventas WHERE codVent='"+valor+"'";
+    }
+ 
+    String []datos = new String [20];
+        try {
+            Statement st = cn.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            while(rs.next()){
+                datos[0]=rs.getString("codVent");
+                datos[1]=rs.getString("nomVent");
+                datos[2]=rs.getString("desVent");
+                datos[3]=rs.getString("nomEmp");
+                datos[4]=rs.getString("cantVent");
+                datos[5]=rs.getString("preVent");
+                datos[6]=rs.getString("totalVent");
+                datos[7]=rs.getString("feVent");
+                datos[8]=rs.getString("cod_prod");
+                datos[9]=rs.getString("Nstock");
+                modelo.addRow(datos);
+            }
+            tbdatos.setModel(modelo);
+        } catch (SQLException ex) {
+            Logger.getLogger(ControlDeVentas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void buscar(String filtro){
+    DefaultTableModel modelo= new DefaultTableModel();
+       modelo.addColumn("CODIGO");
+       modelo.addColumn("NOMBRE");
+       modelo.addColumn("DESCRIPCION");
+       modelo.addColumn("EMPRESA");
+       modelo.addColumn("CANTIDAD");
+       modelo.addColumn("PRECIO");
+       modelo.addColumn("TOTAL");
+       modelo.addColumn("FECHA");
+       modelo.addColumn("ID PROD");
+       modelo.addColumn("ST");
+       tbdatos.setModel(modelo);
+
+       String consultar=null;
+       if (filtro.equals("Codigo")) {
+           consultar="SELECT * FROM ventas WHERE codVent LIKE '%"+txtbuscar.getText() + "%'";
+       }
+       else if (filtro.equals("Nombre")) {
+           consultar="SELECT * FROM ventas WHERE nomVent LIKE '%"+txtbuscar.getText() + "%'";
+       }
+       else if (filtro.equals("Descripcion")) {
+           consultar="SELECT * FROM ventas WHERE desVent LIKE '%"+txtbuscar.getText() + "%'";
+       }
+       else if (filtro.equals("Fecha")) {
+           consultar="SELECT * FROM ventas WHERE feVent LIKE '%"+txtbuscar.getText() + "%'";
+       }
+       else if (filtro.equals("Total")) {
+           consultar="SELECT * FROM ventas WHERE totalVent LIKE '%"+txtbuscar.getText() + "%'";
+       }
+
+       String []datos= new String[15];
+       try {
+           Statement st=cn.createStatement();
+            ResultSet rs=st.executeQuery(consultar);
+            while(rs.next())
+            {
+                datos[0]=rs.getString("codVent");
+                datos[1]=rs.getString("nomVent");
+                datos[2]=rs.getString("desVent");
+                datos[3]=rs.getString("nomEmp");
+                datos[4]=rs.getString("cantVent");
+                datos[5]=rs.getString("preVent");
+                datos[6]=rs.getString("totalVent");
+                datos[7]=rs.getString("feVent");
+                datos[8]=rs.getString("cod_prod");
+                datos[9]=rs.getString("Nstock");
+                modelo.addRow(datos);
+            }
+            tbdatos.setModel(modelo);
+
+        } catch (SQLException ex) {
+            Logger.getLogger(registro.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -140,7 +247,7 @@ public class SistFiado extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtbuscarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtbuscarKeyPressed
-        buscar(combo.getSelectedItem().toString());
+        
 
     }//GEN-LAST:event_txtbuscarKeyPressed
 
@@ -196,4 +303,6 @@ public class SistFiado extends javax.swing.JFrame {
     private javax.swing.JTable tbdatos;
     private javax.swing.JTextField txtbuscar;
     // End of variables declaration//GEN-END:variables
+LaBodeguita cc=new LaBodeguita();
+Connection cn = cc.getConnection();
 }
