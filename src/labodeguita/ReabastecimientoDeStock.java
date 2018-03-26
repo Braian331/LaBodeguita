@@ -71,6 +71,11 @@ public class ReabastecimientoDeStock extends javax.swing.JFrame {
         jButton4.setText("...");
         jButton4.setToolTipText("regresar pestaña anterior");
         jButton4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
         jPanel2.add(jButton4);
         jButton4.setBounds(20, 10, 40, 30);
 
@@ -167,6 +172,11 @@ public class ReabastecimientoDeStock extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+      Principal obj=new Principal();
+        obj.setVisible(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton4ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -222,4 +232,6 @@ public class ReabastecimientoDeStock extends javax.swing.JFrame {
     private javax.swing.JTable tbdatos;
     private javax.swing.JTextField total;
     // End of variables declaration//GEN-END:variables
+LaBodeguita cc=new LaBodeguita();
+Connection cn = cc.getConnection();
 }
