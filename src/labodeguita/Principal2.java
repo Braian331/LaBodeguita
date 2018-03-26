@@ -52,6 +52,8 @@ public class Principal2 extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         jMenu5 = new javax.swing.JMenu();
         jMenuItem4 = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        jMenuItem3 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -116,6 +118,20 @@ public class Principal2 extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu5);
 
+        jMenu2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 5));
+        jMenu2.setText("Reporte");
+        jMenu2.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+
+        jMenuItem3.setText("Reporte de Ventas");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem3);
+
+        jMenuBar1.add(jMenu2);
+
         jMenu3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 5));
         jMenu3.setText("Salir");
         jMenu3.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
@@ -137,10 +153,86 @@ public class Principal2 extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
-        VentaDeProductos obj=new VentaDeProductos();
+        VentaDeProductos2 obj=new VentaDeProductos2();
         obj.setVisible(true);        
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+      System.out.println("generando...");
+        String sql="select * from ventas";
+         Workbook book = new HSSFWorkbook();
+         org.apache.poi.ss.usermodel.Sheet sheet =  book.createSheet("Reporte");
+         String date = new SimpleDateFormat("yyyy-MM-dd").format(Calendar.getInstance().getTime());
+         String file = date+".xls";
+         int rowCount = 1;
+         try{
+            Statement st = cn.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            
+            Row rowHead;
+            rowHead = sheet.createRow(0);
+            org.apache.poi.ss.usermodel.Cell headCodigo_de_folio = rowHead.createCell(0);
+            headCodigo_de_folio.setCellValue("Codigo de folio");
+            
+            org.apache.poi.ss.usermodel.Cell headDescripcion_de_la_venta = rowHead.createCell(1);
+            headDescripcion_de_la_venta.setCellValue("Descripcion de la venta");
+            
+            org.apache.poi.ss.usermodel.Cell headCantidad_de_ventas_realizadas = rowHead.createCell(2);
+            headCantidad_de_ventas_realizadas.setCellValue("Cantidad de ventas realizadas");
+            
+            org.apache.poi.ss.usermodel.Cell headPrecio_unitario = rowHead.createCell(3);
+            headPrecio_unitario.setCellValue("Precio unitario");
+            
+            org.apache.poi.ss.usermodel.Cell headPrecio_total_de_la_venta = rowHead.createCell(4);
+            headPrecio_total_de_la_venta.setCellValue("Precio total de la venta");
+            
+            org.apache.poi.ss.usermodel.Cell headFecha_de_la_venta = rowHead.createCell(5);
+            headFecha_de_la_venta.setCellValue("Fecha de la venta");
+            
+                
+            while(rs.next()){
+                Row row;
+                row = sheet.createRow(rowCount);
+                
+                org.apache.poi.ss.usermodel.Cell celdaNombre = row.createCell(0);
+                celdaNombre.setCellValue(rs.getString("codVent"));
+                
+                org.apache.poi.ss.usermodel.Cell celdaApellido = row.createCell(1);
+                celdaApellido.setCellValue(rs.getString("desVent"));
+                
+                org.apache.poi.ss.usermodel.Cell celdaCorreo = row.createCell(2);
+                celdaCorreo.setCellValue(rs.getString("cantVent"));
+                
+                org.apache.poi.ss.usermodel.Cell celdaFecha = row.createCell(3);
+                celdaFecha.setCellValue(rs.getString("preVent"));
+                
+                org.apache.poi.ss.usermodel.Cell celdaDes = row.createCell(4);
+                celdaDes.setCellValue(rs.getString("totalVent"));
+                
+                org.apache.poi.ss.usermodel.Cell celdaCant = row.createCell(5);
+                celdaCant.setCellValue(rs.getString("feVent"));
+                
+                org.apache.poi.ss.usermodel.Cell celdaPrecio = row.createCell(6);
+                celdaPrecio.setCellValue(rs.getString("precio"));
+                
+                org.apache.poi.ss.usermodel.Cell celdaTotal = row.createCell(7);
+                celdaTotal.setCellValue(rs.getString("total"));
+                
+                org.apache.poi.ss.usermodel.Cell celdaCod = row.createCell(8);
+                celdaCod.setCellValue(rs.getString("cod"));
+                
+                rowCount++;
+            }
+            FileOutputStream out = new FileOutputStream(file);
+            book.write(out);
+            JOptionPane.showMessageDialog(null, "Reporte creado");
+            out.close();
+         } catch (Exception e) {
+             
+         }  
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenu3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu3MouseClicked
         Login obj=new Login();
@@ -200,9 +292,11 @@ public class Principal2 extends javax.swing.JFrame {
     private javax.swing.JLabel hora;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     // End of variables declaration//GEN-END:variables
 LaBodeguita cc=new LaBodeguita();
