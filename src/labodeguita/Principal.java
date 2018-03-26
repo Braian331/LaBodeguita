@@ -55,7 +55,6 @@ public class Principal extends javax.swing.JFrame {
         jMenu14 = new javax.swing.JMenu();
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenuItem8 = new javax.swing.JMenuItem();
-        jMenuItem9 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenu15 = new javax.swing.JMenu();
@@ -142,14 +141,6 @@ public class Principal extends javax.swing.JFrame {
         });
         jMenu14.add(jMenuItem8);
 
-        jMenuItem9.setText("Stock");
-        jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem9ActionPerformed(evt);
-            }
-        });
-        jMenu14.add(jMenuItem9);
-
         jMenuBar1.add(jMenu14);
 
         jMenu2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 5));
@@ -178,7 +169,7 @@ public class Principal extends javax.swing.JFrame {
         });
         jMenu15.add(jMenuItem11);
 
-        jMenuItem6.setText("Control y registro de trabajadores");
+        jMenuItem6.setText("Registro de trabajadores");
         jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem6ActionPerformed(evt);
@@ -321,26 +312,24 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenu1ActionPerformed
 
     private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
-        // TODO add your handling code here:
+        RegistroDeProveedores obj=new RegistroDeProveedores();
+        obj.setVisible(true);// TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem11ActionPerformed
 
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
-        // TODO add your handling code here:
+       RTrabajadores obj=new RTrabajadores();
+        obj.setVisible(true); // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem6ActionPerformed
 
     private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
-        // TODO add your handling code here:
+      ReabastecimientoDeStock obj=new ReabastecimientoDeStock();
+        obj.setVisible(true);        // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem7ActionPerformed
 
     private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
         ControlDeTrabajadores obj=new ControlDeTrabajadores();
         obj.setVisible(true);// TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem8ActionPerformed
-
-    private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
-        ReabastecimientoDeStock obj=new ReabastecimientoDeStock();
-        obj.setVisible(true);// TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem9ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -395,7 +384,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
-    private javax.swing.JMenuItem jMenuItem9;
     // End of variables declaration//GEN-END:variables
 LaBodeguita cc=new LaBodeguita();
 Connection cn = cc.getConnection();
