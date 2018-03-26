@@ -1,5 +1,4 @@
 package labodeguita;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -346,6 +345,11 @@ public class RTrabajadores extends javax.swing.JFrame {
         jPanel1.add(txtape, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 250, 160, -1));
 
         txtcargo.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        txtcargo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtcargoActionPerformed(evt);
+            }
+        });
         jPanel1.add(txtcargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 250, 160, -1));
 
         txtfechaNacim.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
@@ -354,13 +358,13 @@ public class RTrabajadores extends javax.swing.JFrame {
         tbdatos.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         tbdatos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {},
+                {},
+                {},
+                {}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+
             }
         ));
         tbdatos.setComponentPopupMenu(jPopupMenu1);
@@ -377,29 +381,13 @@ public class RTrabajadores extends javax.swing.JFrame {
             }
         });
         jPanel1.add(guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 370, 90, 40));
-
-        ico1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Braian Canjay\\Desktop\\DES AP 1\\32x32.png")); // NOI18N
         jPanel1.add(ico1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 210, -1, 20));
-
-        ico2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Braian Canjay\\Desktop\\DES AP 1\\32x32.png")); // NOI18N
         jPanel1.add(ico2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 250, -1, 20));
-
-        ico3.setIcon(new javax.swing.ImageIcon("C:\\Users\\Braian Canjay\\Desktop\\DES AP 1\\32x32.png")); // NOI18N
         jPanel1.add(ico3, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 290, -1, 20));
-
-        ico4.setIcon(new javax.swing.ImageIcon("C:\\Users\\Braian Canjay\\Desktop\\DES AP 1\\32x32.png")); // NOI18N
         jPanel1.add(ico4, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 210, -1, 20));
-
-        ico5.setIcon(new javax.swing.ImageIcon("C:\\Users\\Braian Canjay\\Desktop\\DES AP 1\\32x32.png")); // NOI18N
         jPanel1.add(ico5, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 250, -1, 20));
-
-        ico6.setIcon(new javax.swing.ImageIcon("C:\\Users\\Braian Canjay\\Desktop\\DES AP 1\\32x32.png")); // NOI18N
         jPanel1.add(ico6, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 290, -1, 20));
-
-        ico7.setIcon(new javax.swing.ImageIcon("C:\\Users\\Braian Canjay\\Desktop\\DES AP 1\\32x32.png")); // NOI18N
         jPanel1.add(ico7, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 210, -1, 20));
-
-        ico8.setIcon(new javax.swing.ImageIcon("C:\\Users\\Braian Canjay\\Desktop\\DES AP 1\\32x32.png")); // NOI18N
         jPanel1.add(ico8, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 250, -1, 20));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 1090, 460));
@@ -560,6 +548,10 @@ public class RTrabajadores extends javax.swing.JFrame {
     private void txtbuscarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtbuscarKeyPressed
         buscar(combo.getSelectedItem().toString());
     }//GEN-LAST:event_txtbuscarKeyPressed
+
+    private void txtcargoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtcargoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtcargoActionPerformed
 
     /**
      * @param args the command line arguments
