@@ -1,11 +1,21 @@
 package labodeguita;
 
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.sl.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Workbook;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileOutputStream;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import javax.swing.JOptionPane;
 import javax.swing.Timer;
+import org.apache.poi.ss.usermodel.Workbook;
 
 public class Principal extends javax.swing.JFrame {
 
@@ -55,21 +65,19 @@ public class Principal extends javax.swing.JFrame {
         jMenu3 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(null);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         hora.setFont(new java.awt.Font("Century Gothic", 0, 36)); // NOI18N
         hora.setForeground(new java.awt.Color(255, 255, 255));
         hora.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         hora.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        getContentPane().add(hora);
-        hora.setBounds(60, 60, 220, 60);
+        getContentPane().add(hora, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 60, 220, 60));
 
         fecha.setFont(new java.awt.Font("Century Gothic", 0, 36)); // NOI18N
         fecha.setForeground(new java.awt.Color(255, 255, 255));
         fecha.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         fecha.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        getContentPane().add(fecha);
-        fecha.setBounds(340, 60, 360, 60);
+        getContentPane().add(fecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 60, 360, 60));
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel1.setIcon(new javax.swing.JLabel() {
@@ -84,8 +92,7 @@ public class Principal extends javax.swing.JFrame {
             }
         }.getIcon());
         jLabel1.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(0, 0, 750, 410);
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 750, 410));
 
         jMenuBar1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "La Bodeguita", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Century Gothic", 0, 14), new java.awt.Color(255, 51, 51))); // NOI18N
 
@@ -222,7 +229,78 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        
+      System.out.println("generando...");
+        String sql="select * from ventas";
+         Workbook book = new HSSFWorkbook();
+         org.apache.poi.ss.usermodel.Sheet sheet =  book.createSheet("Reporte");
+         String date = new SimpleDateFormat("yyyy-MM-dd").format(Calendar.getInstance().getTime());
+         String file = date+".xls";
+         int rowCount = 1;
+         try{
+            Statement st = cn.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            
+            Row rowHead;
+            rowHead = sheet.createRow(0);
+            org.apache.poi.ss.usermodel.Cell headCodigo_de_folio = rowHead.createCell(0);
+            headCodigo_de_folio.setCellValue("Codigo de folio");
+            
+            org.apache.poi.ss.usermodel.Cell headDescripcion_de_la_venta = rowHead.createCell(1);
+            headDescripcion_de_la_venta.setCellValue("Descripcion de la venta");
+            
+            org.apache.poi.ss.usermodel.Cell headCantidad_de_ventas_realizadas = rowHead.createCell(2);
+            headCantidad_de_ventas_realizadas.setCellValue("Cantidad de ventas realizadas");
+            
+            org.apache.poi.ss.usermodel.Cell headPrecio_unitario = rowHead.createCell(3);
+            headPrecio_unitario.setCellValue("Precio unitario");
+            
+            org.apache.poi.ss.usermodel.Cell headPrecio_total_de_la_venta = rowHead.createCell(4);
+            headPrecio_total_de_la_venta.setCellValue("Precio total de la venta");
+            
+            org.apache.poi.ss.usermodel.Cell headFecha_de_la_venta = rowHead.createCell(5);
+            headFecha_de_la_venta.setCellValue("Fecha de la venta");
+            
+                
+            while(rs.next()){
+                Row row;
+                row = sheet.createRow(rowCount);
+                
+                org.apache.poi.ss.usermodel.Cell celdaNombre = row.createCell(0);
+                celdaNombre.setCellValue(rs.getString("codVent"));
+                
+                org.apache.poi.ss.usermodel.Cell celdaApellido = row.createCell(1);
+                celdaApellido.setCellValue(rs.getString("desVent"));
+                
+                org.apache.poi.ss.usermodel.Cell celdaCorreo = row.createCell(2);
+                celdaCorreo.setCellValue(rs.getString("cantVent"));
+                
+                org.apache.poi.ss.usermodel.Cell celdaFecha = row.createCell(3);
+                celdaFecha.setCellValue(rs.getString("preVent"));
+                
+                org.apache.poi.ss.usermodel.Cell celdaDes = row.createCell(4);
+                celdaDes.setCellValue(rs.getString("totalVent"));
+                
+                org.apache.poi.ss.usermodel.Cell celdaCant = row.createCell(5);
+                celdaCant.setCellValue(rs.getString("feVent"));
+                
+                org.apache.poi.ss.usermodel.Cell celdaPrecio = row.createCell(6);
+                celdaPrecio.setCellValue(rs.getString("precio"));
+                
+                org.apache.poi.ss.usermodel.Cell celdaTotal = row.createCell(7);
+                celdaTotal.setCellValue(rs.getString("total"));
+                
+                org.apache.poi.ss.usermodel.Cell celdaCod = row.createCell(8);
+                celdaCod.setCellValue(rs.getString("cod"));
+                
+                rowCount++;
+            }
+            FileOutputStream out = new FileOutputStream(file);
+            book.write(out);
+            JOptionPane.showMessageDialog(null, "Reporte creado");
+            out.close();
+         } catch (Exception e) {
+             
+         }  
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
@@ -319,4 +397,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
     // End of variables declaration//GEN-END:variables
+LaBodeguita cc=new LaBodeguita();
+Connection cn = cc.getConnection();
 }
