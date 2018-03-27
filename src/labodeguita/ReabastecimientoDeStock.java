@@ -21,6 +21,87 @@ public class ReabastecimientoDeStock extends javax.swing.JFrame {
     public ReabastecimientoDeStock() {
         initComponents();
         this.setLocationRelativeTo(null);
+        mostrardatos("");
+    }
+    
+    public void buscar(String filtro){
+    DefaultTableModel modelo= new DefaultTableModel();
+       modelo.addColumn("CODIGO");
+       modelo.addColumn("NOMBRE");
+       modelo.addColumn("DESCRIPCION");
+       modelo.addColumn("EMPRESA");
+       modelo.addColumn("PRECIO");
+       modelo.addColumn("STOCK");
+       tbdatos.setModel(modelo);
+
+       String consultar=null;
+       if (filtro.equals("Codigo")) {
+           consultar="SELECT * FROM productos WHERE cod_prod LIKE '%"+txtbuscar.getText() + "%'";
+       }
+       else if (filtro.equals("Nombre")) {
+           consultar="SELECT * FROM productos WHERE nombre_prod LIKE '%"+txtbuscar.getText() + "%'";
+       }
+       else if (filtro.equals("Empresa")) {
+           consultar="SELECT * FROM productos WHERE nomEmp LIKE '%"+txtbuscar.getText() + "%'";
+       }
+
+       String []datos= new String[15];
+       try {
+           Statement st=cn.createStatement();
+            ResultSet rs=st.executeQuery(consultar);
+            while(rs.next())
+            {
+                datos[0]=rs.getString("cod_prod");
+                datos[1]=rs.getString("nombre_prod");
+                datos[2]=rs.getString("descripcion_prod");
+                datos[3]=rs.getString("nomEmp");
+                datos[4]=rs.getString("precio_prod");
+                datos[5]=rs.getString("stock_prod");
+                modelo.addRow(datos);
+            }
+            tbdatos.setModel(modelo);
+
+        } catch (SQLException ex) {
+            Logger.getLogger(registro.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    void mostrardatos(String valor){
+    DefaultTableModel modelo= new DefaultTableModel();
+       modelo.addColumn("CODIGO");
+       modelo.addColumn("NOMBRE");
+       modelo.addColumn("DESCRIPCION");
+       modelo.addColumn("EMPRESA");
+       modelo.addColumn("PRECIO");
+       modelo.addColumn("STOCK");
+    tbdatos.setModel(modelo);
+    String sql="";
+    if(valor.equals(""))
+    {
+        sql="SELECT * FROM productos";
+    }
+    else{
+        sql="SELECT * FROM productos WHERE cod_prod='"+valor+"'";
+    }
+ 
+    String []datos = new String [6];
+        try {
+            Statement st = cn.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            while(rs.next()){
+                datos[0]=rs.getString("cod_prod");
+                datos[1]=rs.getString("nombre_prod");
+                datos[2]=rs.getString("descripcion_prod");
+                datos[3]=rs.getString("nomEmp");
+                datos[4]=rs.getString("precio_prod");
+                datos[5]=rs.getString("stock_prod");
+                modelo.addRow(datos);
+            }
+            tbdatos.setModel(modelo);
+        } catch (SQLException ex) {
+            Logger.getLogger(ControlDeVentas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    
     }
 
     /**
@@ -32,142 +113,213 @@ public class ReabastecimientoDeStock extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPopupMenu1 = new javax.swing.JPopupMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
         jPanel1 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        guardar = new javax.swing.JButton();
+        cancelar = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        nom = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tbdatos = new javax.swing.JTable();
+        stFinal = new javax.swing.JTextField();
+        stDisponible = new javax.swing.JTextField();
+        stComprar = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        empresa = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        descripcion = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        code = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        stCoste = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
-        actual = new javax.swing.JTextField();
-        listbusqueda = new javax.swing.JComboBox<>();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tbdatos = new javax.swing.JTable();
-        jLabel3 = new javax.swing.JLabel();
-        agregar = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        total = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
-        actual1 = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        nombproducto = new javax.swing.JTextField();
+        combo = new javax.swing.JComboBox<>();
+        txtbuscar = new javax.swing.JTextField();
+
+        jMenuItem1.setText("Modificar");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(jMenuItem1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(null);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(0, 204, 204));
-        jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel1.setBackground(new java.awt.Color(0, 153, 153));
         jPanel1.setLayout(null);
 
-        jPanel2.setBackground(new java.awt.Color(102, 153, 255));
-        jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jLabel3.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Stock a comprar");
+        jPanel1.add(jLabel3);
+        jLabel3.setBounds(470, 300, 130, 30);
+
+        jLabel4.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Stock final");
+        jPanel1.add(jLabel4);
+        jLabel4.setBounds(510, 350, 90, 30);
+
+        guardar.setText("Guardar");
+        guardar.setToolTipText("Aceptar reabastecimiento");
+        guardar.setBorder(null);
+        jPanel1.add(guardar);
+        guardar.setBounds(350, 480, 90, 30);
+
+        cancelar.setText("Cancelar");
+        cancelar.setToolTipText("Cancelar reabastecimiento");
+        cancelar.setBorder(null);
+        jPanel1.add(cancelar);
+        cancelar.setBounds(490, 480, 90, 30);
+
+        jLabel5.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("Stock disponible");
+        jPanel1.add(jLabel5);
+        jLabel5.setBounds(480, 250, 120, 30);
+
+        jLabel6.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("Nombre del producto");
+        jPanel1.add(jLabel6);
+        jLabel6.setBounds(100, 250, 150, 30);
+
+        nom.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        nom.setToolTipText("Nombre del producto");
+        jPanel1.add(nom);
+        nom.setBounds(260, 250, 160, 30);
+
+        tbdatos.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        tbdatos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        tbdatos.setComponentPopupMenu(jPopupMenu1);
+        jScrollPane1.setViewportView(tbdatos);
+
+        jPanel1.add(jScrollPane1);
+        jScrollPane1.setBounds(20, 20, 900, 200);
+
+        stFinal.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        stFinal.setText("0");
+        stFinal.setToolTipText("Stock final");
+        jPanel1.add(stFinal);
+        stFinal.setBounds(600, 350, 130, 30);
+
+        stDisponible.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        stDisponible.setText("0");
+        stDisponible.setToolTipText("Stock actual");
+        jPanel1.add(stDisponible);
+        stDisponible.setBounds(600, 250, 130, 30);
+
+        stComprar.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        stComprar.setText("0");
+        stComprar.setToolTipText("Enter para calcular");
+        stComprar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                stComprarKeyPressed(evt);
+            }
+        });
+        jPanel1.add(stComprar);
+        stComprar.setBounds(600, 300, 130, 30);
+
+        jLabel7.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setText("Empresa");
+        jPanel1.add(jLabel7);
+        jLabel7.setBounds(190, 300, 70, 30);
+
+        empresa.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        empresa.setToolTipText("Nombre de la empresa");
+        jPanel1.add(empresa);
+        empresa.setBounds(260, 300, 160, 30);
+
+        jLabel8.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setText("Descripcion");
+        jPanel1.add(jLabel8);
+        jLabel8.setBounds(170, 350, 90, 30);
+
+        descripcion.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        descripcion.setToolTipText("Descripcion del producto");
+        jPanel1.add(descripcion);
+        descripcion.setBounds(260, 350, 160, 30);
+
+        jLabel9.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setText("Codigo");
+        jPanel1.add(jLabel9);
+        jLabel9.setBounds(200, 400, 60, 30);
+
+        code.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        code.setToolTipText("Codigo del producto");
+        jPanel1.add(code);
+        code.setBounds(260, 400, 80, 30);
+
+        jLabel10.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel10.setText("Coste de stock");
+        jPanel1.add(jLabel10);
+        jLabel10.setBounds(490, 400, 110, 30);
+
+        stCoste.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        stCoste.setToolTipText("Monto a pagar por el stock");
+        jPanel1.add(stCoste);
+        stCoste.setBounds(600, 400, 130, 30);
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 950, 540));
+
+        jPanel2.setBackground(new java.awt.Color(101, 178, 255));
         jPanel2.setLayout(null);
 
         jLabel1.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel1.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Century Gothic", 0, 30)); // NOI18N
         jLabel1.setText("Reabastecimiento de stock");
         jPanel2.add(jLabel1);
-        jLabel1.setBounds(110, 10, 300, 40);
+        jLabel1.setBounds(100, 10, 410, 40);
 
-        jButton4.setText("...");
+        jButton4.setText("Salir");
         jButton4.setToolTipText("regresar pestaña anterior");
-        jButton4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButton4.setBorder(null);
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
             }
         });
         jPanel2.add(jButton4);
-        jButton4.setBounds(20, 10, 40, 30);
+        jButton4.setBounds(880, 10, 50, 30);
 
-        actual.setText(" ");
-        actual.setToolTipText("Stock actual");
-        jPanel2.add(actual);
-        actual.setBounds(630, 10, 230, 30);
+        combo.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        combo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Codigo", "Nombre", "Empresa" }));
+        jPanel2.add(combo);
+        combo.setBounds(550, 20, 77, 22);
 
-        listbusqueda.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        listbusqueda.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "eliga tipo de busqueda...", "Nombre", "Codigo", "Descripcion", "Fecha", "Proveedor" }));
-        listbusqueda.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jPanel2.add(listbusqueda);
-        listbusqueda.setBounds(470, 10, 160, 30);
-
-        jPanel1.add(jPanel2);
-        jPanel2.setBounds(0, 10, 880, 60);
-
-        tbdatos.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        tbdatos.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {},
-                {},
-                {},
-                {}
-            },
-            new String [] {
-
+        txtbuscar.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        txtbuscar.setToolTipText("Enter para buscar");
+        txtbuscar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtbuscarKeyPressed(evt);
             }
-        ));
-        jScrollPane1.setViewportView(tbdatos);
+        });
+        jPanel2.add(txtbuscar);
+        txtbuscar.setBounds(640, 20, 200, 22);
 
-        jPanel1.add(jScrollPane1);
-        jScrollPane1.setBounds(220, 80, 640, 220);
-
-        jLabel3.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("stock a reabastecer ");
-        jPanel1.add(jLabel3);
-        jLabel3.setBounds(10, 200, 210, 17);
-
-        agregar.setText(" ");
-        agregar.setToolTipText("cantidad que desea agregar a su stock");
-        jPanel1.add(agregar);
-        agregar.setBounds(10, 220, 130, 30);
-
-        jLabel4.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Stock total");
-        jPanel1.add(jLabel4);
-        jLabel4.setBounds(10, 260, 90, 17);
-
-        total.setText(" ");
-        total.setToolTipText("stock actual y el solicitado");
-        jPanel1.add(total);
-        total.setBounds(10, 280, 130, 30);
-
-        jButton1.setText("Guardar");
-        jButton1.setToolTipText("Aceptar reabastecimiento");
-        jButton1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jPanel1.add(jButton1);
-        jButton1.setBounds(20, 340, 80, 30);
-
-        jButton2.setText("Cancelar");
-        jButton2.setToolTipText("Cancelar reabastecimiento");
-        jButton2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jPanel1.add(jButton2);
-        jButton2.setBounds(110, 340, 90, 30);
-
-        jLabel5.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Stock disponible");
-        jPanel1.add(jLabel5);
-        jLabel5.setBounds(10, 140, 110, 17);
-
-        actual1.setText(" ");
-        actual1.setToolTipText("Stock actual");
-        jPanel1.add(actual1);
-        actual1.setBounds(10, 160, 130, 30);
-
-        jLabel6.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("Nombre del producto");
-        jPanel1.add(jLabel6);
-        jLabel6.setBounds(10, 80, 140, 17);
-
-        nombproducto.setText(" ");
-        nombproducto.setToolTipText("Stock actual");
-        jPanel1.add(nombproducto);
-        nombproducto.setBounds(10, 100, 130, 30);
-
-        getContentPane().add(jPanel1);
-        jPanel1.setBounds(0, 0, 880, 440);
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 950, 60));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -176,6 +328,38 @@ public class ReabastecimientoDeStock extends javax.swing.JFrame {
       Principal obj=new Principal();
         obj.setVisible(true);        // TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void txtbuscarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtbuscarKeyPressed
+        buscar(combo.getSelectedItem().toString());
+    }//GEN-LAST:event_txtbuscarKeyPressed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+        int fila= tbdatos.getSelectedRow();
+        if(fila>=0){
+            code.setText(tbdatos.getValueAt(fila, 0).toString());
+            nom.setText(tbdatos.getValueAt(fila, 1).toString());
+            descripcion.setText(tbdatos.getValueAt(fila, 2).toString());
+            empresa.setText(tbdatos.getValueAt(fila, 3).toString());
+            stDisponible.setText(tbdatos.getValueAt(fila, 5).toString());
+        }
+        else{
+            JOptionPane.showMessageDialog(null,"no seleciono fila");
+        }
+        guardar.setEnabled(true);
+        cancelar.setEnabled(true);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void stComprarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_stComprarKeyPressed
+        // TODO add your handling code here:
+        int dis,comp,fin;
+        dis= Integer.parseInt(stDisponible.getText());
+        comp= Integer.parseInt(stComprar.getText());
+        
+        fin=dis+comp;
+        
+        stFinal.setText(""+fin);
+    }//GEN-LAST:event_stComprarKeyPressed
 
     /**
      * @param args the command line arguments
@@ -213,24 +397,34 @@ public class ReabastecimientoDeStock extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField actual;
-    private javax.swing.JTextField actual1;
-    private javax.swing.JTextField agregar;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton cancelar;
+    private javax.swing.JTextField code;
+    private javax.swing.JComboBox<String> combo;
+    private javax.swing.JTextField descripcion;
+    private javax.swing.JTextField empresa;
+    private javax.swing.JButton guardar;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JComboBox<String> listbusqueda;
-    private javax.swing.JTextField nombproducto;
+    private javax.swing.JTextField nom;
+    private javax.swing.JTextField stComprar;
+    private javax.swing.JTextField stCoste;
+    private javax.swing.JTextField stDisponible;
+    private javax.swing.JTextField stFinal;
     private javax.swing.JTable tbdatos;
-    private javax.swing.JTextField total;
+    private javax.swing.JTextField txtbuscar;
     // End of variables declaration//GEN-END:variables
 LaBodeguita cc=new LaBodeguita();
 Connection cn = cc.getConnection();
