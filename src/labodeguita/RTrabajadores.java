@@ -1,4 +1,5 @@
 package labodeguita;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -249,52 +250,43 @@ public class RTrabajadores extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Registro de trabajadores");
-        getContentPane().setLayout(null);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(51, 204, 0));
         jPanel1.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel1.setLayout(null);
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txtnom.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        jPanel1.add(txtnom);
-        txtnom.setBounds(130, 210, 160, 22);
+        jPanel1.add(txtnom, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 210, 160, -1));
 
         jLabel1.setFont(new java.awt.Font("Century Gothic", 0, 13)); // NOI18N
         jLabel1.setText("Nombre");
-        jPanel1.add(jLabel1);
-        jLabel1.setBounds(60, 210, 53, 20);
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 210, -1, 20));
 
         txtsex.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        jPanel1.add(txtsex);
-        txtsex.setBounds(490, 210, 160, 22);
+        jPanel1.add(txtsex, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 210, 160, -1));
 
         jLabel2.setFont(new java.awt.Font("Century Gothic", 0, 13)); // NOI18N
         jLabel2.setText("Apellido");
-        jPanel1.add(jLabel2);
-        jLabel2.setBounds(60, 250, 53, 20);
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 250, -1, 20));
 
         txttelefono.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        jPanel1.add(txttelefono);
-        txttelefono.setBounds(490, 290, 160, 22);
+        jPanel1.add(txttelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 290, 160, -1));
 
         jLabel5.setFont(new java.awt.Font("Century Gothic", 0, 13)); // NOI18N
         jLabel5.setText("Tel/Cel");
-        jPanel1.add(jLabel5);
-        jLabel5.setBounds(430, 290, 44, 20);
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 290, -1, 20));
 
         txtturno.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        jPanel1.add(txtturno);
-        txtturno.setBounds(780, 210, 160, 22);
+        jPanel1.add(txtturno, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 210, 160, -1));
 
         jLabel6.setFont(new java.awt.Font("Century Gothic", 0, 13)); // NOI18N
         jLabel6.setText("Fecha de nacimiento");
-        jPanel1.add(jLabel6);
-        jLabel6.setBounds(340, 250, 138, 20);
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 250, -1, 20));
 
         jLabel7.setFont(new java.awt.Font("Century Gothic", 0, 13)); // NOI18N
         jLabel7.setText("Sexo");
-        jPanel1.add(jLabel7);
-        jLabel7.setBounds(440, 210, 29, 20);
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 210, -1, 20));
 
         actualizar.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         actualizar.setText("Actualizar");
@@ -304,8 +296,7 @@ public class RTrabajadores extends javax.swing.JFrame {
                 actualizarActionPerformed(evt);
             }
         });
-        jPanel1.add(actualizar);
-        actualizar.setBounds(530, 370, 100, 40);
+        jPanel1.add(actualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 370, 100, 40));
 
         cancelar.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         cancelar.setText("Cancelar");
@@ -315,8 +306,7 @@ public class RTrabajadores extends javax.swing.JFrame {
                 cancelarActionPerformed(evt);
             }
         });
-        jPanel1.add(cancelar);
-        cancelar.setBounds(670, 370, 90, 40);
+        jPanel1.add(cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 370, 90, 40));
 
         nuevo.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         nuevo.setText("Nuevo");
@@ -326,73 +316,57 @@ public class RTrabajadores extends javax.swing.JFrame {
                 nuevoActionPerformed(evt);
             }
         });
-        jPanel1.add(nuevo);
-        nuevo.setBounds(270, 370, 80, 40);
+        jPanel1.add(nuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 370, 80, 40));
 
         txtpass.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        jPanel1.add(txtpass);
-        txtpass.setBounds(130, 290, 160, 22);
+        jPanel1.add(txtpass, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 290, 160, -1));
 
         jLabel10.setFont(new java.awt.Font("Century Gothic", 0, 13)); // NOI18N
         jLabel10.setText("Contraseña");
-        jPanel1.add(jLabel10);
-        jLabel10.setBounds(40, 290, 76, 20);
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 290, -1, 20));
 
         txtcod.setEditable(false);
         txtcod.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         txtcod.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jPanel1.add(txtcod);
-        txtcod.setBounds(780, 290, 70, 22);
+        jPanel1.add(txtcod, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 290, 70, -1));
 
         jLabel4.setFont(new java.awt.Font("Century Gothic", 0, 13)); // NOI18N
         jLabel4.setText("Codigo");
-        jPanel1.add(jLabel4);
-        jLabel4.setBounds(720, 290, 50, 20);
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 290, -1, 20));
 
         jLabel8.setFont(new java.awt.Font("Century Gothic", 0, 13)); // NOI18N
         jLabel8.setText("Cargo");
-        jPanel1.add(jLabel8);
-        jLabel8.setBounds(720, 250, 42, 20);
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 250, -1, 20));
 
         jLabel13.setFont(new java.awt.Font("Century Gothic", 0, 13)); // NOI18N
         jLabel13.setText("Turno");
-        jPanel1.add(jLabel13);
-        jLabel13.setBounds(730, 210, 34, 20);
+        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 210, -1, 20));
 
         txtape.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        jPanel1.add(txtape);
-        txtape.setBounds(130, 250, 160, 22);
+        jPanel1.add(txtape, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 250, 160, -1));
 
         txtcargo.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        txtcargo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtcargoActionPerformed(evt);
-            }
-        });
-        jPanel1.add(txtcargo);
-        txtcargo.setBounds(780, 250, 160, 22);
+        jPanel1.add(txtcargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 250, 160, -1));
 
         txtfechaNacim.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        jPanel1.add(txtfechaNacim);
-        txtfechaNacim.setBounds(490, 250, 160, 22);
+        jPanel1.add(txtfechaNacim, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 250, 160, -1));
 
         tbdatos.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         tbdatos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {},
-                {},
-                {},
-                {}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-
+                "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
         tbdatos.setComponentPopupMenu(jPopupMenu1);
         jScrollPane1.setViewportView(tbdatos);
 
-        jPanel1.add(jScrollPane1);
-        jScrollPane1.setBounds(20, 20, 1040, 160);
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 1040, 160));
 
         guardar.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         guardar.setText("Guardar");
@@ -402,45 +376,44 @@ public class RTrabajadores extends javax.swing.JFrame {
                 guardarActionPerformed(evt);
             }
         });
-        jPanel1.add(guardar);
-        guardar.setBounds(400, 370, 90, 40);
-        jPanel1.add(ico1);
-        ico1.setBounds(290, 210, 0, 20);
-        jPanel1.add(ico2);
-        ico2.setBounds(290, 250, 0, 20);
-        jPanel1.add(ico3);
-        ico3.setBounds(290, 290, 0, 20);
-        jPanel1.add(ico4);
-        ico4.setBounds(650, 210, 0, 20);
-        jPanel1.add(ico5);
-        ico5.setBounds(650, 250, 0, 20);
-        jPanel1.add(ico6);
-        ico6.setBounds(650, 290, 0, 20);
-        jPanel1.add(ico7);
-        ico7.setBounds(940, 210, 0, 20);
-        jPanel1.add(ico8);
-        ico8.setBounds(940, 250, 0, 20);
+        jPanel1.add(guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 370, 90, 40));
 
-        getContentPane().add(jPanel1);
-        jPanel1.setBounds(0, 60, 1090, 460);
+        ico1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Braian Canjay\\Desktop\\DES AP 1\\32x32.png")); // NOI18N
+        jPanel1.add(ico1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 210, -1, 20));
+
+        ico2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Braian Canjay\\Desktop\\DES AP 1\\32x32.png")); // NOI18N
+        jPanel1.add(ico2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 250, -1, 20));
+
+        ico3.setIcon(new javax.swing.ImageIcon("C:\\Users\\Braian Canjay\\Desktop\\DES AP 1\\32x32.png")); // NOI18N
+        jPanel1.add(ico3, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 290, -1, 20));
+
+        ico4.setIcon(new javax.swing.ImageIcon("C:\\Users\\Braian Canjay\\Desktop\\DES AP 1\\32x32.png")); // NOI18N
+        jPanel1.add(ico4, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 210, -1, 20));
+
+        ico5.setIcon(new javax.swing.ImageIcon("C:\\Users\\Braian Canjay\\Desktop\\DES AP 1\\32x32.png")); // NOI18N
+        jPanel1.add(ico5, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 250, -1, 20));
+
+        ico6.setIcon(new javax.swing.ImageIcon("C:\\Users\\Braian Canjay\\Desktop\\DES AP 1\\32x32.png")); // NOI18N
+        jPanel1.add(ico6, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 290, -1, 20));
+
+        ico7.setIcon(new javax.swing.ImageIcon("C:\\Users\\Braian Canjay\\Desktop\\DES AP 1\\32x32.png")); // NOI18N
+        jPanel1.add(ico7, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 210, -1, 20));
+
+        ico8.setIcon(new javax.swing.ImageIcon("C:\\Users\\Braian Canjay\\Desktop\\DES AP 1\\32x32.png")); // NOI18N
+        jPanel1.add(ico8, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 250, -1, 20));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 1090, 460));
 
         jPanel3.setBackground(new java.awt.Color(0, 153, 51));
-        jPanel3.setLayout(null);
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel12.setFont(new java.awt.Font("Century Gothic", 0, 30)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel12.setText("Registro de trabajadores");
-        jPanel3.add(jLabel12);
-        jLabel12.setBounds(100, 10, 364, 38);
+        jLabel12.setText("Control de trabajadores");
+        jPanel3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, -1, -1));
 
         btsalir.setText("Salir");
-        btsalir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btsalirActionPerformed(evt);
-            }
-        });
-        jPanel3.add(btsalir);
-        btsalir.setBounds(990, 20, 70, 23);
+        jPanel3.add(btsalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 20, 70, -1));
 
         txtbuscar.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         txtbuscar.setToolTipText("Enter para buscar");
@@ -449,16 +422,13 @@ public class RTrabajadores extends javax.swing.JFrame {
                 txtbuscarKeyPressed(evt);
             }
         });
-        jPanel3.add(txtbuscar);
-        txtbuscar.setBounds(630, 20, 210, 22);
+        jPanel3.add(txtbuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 20, 210, -1));
 
         combo.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         combo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Codigo", "Telefono", "Nombre", "Apellido", "Cargo" }));
-        jPanel3.add(combo);
-        combo.setBounds(510, 20, 110, 22);
+        jPanel3.add(combo, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 20, 110, -1));
 
-        getContentPane().add(jPanel3);
-        jPanel3.setBounds(0, 0, 1090, 60);
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1090, 60));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -590,15 +560,6 @@ public class RTrabajadores extends javax.swing.JFrame {
     private void txtbuscarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtbuscarKeyPressed
         buscar(combo.getSelectedItem().toString());
     }//GEN-LAST:event_txtbuscarKeyPressed
-
-    private void txtcargoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtcargoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtcargoActionPerformed
-
-    private void btsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btsalirActionPerformed
-Principal obj=new Principal();
-        obj.setVisible(true);        // TODO add your handling code here:
-    }//GEN-LAST:event_btsalirActionPerformed
 
     /**
      * @param args the command line arguments
