@@ -429,7 +429,7 @@ public class VentaDeProductos extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void empreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_empreActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_empreActionPerformed
 
     private void cantKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cantKeyPressed
@@ -476,8 +476,6 @@ public class VentaDeProductos extends javax.swing.JFrame {
                 System.out.print(e.getMessage());
             }
         }
-        
-            // TODO add your handling code here:
     }//GEN-LAST:event_comprarActionPerformed
 
     private void comboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboActionPerformed
@@ -486,7 +484,6 @@ public class VentaDeProductos extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         limpiar();
-        // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void fiadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fiadoActionPerformed

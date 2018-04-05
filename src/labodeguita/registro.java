@@ -81,7 +81,6 @@ public class registro extends javax.swing.JFrame {
     else{
         sql="SELECT * FROM productos WHERE cod_prod='"+valor+"'";
     }
- 
     String []datos = new String [6];
         try {
             Statement st = cn.createStatement();

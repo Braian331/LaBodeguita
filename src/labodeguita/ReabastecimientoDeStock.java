@@ -216,12 +216,12 @@ public class ReabastecimientoDeStock extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Stock a comprar");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 310, 130, 30));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 290, 130, 30));
 
         jLabel4.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Stock final");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 360, 90, 30));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 340, 90, 30));
 
         guardar.setText("Guardar");
         guardar.setToolTipText("Aceptar reabastecimiento");
@@ -231,7 +231,7 @@ public class ReabastecimientoDeStock extends javax.swing.JFrame {
                 guardarActionPerformed(evt);
             }
         });
-        jPanel1.add(guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 540, 90, 30));
+        jPanel1.add(guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 520, 90, 30));
 
         cancelar.setText("Cancelar");
         cancelar.setToolTipText("Cancelar reabastecimiento");
@@ -241,17 +241,17 @@ public class ReabastecimientoDeStock extends javax.swing.JFrame {
                 cancelarActionPerformed(evt);
             }
         });
-        jPanel1.add(cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 540, 90, 30));
+        jPanel1.add(cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 520, 90, 30));
 
         jLabel5.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Stock disponible");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 260, 120, 30));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 240, 120, 30));
 
         jLabel6.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Nombre del producto");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 260, -1, 30));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 240, -1, 30));
 
         tbdatos.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         tbdatos.setModel(new javax.swing.table.DefaultTableModel(
@@ -279,94 +279,94 @@ public class ReabastecimientoDeStock extends javax.swing.JFrame {
                 stComprarKeyPressed(evt);
             }
         });
-        jPanel1.add(stComprar, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 310, 130, 30));
+        jPanel1.add(stComprar, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 290, 130, 30));
 
         jLabel7.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Empresa");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 360, 70, 30));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 340, 70, 30));
 
         jLabel8.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Descripcion");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 310, 90, 30));
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 290, 90, 30));
 
         jLabel9.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Codigo");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 460, 60, 30));
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 440, 60, 30));
 
         jLabel10.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("Proveedor");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 410, 80, 30));
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 390, 80, 30));
 
         stCoste.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         stCoste.setToolTipText("Monto a pagar por el stock");
-        jPanel1.add(stCoste, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 410, 130, 30));
+        jPanel1.add(stCoste, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 390, 130, 30));
 
         prove.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         prove.setToolTipText("Monto a pagar por el stock");
-        jPanel1.add(prove, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 410, 180, 30));
+        jPanel1.add(prove, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 390, 180, 30));
 
         jLabel11.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("Coste de stock");
-        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 410, 110, 30));
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 390, 110, 30));
 
         ico1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Braian Canjay\\Desktop\\DES AP 1\\32x32.png")); // NOI18N
         ico1.setToolTipText("Este campo no puede estar vacio");
-        jPanel1.add(ico1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 410, -1, 30));
+        jPanel1.add(ico1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 390, -1, 30));
 
         ico2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Braian Canjay\\Desktop\\DES AP 1\\32x32.png")); // NOI18N
         ico2.setToolTipText("Este campo no puede estar vacio");
-        jPanel1.add(ico2, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 310, -1, 30));
+        jPanel1.add(ico2, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 290, -1, 30));
 
         hora.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         hora.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         hora.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel1.add(hora, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 220, 220, 20));
+        jPanel1.add(hora, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 50, 90, 20));
 
         fecha.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         fecha.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         fecha.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel1.add(fecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 220, 220, 20));
+        jPanel1.add(fecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 20, 90, 20));
 
         nom.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
         nom.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         nom.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel1.add(nom, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 260, 180, 30));
+        jPanel1.add(nom, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 240, 180, 30));
 
         empresa.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
         empresa.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         empresa.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel1.add(empresa, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 360, 180, 30));
+        jPanel1.add(empresa, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 340, 180, 30));
 
         stDisponible.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
         stDisponible.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         stDisponible.setText("0");
         stDisponible.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel1.add(stDisponible, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 260, 130, 30));
+        jPanel1.add(stDisponible, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 240, 130, 30));
 
         code.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
         code.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         code.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel1.add(code, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 460, 90, 30));
+        jPanel1.add(code, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 440, 90, 30));
 
         stFinal.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
         stFinal.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         stFinal.setText("0");
         stFinal.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel1.add(stFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 360, 130, 30));
+        jPanel1.add(stFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 340, 130, 30));
 
         descripcion.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
         descripcion.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         descripcion.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel1.add(descripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 310, 180, 30));
+        jPanel1.add(descripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 290, 180, 30));
 
         ico3.setIcon(new javax.swing.ImageIcon("C:\\Users\\Braian Canjay\\Desktop\\DES AP 1\\32x32.png")); // NOI18N
         ico3.setToolTipText("Este campo no puede estar vacio");
-        jPanel1.add(ico3, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 410, -1, 30));
+        jPanel1.add(ico3, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 390, -1, 30));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 1060, 590));
 

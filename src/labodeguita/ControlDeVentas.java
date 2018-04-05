@@ -187,16 +187,16 @@ public class ControlDeVentas extends javax.swing.JFrame {
                 txtbuscarKeyPressed(evt);
             }
         });
-        jPanel2.add(txtbuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 20, 320, 30));
+        jPanel2.add(txtbuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 20, 320, 30));
 
         jLabel1.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Busqueda");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 20, -1, 30));
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, 30));
 
         combo.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         combo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Codigo", "Nombre", "Descripcion", "Total", "Fecha" }));
-        jPanel2.add(combo, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 20, 150, 30));
+        jPanel2.add(combo, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 20, 150, 30));
 
         tbdatos.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         tbdatos.setModel(new javax.swing.table.DefaultTableModel(

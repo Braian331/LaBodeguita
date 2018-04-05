@@ -45,7 +45,6 @@ public class ControlDeFiado extends javax.swing.JFrame {
     else{
         sql="SELECT * FROM ventas WHERE codVent='"+valor+"'";
     }
- 
     String []datos = new String [20];
         try {
             Statement st = cn.createStatement();

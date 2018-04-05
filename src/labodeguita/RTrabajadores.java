@@ -42,7 +42,6 @@ public class RTrabajadores extends javax.swing.JFrame {
     
     void privilegio(String filtro){
         if (filtro.equals("Administrador")) priv.setText("Admin");
-        
         if (filtro.equals("Invitado")) priv.setText("Invitado");
     }
     

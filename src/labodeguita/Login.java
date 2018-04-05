@@ -13,10 +13,9 @@ public class Login extends javax.swing.JFrame {
 
     public Login() {
         initComponents();
+        this.setLocationRelativeTo(null);
         ico1.setVisible(false);
         ico2.setVisible(false);
-        
-         this.setLocationRelativeTo(null);
     }
     void acceder(String usuario, String pass ){
         String car="";
