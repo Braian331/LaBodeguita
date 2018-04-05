@@ -152,7 +152,7 @@ public class ControlDeVentas extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         code = new javax.swing.JTextField();
 
-        jMenuItem2.setText("Eliminar");
+        jMenuItem2.setText("Eliminar venta");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem2ActionPerformed(evt);
@@ -161,127 +161,79 @@ public class ControlDeVentas extends javax.swing.JFrame {
         jPopupMenu1.add(jMenuItem2);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setSize(new java.awt.Dimension(100, 100));
-        getContentPane().setLayout(null);
+        setTitle("Control de ventas");
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(255, 0, 51));
-        jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jPanel1.setLayout(null);
+        jPanel1.setBackground(new java.awt.Color(255, 153, 153));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButton1.setText("Salir");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton1);
-        jButton1.setBounds(970, 10, 60, 30);
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 10, 60, 30));
 
         jLabel2.setFont(new java.awt.Font("Century Gothic", 0, 30)); // NOI18N
         jLabel2.setText("Control de ventas");
-        jPanel1.add(jLabel2);
-        jLabel2.setBounds(100, 10, 262, 38);
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, -1, -1));
 
-        getContentPane().add(jPanel1);
-        jPanel1.setBounds(0, 0, 1060, 60);
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1060, 60));
 
-        jPanel2.setBackground(new java.awt.Color(204, 0, 51));
-        jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jPanel2.setLayout(null);
+        jPanel2.setBackground(new java.awt.Color(153, 0, 0));
+        jPanel2.setToolTipText("");
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txtbuscar.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         txtbuscar.setToolTipText("Enter para buscar");
-        txtbuscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtbuscarActionPerformed(evt);
-            }
-        });
         txtbuscar.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtbuscarKeyPressed(evt);
             }
         });
-        jPanel2.add(txtbuscar);
-        txtbuscar.setBounds(190, 20, 320, 30);
+        jPanel2.add(txtbuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 20, 320, 30));
 
         jLabel1.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Busqueda");
-        jPanel2.add(jLabel1);
-        jLabel1.setBounds(90, 20, 87, 30);
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 20, -1, 30));
 
         combo.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         combo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Codigo", "Nombre", "Descripcion", "Total", "Fecha" }));
-        combo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comboActionPerformed(evt);
-            }
-        });
-        jPanel2.add(combo);
-        combo.setBounds(530, 20, 150, 30);
+        jPanel2.add(combo, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 20, 150, 30));
 
         tbdatos.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         tbdatos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {},
-                {},
-                {},
-                {}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-
+                "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
         tbdatos.setComponentPopupMenu(jPopupMenu1);
         jScrollPane2.setViewportView(tbdatos);
 
-        jPanel2.add(jScrollPane2);
-        jScrollPane2.setBounds(30, 70, 1000, 250);
+        jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 1000, 250));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Stock");
-        jPanel2.add(jLabel3);
-        jLabel3.setBounds(280, 330, 35, 17);
-
-        stock.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                stockActionPerformed(evt);
-            }
-        });
-        jPanel2.add(stock);
-        stock.setBounds(280, 360, 140, 30);
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 390, -1, -1));
+        jPanel2.add(stock, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 420, 140, -1));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("nuevo Stock");
-        jPanel2.add(jLabel4);
-        jLabel4.setBounds(460, 330, 78, 17);
-
-        newStock.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                newStockActionPerformed(evt);
-            }
-        });
-        jPanel2.add(newStock);
-        newStock.setBounds(460, 360, 140, 30);
+        jLabel4.setText("Nuevo Stock");
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 390, -1, -1));
+        jPanel2.add(newStock, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 420, 140, -1));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Cod");
-        jPanel2.add(jLabel5);
-        jLabel5.setBounds(650, 330, 25, 17);
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 390, -1, -1));
+        jPanel2.add(code, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 420, 140, -1));
 
-        code.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                codeActionPerformed(evt);
-            }
-        });
-        jPanel2.add(code);
-        code.setBounds(650, 360, 140, 30);
-
-        getContentPane().add(jPanel2);
-        jPanel2.setBounds(0, 60, 1060, 410);
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 1060, 360));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -326,31 +278,6 @@ public class ControlDeVentas extends javax.swing.JFrame {
         } catch (Exception e) {
         }
     }//GEN-LAST:event_jMenuItem2ActionPerformed
-
-    private void txtbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtbuscarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtbuscarActionPerformed
-
-    private void comboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_comboActionPerformed
-
-    private void stockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stockActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_stockActionPerformed
-
-    private void newStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newStockActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_newStockActionPerformed
-
-    private void codeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_codeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_codeActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-Principal obj=new Principal();
-        obj.setVisible(true);        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
