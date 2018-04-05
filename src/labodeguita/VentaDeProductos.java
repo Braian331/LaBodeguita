@@ -144,15 +144,12 @@ public class VentaDeProductos extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tbdatos = new javax.swing.JTable();
         cant = new javax.swing.JTextField();
-        pre = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        pre = new javax.swing.JLabel();
         txtbuscar = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        total = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        cod = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
+        total = new javax.swing.JLabel();
+        cod = new javax.swing.JLabel();
         comprar = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
@@ -176,6 +173,9 @@ public class VentaDeProductos extends javax.swing.JFrame {
         fiado = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
 
         jMenuItem1.setText("Comprar");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
@@ -186,6 +186,7 @@ public class VentaDeProductos extends javax.swing.JFrame {
         jPopupMenu1.add(jMenuItem1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Venta de productos");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(0, 204, 204));
@@ -224,19 +225,16 @@ public class VentaDeProductos extends javax.swing.JFrame {
                 cantKeyPressed(evt);
             }
         });
-        jPanel2.add(cant, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 310, 90, -1));
-
-        pre.setEditable(false);
-        pre.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        jPanel2.add(pre, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 310, 87, -1));
+        jPanel2.add(cant, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 307, 90, -1));
 
         jLabel1.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         jLabel1.setText("Cantidad");
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 310, -1, 20));
 
-        jLabel2.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
-        jLabel2.setText("Precio");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 310, -1, 20));
+        pre.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        pre.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        pre.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel2.add(pre, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 310, 70, 20));
 
         txtbuscar.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         txtbuscar.setToolTipText("buscar");
@@ -251,21 +249,14 @@ public class VentaDeProductos extends javax.swing.JFrame {
         jLabel5.setText("Busqueda por nombre o descripcion");
         jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 260, -1, 20));
 
-        total.setEditable(false);
-        total.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        jPanel2.add(total, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 310, 97, -1));
+        total.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        total.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel2.add(total, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 310, 90, 20));
 
-        jLabel6.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
-        jLabel6.setText("Total");
-        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 310, -1, 20));
-
-        cod.setEditable(false);
-        cod.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        jPanel2.add(cod, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 310, 70, -1));
-
-        jLabel7.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
-        jLabel7.setText("Codigo");
-        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 310, -1, 20));
+        cod.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        cod.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        cod.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel2.add(cod, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 310, 70, 20));
 
         comprar.setText("Comprar");
         comprar.addActionListener(new java.awt.event.ActionListener() {
@@ -341,9 +332,11 @@ public class VentaDeProductos extends javax.swing.JFrame {
         jPanel2.add(fecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 40, 220, 20));
 
         ico1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Braian Canjay\\Desktop\\DES AP 1\\32x32.png")); // NOI18N
-        jPanel2.add(ico1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 310, -1, 20));
+        ico1.setToolTipText("Este campo no puede estar vacio");
+        jPanel2.add(ico1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 307, -1, 20));
 
         ico2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Braian Canjay\\Desktop\\DES AP 1\\32x32.png")); // NOI18N
+        ico2.setToolTipText("Este campo no puede estar vacio");
         jPanel2.add(ico2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 390, -1, 20));
 
         fiado.setText("Fiar");
@@ -360,7 +353,19 @@ public class VentaDeProductos extends javax.swing.JFrame {
         jTextField1.setText("1");
         jPanel2.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 420, 50, -1));
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 1110, 500));
+        jLabel14.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        jLabel14.setText("Precio");
+        jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 310, -1, 20));
+
+        jLabel15.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        jLabel15.setText("Codigo");
+        jPanel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 310, -1, 20));
+
+        jLabel7.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        jLabel7.setText("Total");
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 310, -1, 20));
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 860, 500));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -415,6 +420,8 @@ public class VentaDeProductos extends javax.swing.JFrame {
             cantidad = Integer.parseInt(cant.getText());
             precio = Integer.parseInt(pre.getText());
             total.setText(""+cantidad*precio);
+            ico1.setVisible(false);
+            ico2.setVisible(false);
         }
         else{
             JOptionPane.showMessageDialog(null,"no seleciono fila");
@@ -437,7 +444,7 @@ public class VentaDeProductos extends javax.swing.JFrame {
         int cantidad,stock1,nuevo;
         cont=0;
         validar();
-        //si todos son invisibles hacer update si no, mensaje de llenar campos
+        //si todos son invisibles hacer accion,si no mensaje de llenar campos
         if (ico1.isVisible()) {
             JOptionPane.showMessageDialog(null,"Llenó todos los campos?");
         }
@@ -559,7 +566,7 @@ public class VentaDeProductos extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField cant;
-    private javax.swing.JTextField cod;
+    private javax.swing.JLabel cod;
     private javax.swing.JComboBox<String> combo;
     private javax.swing.JButton comprar;
     private javax.swing.JTextField desc;
@@ -576,11 +583,11 @@ public class VentaDeProductos extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
@@ -593,10 +600,10 @@ public class VentaDeProductos extends javax.swing.JFrame {
     private javax.swing.JTextField newStock;
     private javax.swing.JTextField nomFiado;
     private javax.swing.JTextField nombre;
-    private javax.swing.JTextField pre;
+    private javax.swing.JLabel pre;
     private javax.swing.JTextField stock;
     private javax.swing.JTable tbdatos;
-    private javax.swing.JTextField total;
+    private javax.swing.JLabel total;
     private javax.swing.JTextField txtbuscar;
     // End of variables declaration//GEN-END:variables
 LaBodeguita cc=new LaBodeguita();
