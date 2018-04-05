@@ -1,21 +1,12 @@
 package labodeguita;
 
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.poi.sl.usermodel.Sheet;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.usermodel.Workbook;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.FileOutputStream;
 import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import javax.swing.JOptionPane;
 import javax.swing.Timer;
-import org.apache.poi.ss.usermodel.Workbook;
 
 public class Principal extends javax.swing.JFrame {
 
@@ -29,6 +20,8 @@ public class Principal extends javax.swing.JFrame {
         
         Timer tiempo=new Timer(100, new Principal.horas());
         tiempo.start();
+        
+        privilegio();
     }
     
     class horas implements ActionListener{
@@ -41,47 +34,60 @@ public class Principal extends javax.swing.JFrame {
             hora.setText(String.format(format.format(sistHora),hoy));          
         }      
     }
+    
+    public void privilegio(){
+        if (valor.getText().equals("1")) {
+            MenuControl.setEnabled(true);
+        }
+        if (valor.getText().equals("2")) {
+            MenuControl.setEnabled(false);
+        }
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        trabajador = new javax.swing.JLabel();
         hora = new javax.swing.JLabel();
+        valor = new javax.swing.JTextField();
         fecha = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu5 = new javax.swing.JMenu();
         jMenuItem4 = new javax.swing.JMenuItem();
-        jMenu14 = new javax.swing.JMenu();
+        MenuControl = new javax.swing.JMenu();
+        jMenuItem10 = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
-        jMenuItem8 = new javax.swing.JMenuItem();
-        jMenuItem9 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem6 = new javax.swing.JMenuItem();
+        jMenu6 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
-        jMenu15 = new javax.swing.JMenu();
-        jMenuItem11 = new javax.swing.JMenuItem();
-        jMenuItem6 = new javax.swing.JMenuItem();
-        jMenuItem7 = new javax.swing.JMenuItem();
+        jMenu4 = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(null);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        trabajador.setFont(new java.awt.Font("Century Gothic", 0, 24)); // NOI18N
+        trabajador.setForeground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(trabajador, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 290, 40));
 
         hora.setFont(new java.awt.Font("Century Gothic", 0, 36)); // NOI18N
         hora.setForeground(new java.awt.Color(255, 255, 255));
         hora.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         hora.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        getContentPane().add(hora);
-        hora.setBounds(60, 60, 220, 60);
+        getContentPane().add(hora, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, 220, 60));
+        getContentPane().add(valor, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 20, 80, -1));
 
         fecha.setFont(new java.awt.Font("Century Gothic", 0, 36)); // NOI18N
         fecha.setForeground(new java.awt.Color(255, 255, 255));
         fecha.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         fecha.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        getContentPane().add(fecha);
-        fecha.setBounds(340, 60, 360, 60);
+        getContentPane().add(fecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 80, 360, 60));
 
-        jLabel1.setBackground(new java.awt.Color(51, 0, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel1.setIcon(new javax.swing.JLabel() {
             public javax.swing.Icon getIcon() {
@@ -95,8 +101,7 @@ public class Principal extends javax.swing.JFrame {
             }
         }.getIcon());
         jLabel1.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(0, 0, 790, 430);
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 750, 410));
 
         jMenuBar1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "La Bodeguita", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Century Gothic", 0, 14), new java.awt.Color(255, 51, 51))); // NOI18N
 
@@ -126,9 +131,17 @@ public class Principal extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu5);
 
-        jMenu14.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 5));
-        jMenu14.setText("Control");
-        jMenu14.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        MenuControl.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 5));
+        MenuControl.setText("Control");
+        MenuControl.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+
+        jMenuItem10.setText("Control de Productos");
+        jMenuItem10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem10ActionPerformed(evt);
+            }
+        });
+        MenuControl.add(jMenuItem10);
 
         jMenuItem5.setText("Control de Ventas");
         jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
@@ -136,25 +149,41 @@ public class Principal extends javax.swing.JFrame {
                 jMenuItem5ActionPerformed(evt);
             }
         });
-        jMenu14.add(jMenuItem5);
+        MenuControl.add(jMenuItem5);
 
-        jMenuItem8.setText("Control de trabajadores");
-        jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItem2.setText("Control de Trabajadores");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem8ActionPerformed(evt);
+                jMenuItem2ActionPerformed(evt);
             }
         });
-        jMenu14.add(jMenuItem8);
+        MenuControl.add(jMenuItem2);
 
-        jMenuItem9.setText("Sistema de fiado");
-        jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItem6.setText("Control de Stock");
+        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem9ActionPerformed(evt);
+                jMenuItem6ActionPerformed(evt);
             }
         });
-        jMenu14.add(jMenuItem9);
+        MenuControl.add(jMenuItem6);
 
-        jMenuBar1.add(jMenu14);
+        jMenuBar1.add(MenuControl);
+
+        jMenu6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 5));
+        jMenu6.setText("Stock");
+        jMenu6.setToolTipText("Re abastecer stock");
+        jMenu6.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        jMenu6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu6MouseClicked(evt);
+            }
+        });
+        jMenu6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu6ActionPerformed(evt);
+            }
+        });
+        jMenuBar1.add(jMenu6);
 
         jMenu2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 5));
         jMenu2.setText("Reporte");
@@ -170,38 +199,25 @@ public class Principal extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu2);
 
-        jMenu15.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 5));
-        jMenu15.setText("Registros");
-        jMenu15.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-
-        jMenuItem11.setText("Registro de proveedores");
-        jMenuItem11.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem11ActionPerformed(evt);
+        jMenu4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 5));
+        jMenu4.setText("Cerrar sesion");
+        jMenu4.setToolTipText("Cerrar sesion del usuario");
+        jMenu4.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        jMenu4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu4MouseClicked(evt);
             }
         });
-        jMenu15.add(jMenuItem11);
-
-        jMenuItem6.setText("Registro de trabajadores");
-        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+        jMenu4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem6ActionPerformed(evt);
+                jMenu4ActionPerformed(evt);
             }
         });
-        jMenu15.add(jMenuItem6);
-
-        jMenuItem7.setText("Reabastecimieno de stock");
-        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem7ActionPerformed(evt);
-            }
-        });
-        jMenu15.add(jMenuItem7);
-
-        jMenuBar1.add(jMenu15);
+        jMenuBar1.add(jMenu4);
 
         jMenu3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 5));
         jMenu3.setText("Salir");
+        jMenu3.setToolTipText("Salir de la aplicacion");
         jMenu3.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         jMenu3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -221,101 +237,37 @@ public class Principal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
-        VentaDeProductos obj=new VentaDeProductos();
-        obj.setVisible(true);        
+        
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
+    private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
+        
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem10ActionPerformed
+
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
-        ControlDeVentas obj=new ControlDeVentas();
-        obj.setVisible(true);
+        
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-      System.out.println("generando...");
-        String sql="select * from ventas";
-         Workbook book = new HSSFWorkbook();
-         org.apache.poi.ss.usermodel.Sheet sheet =  book.createSheet("Reporte");
-         String date = new SimpleDateFormat("yyyy-MM-dd").format(Calendar.getInstance().getTime());
-         String file = date+".xls";
-         int rowCount = 1;
-         try{
-            Statement st = cn.createStatement();
-            ResultSet rs = st.executeQuery(sql);
-            
-            Row rowHead;
-            rowHead = sheet.createRow(0);
-            org.apache.poi.ss.usermodel.Cell headCodigo_de_folio = rowHead.createCell(0);
-            headCodigo_de_folio.setCellValue("Codigo de folio");
-            
-            org.apache.poi.ss.usermodel.Cell headDescripcion_de_la_venta = rowHead.createCell(1);
-            headDescripcion_de_la_venta.setCellValue("Descripcion de la venta");
-            
-            org.apache.poi.ss.usermodel.Cell headCantidad_de_ventas_realizadas = rowHead.createCell(2);
-            headCantidad_de_ventas_realizadas.setCellValue("Cantidad de ventas realizadas");
-            
-            org.apache.poi.ss.usermodel.Cell headPrecio_unitario = rowHead.createCell(3);
-            headPrecio_unitario.setCellValue("Precio unitario");
-            
-            org.apache.poi.ss.usermodel.Cell headPrecio_total_de_la_venta = rowHead.createCell(4);
-            headPrecio_total_de_la_venta.setCellValue("Precio total de la venta");
-            
-            org.apache.poi.ss.usermodel.Cell headFecha_de_la_venta = rowHead.createCell(5);
-            headFecha_de_la_venta.setCellValue("Fecha de la venta");
-            
-                
-            while(rs.next()){
-                Row row;
-                row = sheet.createRow(rowCount);
-                
-                org.apache.poi.ss.usermodel.Cell celdaNombre = row.createCell(0);
-                celdaNombre.setCellValue(rs.getString("codVent"));
-                
-                org.apache.poi.ss.usermodel.Cell celdaApellido = row.createCell(1);
-                celdaApellido.setCellValue(rs.getString("desVent"));
-                
-                org.apache.poi.ss.usermodel.Cell celdaCorreo = row.createCell(2);
-                celdaCorreo.setCellValue(rs.getString("cantVent"));
-                
-                org.apache.poi.ss.usermodel.Cell celdaFecha = row.createCell(3);
-                celdaFecha.setCellValue(rs.getString("preVent"));
-                
-                org.apache.poi.ss.usermodel.Cell celdaDes = row.createCell(4);
-                celdaDes.setCellValue(rs.getString("totalVent"));
-                
-                org.apache.poi.ss.usermodel.Cell celdaCant = row.createCell(5);
-                celdaCant.setCellValue(rs.getString("feVent"));
-                
-                org.apache.poi.ss.usermodel.Cell celdaPrecio = row.createCell(6);
-                celdaPrecio.setCellValue(rs.getString("precio"));
-                
-                org.apache.poi.ss.usermodel.Cell celdaTotal = row.createCell(7);
-                celdaTotal.setCellValue(rs.getString("total"));
-                
-                org.apache.poi.ss.usermodel.Cell celdaCod = row.createCell(8);
-                celdaCod.setCellValue(rs.getString("cod"));
-                
-                rowCount++;
-            }
-            FileOutputStream out = new FileOutputStream(file);
-            book.write(out);
-            JOptionPane.showMessageDialog(null, "Reporte creado");
-            out.close();
-         } catch (Exception e) {
-             
-         }  
+        
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenu3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu3MouseClicked
-        Login obj=new Login();
-        obj.setVisible(true);
+        this.dispose();
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenu3MouseClicked
 
     private void jMenu3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu3ActionPerformed
-        
+        System.exit(0);
         // TODO add your handling code here cojines, cachuate del rey vivoras
     }//GEN-LAST:event_jMenu3ActionPerformed
 
@@ -325,30 +277,28 @@ public class Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenu1ActionPerformed
 
-    private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
-        RegistroDeProveedores obj=new RegistroDeProveedores();
-        obj.setVisible(true);// TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem11ActionPerformed
+    private void jMenu4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu4MouseClicked
+        Login obj=new Login();
+        obj.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jMenu4MouseClicked
+
+    private void jMenu4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu4ActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jMenu4ActionPerformed
+
+    private void jMenu6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu6MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenu6MouseClicked
+
+    private void jMenu6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenu6ActionPerformed
 
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
-       RTrabajadores obj=new RTrabajadores();
-        obj.setVisible(true); // TODO add your handling code here:
+        // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem6ActionPerformed
-
-    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
-      ReabastecimientoDeStock obj=new ReabastecimientoDeStock();
-        obj.setVisible(true);        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem7ActionPerformed
-
-    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
-        ControlDeTrabajadores obj=new ControlDeTrabajadores();
-        obj.setVisible(true);// TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem8ActionPerformed
-
-    private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
-        SistFiado obj=new SistFiado();
-        obj.setVisible(true);// TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem9ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -386,24 +336,25 @@ public class Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public static javax.swing.JMenu MenuControl;
     private javax.swing.JLabel fecha;
     private javax.swing.JLabel hora;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu14;
-    private javax.swing.JMenu jMenu15;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
+    private javax.swing.JMenu jMenu6;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem11;
+    private javax.swing.JMenuItem jMenuItem10;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
-    private javax.swing.JMenuItem jMenuItem7;
-    private javax.swing.JMenuItem jMenuItem8;
-    private javax.swing.JMenuItem jMenuItem9;
+    public static javax.swing.JLabel trabajador;
+    public static javax.swing.JTextField valor;
     // End of variables declaration//GEN-END:variables
 LaBodeguita cc=new LaBodeguita();
 Connection cn = cc.getConnection();
