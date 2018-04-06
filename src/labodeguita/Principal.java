@@ -63,6 +63,7 @@ public class Principal extends javax.swing.JFrame {
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenuItem11 = new javax.swing.JMenuItem();
+        jMenuItem12 = new javax.swing.JMenuItem();
         jMenu6 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
@@ -136,7 +137,7 @@ public class Principal extends javax.swing.JFrame {
         MenuControl.setText("Control");
         MenuControl.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
 
-        jMenuItem10.setText("Control de Productos");
+        jMenuItem10.setText("Control y reistro de productos");
         jMenuItem10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem10ActionPerformed(evt);
@@ -144,7 +145,7 @@ public class Principal extends javax.swing.JFrame {
         });
         MenuControl.add(jMenuItem10);
 
-        jMenuItem5.setText("Control de Ventas");
+        jMenuItem5.setText("Control y registro de ventas");
         jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem5ActionPerformed(evt);
@@ -152,7 +153,7 @@ public class Principal extends javax.swing.JFrame {
         });
         MenuControl.add(jMenuItem5);
 
-        jMenuItem2.setText("Control de Trabajadores");
+        jMenuItem2.setText("Control y registro de trabajadores");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem2ActionPerformed(evt);
@@ -160,7 +161,7 @@ public class Principal extends javax.swing.JFrame {
         });
         MenuControl.add(jMenuItem2);
 
-        jMenuItem6.setText("Control de Stock");
+        jMenuItem6.setText("Control y reabastecimiento de stock");
         jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem6ActionPerformed(evt);
@@ -168,13 +169,21 @@ public class Principal extends javax.swing.JFrame {
         });
         MenuControl.add(jMenuItem6);
 
-        jMenuItem11.setText("Control de Proveedores");
+        jMenuItem11.setText("Control  y registro de proveedores");
         jMenuItem11.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem11ActionPerformed(evt);
             }
         });
         MenuControl.add(jMenuItem11);
+
+        jMenuItem12.setText("Control  de fiado");
+        jMenuItem12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem12ActionPerformed(evt);
+            }
+        });
+        MenuControl.add(jMenuItem12);
 
         jMenuBar1.add(MenuControl);
 
@@ -246,23 +255,27 @@ public class Principal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
-        
-        // TODO add your handling code here:
+       VentaDeProductos obj=new VentaDeProductos();
+        obj.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
-        
-        // TODO add your handling code here:
+        registro obj=new registro();
+        obj.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jMenuItem10ActionPerformed
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
-        
-        // TODO add your handling code here:
+        ControlDeVentas obj=new ControlDeVentas();
+        obj.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        
-        // TODO add your handling code here:
+       RTrabajadores obj=new RTrabajadores();
+        obj.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
@@ -306,12 +319,22 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenu6ActionPerformed
 
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
-        // TODO add your handling code here:
+        ReabastecimientoDeStock obj=new ReabastecimientoDeStock();
+        obj.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jMenuItem6ActionPerformed
 
     private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
-        // TODO add your handling code here:
+        RegistroDeProveedores obj=new RegistroDeProveedores();
+        obj.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jMenuItem11ActionPerformed
+
+    private void jMenuItem12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem12ActionPerformed
+        ControlDeFiado obj=new ControlDeFiado();
+        obj.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jMenuItem12ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -362,6 +385,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem10;
     private javax.swing.JMenuItem jMenuItem11;
+    private javax.swing.JMenuItem jMenuItem12;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
