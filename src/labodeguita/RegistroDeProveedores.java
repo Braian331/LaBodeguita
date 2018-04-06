@@ -236,6 +236,11 @@ public class RegistroDeProveedores extends javax.swing.JFrame {
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, 380, -1));
 
         jButton1.setText("Salir");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 20, 80, -1));
 
         combo.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
@@ -370,26 +375,12 @@ public class RegistroDeProveedores extends javax.swing.JFrame {
         jLabel17.setForeground(new java.awt.Color(255, 255, 255));
         jLabel17.setText("Nombre de la empresa");
         jPanel3.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 220, 180, -1));
-
-        ico1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Braian Canjay\\Desktop\\DES AP 1\\32x32.png")); // NOI18N
         jPanel3.add(ico1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 210, -1, 20));
-
-        ico2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Braian Canjay\\Desktop\\DES AP 1\\32x32.png")); // NOI18N
         jPanel3.add(ico2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 250, -1, 20));
-
-        ico3.setIcon(new javax.swing.ImageIcon("C:\\Users\\Braian Canjay\\Desktop\\DES AP 1\\32x32.png")); // NOI18N
         jPanel3.add(ico3, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 290, -1, 20));
-
-        ico4.setIcon(new javax.swing.ImageIcon("C:\\Users\\Braian Canjay\\Desktop\\DES AP 1\\32x32.png")); // NOI18N
         jPanel3.add(ico4, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 210, -1, 20));
-
-        ico5.setIcon(new javax.swing.ImageIcon("C:\\Users\\Braian Canjay\\Desktop\\DES AP 1\\32x32.png")); // NOI18N
         jPanel3.add(ico5, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 250, -1, 20));
-
-        ico6.setIcon(new javax.swing.ImageIcon("C:\\Users\\Braian Canjay\\Desktop\\DES AP 1\\32x32.png")); // NOI18N
         jPanel3.add(ico6, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 290, -1, 20));
-
-        ico7.setIcon(new javax.swing.ImageIcon("C:\\Users\\Braian Canjay\\Desktop\\DES AP 1\\32x32.png")); // NOI18N
         jPanel3.add(ico7, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 330, -1, 20));
 
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 1040, 490));
@@ -514,6 +505,12 @@ public class RegistroDeProveedores extends javax.swing.JFrame {
     private void txtbuscarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtbuscarKeyPressed
         buscar(combo.getSelectedItem().toString());
     }//GEN-LAST:event_txtbuscarKeyPressed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        Principal obj=new Principal();
+        obj.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
