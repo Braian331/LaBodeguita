@@ -291,25 +291,20 @@ public class registro extends javax.swing.JFrame {
         code.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         code.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         code.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel1.add(code, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 320, 90, 23));
+        jPanel1.add(code, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 313, 90, 30));
 
-        ico1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Braian Canjay\\Desktop\\DES AP 1\\32x32.png")); // NOI18N
         ico1.setToolTipText("Este campo no puede estar vacio");
         jPanel1.add(ico1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 230, -1, 30));
 
-        ico2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Braian Canjay\\Desktop\\DES AP 1\\32x32.png")); // NOI18N
         ico2.setToolTipText("Este campo no puede estar vacio");
         jPanel1.add(ico2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 270, -1, 30));
 
-        ico3.setIcon(new javax.swing.ImageIcon("C:\\Users\\Braian Canjay\\Desktop\\DES AP 1\\32x32.png")); // NOI18N
         ico3.setToolTipText("Este campo no puede estar vacio");
         jPanel1.add(ico3, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 310, -1, 30));
 
-        ico4.setIcon(new javax.swing.ImageIcon("C:\\Users\\Braian Canjay\\Desktop\\DES AP 1\\32x32.png")); // NOI18N
         ico4.setToolTipText("Este campo no puede estar vacio");
         jPanel1.add(ico4, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 230, -1, 30));
 
-        ico5.setIcon(new javax.swing.ImageIcon("C:\\Users\\Braian Canjay\\Desktop\\DES AP 1\\32x32.png")); // NOI18N
         ico5.setToolTipText("Este campo no puede estar vacio");
         jPanel1.add(ico5, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 270, -1, 30));
 
@@ -364,6 +359,11 @@ public class registro extends javax.swing.JFrame {
         jPanel3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, -1, -1));
 
         btsalir.setText("Salir");
+        btsalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btsalirActionPerformed(evt);
+            }
+        });
         jPanel3.add(btsalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 20, 70, -1));
 
         txtbuscar.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
@@ -500,6 +500,12 @@ public class registro extends javax.swing.JFrame {
         } catch (Exception e) {
         }
     }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void btsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btsalirActionPerformed
+        Principal obj=new Principal();
+        obj.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btsalirActionPerformed
 
     /**
      * @param args the command line arguments
