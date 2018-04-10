@@ -373,9 +373,7 @@ public class Principal extends javax.swing.JFrame {
                 
                 org.apache.poi.ss.usermodel.Cell celdaFecha = row.createCell(5);
                 celdaFecha.setCellValue(rs.getString("feVent"));
-                
-                
-                
+                                   
                 rowCount++;
             }
             FileOutputStream out = new FileOutputStream(file);
