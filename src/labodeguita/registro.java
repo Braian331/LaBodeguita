@@ -291,20 +291,25 @@ public class registro extends javax.swing.JFrame {
         code.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         code.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         code.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel1.add(code, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 313, 90, 30));
+        jPanel1.add(code, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 320, 90, 23));
 
+        ico1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Braian Canjay\\Desktop\\DES AP 1\\32x32.png")); // NOI18N
         ico1.setToolTipText("Este campo no puede estar vacio");
         jPanel1.add(ico1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 230, -1, 30));
 
+        ico2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Braian Canjay\\Desktop\\DES AP 1\\32x32.png")); // NOI18N
         ico2.setToolTipText("Este campo no puede estar vacio");
         jPanel1.add(ico2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 270, -1, 30));
 
+        ico3.setIcon(new javax.swing.ImageIcon("C:\\Users\\Braian Canjay\\Desktop\\DES AP 1\\32x32.png")); // NOI18N
         ico3.setToolTipText("Este campo no puede estar vacio");
         jPanel1.add(ico3, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 310, -1, 30));
 
+        ico4.setIcon(new javax.swing.ImageIcon("C:\\Users\\Braian Canjay\\Desktop\\DES AP 1\\32x32.png")); // NOI18N
         ico4.setToolTipText("Este campo no puede estar vacio");
         jPanel1.add(ico4, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 230, -1, 30));
 
+        ico5.setIcon(new javax.swing.ImageIcon("C:\\Users\\Braian Canjay\\Desktop\\DES AP 1\\32x32.png")); // NOI18N
         ico5.setToolTipText("Este campo no puede estar vacio");
         jPanel1.add(ico5, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 270, -1, 30));
 
@@ -359,11 +364,6 @@ public class registro extends javax.swing.JFrame {
         jPanel3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, -1, -1));
 
         btsalir.setText("Salir");
-        btsalir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btsalirActionPerformed(evt);
-            }
-        });
         jPanel3.add(btsalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 20, 70, -1));
 
         txtbuscar.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
@@ -371,6 +371,9 @@ public class registro extends javax.swing.JFrame {
         txtbuscar.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtbuscarKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtbuscarKeyReleased(evt);
             }
         });
         jPanel3.add(txtbuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 20, 210, -1));
@@ -385,7 +388,6 @@ public class registro extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtbuscarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtbuscarKeyPressed
-        buscar(combo.getSelectedItem().toString());
     }//GEN-LAST:event_txtbuscarKeyPressed
 
     private void nuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nuevoActionPerformed
@@ -479,6 +481,12 @@ public class registro extends javax.swing.JFrame {
             precio.setText(tbdatos.getValueAt(fila, 4).toString());
             stock.setText(tbdatos.getValueAt(fila, 5).toString());
             iconos();
+            desbloquear();
+            
+            nuevo.setEnabled(false);
+            guardar.setEnabled(false);
+            actualizar.setEnabled(true);
+            cancelar.setEnabled(false);
         }
         else{
             JOptionPane.showMessageDialog(null,"no seleciono fila");
@@ -501,11 +509,10 @@ public class registro extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
-    private void btsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btsalirActionPerformed
-        Principal obj=new Principal();
-        obj.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_btsalirActionPerformed
+    private void txtbuscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtbuscarKeyReleased
+        // TODO add your handling code here:
+        buscar(combo.getSelectedItem().toString());
+    }//GEN-LAST:event_txtbuscarKeyReleased
 
     /**
      * @param args the command line arguments

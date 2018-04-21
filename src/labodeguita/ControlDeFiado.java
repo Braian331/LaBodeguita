@@ -9,15 +9,8 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author sasuk
- */
 public class ControlDeFiado extends javax.swing.JFrame {
 
-    /**
-     * Creates new form SistFiado
-     */
     public ControlDeFiado() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -26,7 +19,8 @@ public class ControlDeFiado extends javax.swing.JFrame {
     
     void mostrardatosVenta(String valor){
        DefaultTableModel modelo= new DefaultTableModel();
-       modelo.addColumn("CODIGO");
+       modelo.addColumn("ID");
+       modelo.addColumn("CLIENTE");
        modelo.addColumn("NOMBRE");
        modelo.addColumn("DESCRIPCION");
        modelo.addColumn("EMPRESA");
@@ -40,26 +34,27 @@ public class ControlDeFiado extends javax.swing.JFrame {
     String sql="";
     if(valor.equals(""))
     {
-        sql="SELECT * FROM ventas";
+        sql="SELECT * FROM fiado";
     }
     else{
-        sql="SELECT * FROM ventas WHERE codVent='"+valor+"'";
+        sql="SELECT * FROM fiado WHERE id_f='"+valor+"'";
     }
     String []datos = new String [20];
         try {
             Statement st = cn.createStatement();
             ResultSet rs = st.executeQuery(sql);
             while(rs.next()){
-                datos[0]=rs.getString("codVent");
-                datos[1]=rs.getString("nomVent");
-                datos[2]=rs.getString("desVent");
-                datos[3]=rs.getString("nomEmp");
-                datos[4]=rs.getString("cantVent");
-                datos[5]=rs.getString("preVent");
-                datos[6]=rs.getString("totalVent");
-                datos[7]=rs.getString("feVent");
-                datos[8]=rs.getString("cod_prod");
-                datos[9]=rs.getString("Nstock");
+                datos[0]=rs.getString("id_f");
+                datos[1]=rs.getString("cliente");
+                datos[2]=rs.getString("nomVent_f");
+                datos[3]=rs.getString("desVent_f");
+                datos[4]=rs.getString("nomEmp_f");
+                datos[5]=rs.getString("cantVent_f");
+                datos[6]=rs.getString("preVent_f");
+                datos[7]=rs.getString("totalVent_f");
+                datos[8]=rs.getString("feVent_f");
+                datos[9]=rs.getString("cod_prod");
+                datos[10]=rs.getString("Nstock");
                 modelo.addRow(datos);
             }
             tbdatos.setModel(modelo);
@@ -70,7 +65,8 @@ public class ControlDeFiado extends javax.swing.JFrame {
     
     public void buscar(String filtro){
     DefaultTableModel modelo= new DefaultTableModel();
-       modelo.addColumn("CODIGO");
+       modelo.addColumn("ID");
+       modelo.addColumn("CLIENTE");
        modelo.addColumn("NOMBRE");
        modelo.addColumn("DESCRIPCION");
        modelo.addColumn("EMPRESA");
@@ -84,19 +80,22 @@ public class ControlDeFiado extends javax.swing.JFrame {
 
        String consultar=null;
        if (filtro.equals("Codigo")) {
-           consultar="SELECT * FROM ventas WHERE codVent LIKE '%"+txtbuscar.getText() + "%'";
+           consultar="SELECT * FROM fiado WHERE id_f LIKE '%"+txtbuscar.getText() + "%'";
        }
        else if (filtro.equals("Nombre")) {
-           consultar="SELECT * FROM ventas WHERE nomVent LIKE '%"+txtbuscar.getText() + "%'";
+           consultar="SELECT * FROM fiado WHERE nomVent_f LIKE '%"+txtbuscar.getText() + "%'";
        }
        else if (filtro.equals("Descripcion")) {
-           consultar="SELECT * FROM ventas WHERE desVent LIKE '%"+txtbuscar.getText() + "%'";
+           consultar="SELECT * FROM fiado WHERE desVent_f LIKE '%"+txtbuscar.getText() + "%'";
        }
        else if (filtro.equals("Fecha")) {
-           consultar="SELECT * FROM ventas WHERE feVent LIKE '%"+txtbuscar.getText() + "%'";
+           consultar="SELECT * FROM fiado WHERE feVent_f LIKE '%"+txtbuscar.getText() + "%'";
        }
        else if (filtro.equals("Total")) {
-           consultar="SELECT * FROM ventas WHERE totalVent LIKE '%"+txtbuscar.getText() + "%'";
+           consultar="SELECT * FROM fiado WHERE totalVent_f LIKE '%"+txtbuscar.getText() + "%'";
+       }
+       else if (filtro.equals("Cliente")) {
+           consultar="SELECT * FROM fiado WHERE cliente LIKE '%"+txtbuscar.getText() + "%'";
        }
 
        String []datos= new String[15];
@@ -105,16 +104,17 @@ public class ControlDeFiado extends javax.swing.JFrame {
             ResultSet rs=st.executeQuery(consultar);
             while(rs.next())
             {
-                datos[0]=rs.getString("codVent");
-                datos[1]=rs.getString("nomVent");
-                datos[2]=rs.getString("desVent");
-                datos[3]=rs.getString("nomEmp");
-                datos[4]=rs.getString("cantVent");
-                datos[5]=rs.getString("preVent");
-                datos[6]=rs.getString("totalVent");
-                datos[7]=rs.getString("feVent");
-                datos[8]=rs.getString("cod_prod");
-                datos[9]=rs.getString("Nstock");
+                datos[0]=rs.getString("id_f");
+                datos[1]=rs.getString("cliente");
+                datos[2]=rs.getString("nomVent_f");
+                datos[3]=rs.getString("desVent_f");
+                datos[4]=rs.getString("nomEmp_f");
+                datos[5]=rs.getString("cantVent_f");
+                datos[6]=rs.getString("preVent_f");
+                datos[7]=rs.getString("totalVent_f");
+                datos[8]=rs.getString("feVent_f");
+                datos[9]=rs.getString("cod_prod");
+                datos[10]=rs.getString("Nstock");
                 modelo.addRow(datos);
             }
             tbdatos.setModel(modelo);
@@ -133,9 +133,15 @@ public class ControlDeFiado extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPopupMenu1 = new javax.swing.JPopupMenu();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuItem4 = new javax.swing.JMenuItem();
+        jPanel1 = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         txtbuscar = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
         combo = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
         stock = new javax.swing.JTextField();
@@ -145,15 +151,54 @@ public class ControlDeFiado extends javax.swing.JFrame {
         code = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         tbdatos = new javax.swing.JTable();
-        jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        txtuser = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        nombre = new javax.swing.JLabel();
+        client = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+
+        jMenuItem2.setText("Liquidar");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(jMenuItem2);
+
+        jMenuItem3.setText("Abonar");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(jMenuItem3);
+
+        jMenuItem4.setText("Cancelar");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(jMenuItem4);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jPanel1.setBackground(new java.awt.Color(255, 153, 0));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jButton1.setText("Salir");
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 10, 60, 30));
+
+        jLabel2.setFont(new java.awt.Font("Century Gothic", 0, 30)); // NOI18N
+        jLabel2.setText("Control de fiado");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, -1, -1));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1060, 60));
+
         jPanel2.setBackground(new java.awt.Color(255, 51, 0));
-        jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txtbuscar.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
@@ -162,35 +207,33 @@ public class ControlDeFiado extends javax.swing.JFrame {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtbuscarKeyPressed(evt);
             }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtbuscarKeyReleased(evt);
+            }
         });
-        jPanel2.add(txtbuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 20, 320, 30));
-
-        jLabel1.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Busqueda");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 20, -1, 30));
+        jPanel2.add(txtbuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 20, 320, 30));
 
         combo.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
-        combo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Codigo", "Nombre", "Descripcion", "Total", "Fecha" }));
-        jPanel2.add(combo, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 20, 150, 30));
+        combo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Codigo", "Cliente", "Nombre", "Descripcion", "Total", "Fecha" }));
+        jPanel2.add(combo, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 20, 150, 30));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Stock actual");
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 390, -1, -1));
-        jPanel2.add(stock, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 420, 140, 20));
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 490, -1, -1));
+        jPanel2.add(stock, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 520, 140, -1));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Nuevo Stock");
-        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 390, -1, -1));
-        jPanel2.add(newStock, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 420, 140, 20));
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 490, -1, -1));
+        jPanel2.add(newStock, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 520, 140, -1));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Cod");
-        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 390, -1, -1));
-        jPanel2.add(code, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 420, 140, 20));
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 490, -1, -1));
+        jPanel2.add(code, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 520, 140, -1));
 
         tbdatos.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         tbdatos.setModel(new javax.swing.table.DefaultTableModel(
@@ -204,43 +247,100 @@ public class ControlDeFiado extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tbdatos.setComponentPopupMenu(jPopupMenu1);
         jScrollPane2.setViewportView(tbdatos);
 
         jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 1000, 250));
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, 870, 470));
+        jLabel7.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setText("Busqueda");
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, 30));
 
-        jPanel1.setBackground(new java.awt.Color(255, 153, 0));
-        jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        txtuser.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
+        jPanel2.add(txtuser, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 380, 140, -1));
 
-        jButton1.setText("Salir");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 20, 60, 30));
+        jLabel8.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setText("Abonar");
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 340, -1, 30));
 
-        jLabel2.setFont(new java.awt.Font("Century Gothic", 0, 30)); // NOI18N
-        jLabel2.setText("Control de fiado");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 10, -1, -1));
+        jLabel9.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 430, 170, 30));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 970, 570));
+        nombre.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        nombre.setForeground(new java.awt.Color(255, 255, 255));
+        nombre.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel2.add(nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 430, 170, 30));
+
+        client.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        client.setForeground(new java.awt.Color(255, 255, 255));
+        client.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel2.add(client, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 380, 170, 30));
+
+        jLabel14.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel14.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 380, 170, 30));
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 1060, 490));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtbuscarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtbuscarKeyPressed
         
-
     }//GEN-LAST:event_txtbuscarKeyPressed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Principal obj=new Principal();
-        obj.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        int fila = tbdatos.getSelectedRow();
+        int cantidad,stockNew,nuevo;
+        String cod="";
+        cod=tbdatos.getValueAt(fila, 0).toString();
+
+        if(fila>=0){
+            stock.setText(tbdatos.getValueAt(fila, 4).toString());
+            code.setText(tbdatos.getValueAt(fila, 8).toString());
+            newStock.setText(tbdatos.getValueAt(fila, 9).toString());
+        }
+        else{
+            JOptionPane.showMessageDialog(null,"no seleciono fila");
+        }
+
+        cantidad = Integer.parseInt(stock.getText());
+        stockNew = Integer.parseInt(newStock.getText());
+
+        nuevo=stockNew+cantidad;
+
+        newStock.setText(""+nuevo);
+
+        try {
+            PreparedStatement pst = cn.prepareStatement("DELETE FROM ventas WHERE codVent='"+cod+"'");
+            pst.executeUpdate();
+            PreparedStatement pst2 = cn.prepareStatement("UPDATE productos SET stock_prod='"+newStock.getText()+"' WHERE cod_prod='"+code.getText()+"'");
+            pst2.executeUpdate();
+
+            JOptionPane.showMessageDialog(null,"Registro eliminado");
+            mostrardatosVenta("");
+
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        //Abonar a la compra
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        //Cancelar fiado
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void txtbuscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtbuscarKeyReleased
+        // TODO add your handling code here:
+        buscar(combo.getSelectedItem().toString());
+    }//GEN-LAST:event_txtbuscarKeyReleased
 
     /**
      * @param args the command line arguments
@@ -279,21 +379,31 @@ public class ControlDeFiado extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel client;
     private javax.swing.JTextField code;
     private javax.swing.JComboBox<String> combo;
     private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField newStock;
+    private javax.swing.JLabel nombre;
     private javax.swing.JTextField stock;
     private javax.swing.JTable tbdatos;
     private javax.swing.JTextField txtbuscar;
+    private javax.swing.JTextField txtuser;
     // End of variables declaration//GEN-END:variables
 LaBodeguita cc=new LaBodeguita();
 Connection cn = cc.getConnection();

@@ -464,6 +464,9 @@ public class RTrabajadores extends javax.swing.JFrame {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtbuscarKeyPressed(evt);
             }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtbuscarKeyReleased(evt);
+            }
         });
         jPanel3.add(txtbuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 20, 210, -1));
 
@@ -607,13 +610,18 @@ public class RTrabajadores extends javax.swing.JFrame {
     }//GEN-LAST:event_nuevoActionPerformed
 
     private void txtbuscarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtbuscarKeyPressed
-        buscar(combo.getSelectedItem().toString());
+
     }//GEN-LAST:event_txtbuscarKeyPressed
 
     private void combo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combo1ActionPerformed
         // TODO add your handling code here:
         privilegio(combo1.getSelectedItem().toString());
     }//GEN-LAST:event_combo1ActionPerformed
+
+    private void txtbuscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtbuscarKeyReleased
+        // TODO add your handling code here:
+        buscar(combo.getSelectedItem().toString());
+    }//GEN-LAST:event_txtbuscarKeyReleased
 
     /**
      * @param args the command line arguments

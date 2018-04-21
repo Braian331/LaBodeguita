@@ -32,6 +32,10 @@ public class ReabastecimientoDeStock extends javax.swing.JFrame {
         guardar.setEnabled(false);
         cancelar.setEnabled(false);
         
+        prove.setEnabled(false);
+        stComprar.setEnabled(false);
+        stCoste.setEnabled(false);
+        
         ico1.setVisible(false);
         ico2.setVisible(false);
         ico3.setVisible(false);        
@@ -231,7 +235,7 @@ public class ReabastecimientoDeStock extends javax.swing.JFrame {
                 guardarActionPerformed(evt);
             }
         });
-        jPanel1.add(guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 520, 90, 30));
+        jPanel1.add(guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 520, 90, 40));
 
         cancelar.setText("Cancelar");
         cancelar.setToolTipText("Cancelar reabastecimiento");
@@ -241,7 +245,7 @@ public class ReabastecimientoDeStock extends javax.swing.JFrame {
                 cancelarActionPerformed(evt);
             }
         });
-        jPanel1.add(cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 520, 90, 30));
+        jPanel1.add(cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 520, 90, 40));
 
         jLabel5.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
@@ -272,11 +276,13 @@ public class ReabastecimientoDeStock extends javax.swing.JFrame {
 
         stComprar.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         stComprar.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        stComprar.setText("0");
-        stComprar.setToolTipText("Enter para calcular");
+        stComprar.setToolTipText("");
         stComprar.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 stComprarKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                stComprarKeyReleased(evt);
             }
         });
         jPanel1.add(stComprar, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 290, 130, 30));
@@ -399,6 +405,9 @@ public class ReabastecimientoDeStock extends javax.swing.JFrame {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtbuscarKeyPressed(evt);
             }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtbuscarKeyReleased(evt);
+            }
         });
         jPanel2.add(txtbuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 20, 200, 30));
 
@@ -409,12 +418,11 @@ public class ReabastecimientoDeStock extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
       Principal obj=new Principal();
-        obj.setVisible(true);
-        this.dispose();        // TODO add your handling code here:
+        obj.setVisible(true);        // TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void txtbuscarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtbuscarKeyPressed
-        buscar(combo.getSelectedItem().toString());
+       
     }//GEN-LAST:event_txtbuscarKeyPressed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
@@ -432,20 +440,18 @@ public class ReabastecimientoDeStock extends javax.swing.JFrame {
         }
         guardar.setEnabled(true);
         cancelar.setEnabled(true);
+        
+        prove.setEnabled(true);
+        stComprar.setEnabled(true);
+        stCoste.setEnabled(true);
+        
         prove.setText("");
-        stComprar.setText("0");
+        stComprar.setText("");
         stCoste.setText("");
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void stComprarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_stComprarKeyPressed
         // TODO add your handling code here:
-        int dis,comp,fin;
-        dis= Integer.parseInt(stDisponible.getText());
-        comp= Integer.parseInt(stComprar.getText());
-        
-        fin=dis+comp;
-        
-        stFinal.setText(""+fin);
     }//GEN-LAST:event_stComprarKeyPressed
 
     private void guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarActionPerformed
@@ -483,8 +489,27 @@ public class ReabastecimientoDeStock extends javax.swing.JFrame {
         // TODO add your handling code here:
         guardar.setEnabled(false);
         cancelar.setEnabled(false);
+        
+        prove.setEnabled(false);
+        stComprar.setEnabled(false);
+        stCoste.setEnabled(false);
+        
         borrar();
     }//GEN-LAST:event_cancelarActionPerformed
+
+    private void txtbuscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtbuscarKeyReleased
+        buscar(combo.getSelectedItem().toString());
+    }//GEN-LAST:event_txtbuscarKeyReleased
+
+    private void stComprarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_stComprarKeyReleased
+        int dis,comp,fin;
+        dis= Integer.parseInt(stDisponible.getText());
+        comp= Integer.parseInt(stComprar.getText());
+        
+        fin=dis+comp;
+        
+        stFinal.setText(""+fin);
+    }//GEN-LAST:event_stComprarKeyReleased
 
     /**
      * @param args the command line arguments

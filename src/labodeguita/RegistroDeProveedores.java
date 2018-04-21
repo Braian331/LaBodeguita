@@ -183,7 +183,6 @@ public class RegistroDeProveedores extends javax.swing.JFrame {
         apeProv = new javax.swing.JTextField();
         nomProv = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
-        cod = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbdatos = new javax.swing.JTable();
         cancelar = new javax.swing.JButton();
@@ -207,6 +206,7 @@ public class RegistroDeProveedores extends javax.swing.JFrame {
         ico5 = new javax.swing.JLabel();
         ico6 = new javax.swing.JLabel();
         ico7 = new javax.swing.JLabel();
+        cod = new javax.swing.JLabel();
 
         jMenuItem1.setText("Modificar");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
@@ -236,11 +236,6 @@ public class RegistroDeProveedores extends javax.swing.JFrame {
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, 380, -1));
 
         jButton1.setText("Salir");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
         jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 20, 80, -1));
 
         combo.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
@@ -252,6 +247,9 @@ public class RegistroDeProveedores extends javax.swing.JFrame {
         txtbuscar.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtbuscarKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtbuscarKeyReleased(evt);
             }
         });
         jPanel2.add(txtbuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 20, 200, -1));
@@ -280,11 +278,6 @@ public class RegistroDeProveedores extends javax.swing.JFrame {
         jLabel13.setText("Codigo");
         jPanel3.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 340, 60, 20));
 
-        cod.setEditable(false);
-        cod.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        cod.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jPanel3.add(cod, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 330, 70, 30));
-
         tbdatos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
@@ -307,7 +300,7 @@ public class RegistroDeProveedores extends javax.swing.JFrame {
                 cancelarActionPerformed(evt);
             }
         });
-        jPanel3.add(cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 400, 80, 50));
+        jPanel3.add(cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 410, 80, 40));
 
         actualizar.setText("Actualizar");
         actualizar.addActionListener(new java.awt.event.ActionListener() {
@@ -315,7 +308,7 @@ public class RegistroDeProveedores extends javax.swing.JFrame {
                 actualizarActionPerformed(evt);
             }
         });
-        jPanel3.add(actualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 400, 90, 50));
+        jPanel3.add(actualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 410, 90, 40));
 
         guardar.setText("Guardar");
         guardar.addActionListener(new java.awt.event.ActionListener() {
@@ -323,7 +316,7 @@ public class RegistroDeProveedores extends javax.swing.JFrame {
                 guardarActionPerformed(evt);
             }
         });
-        jPanel3.add(guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 400, 80, 50));
+        jPanel3.add(guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 410, 80, 40));
 
         nuevo.setText("Nuevo");
         nuevo.addActionListener(new java.awt.event.ActionListener() {
@@ -331,7 +324,7 @@ public class RegistroDeProveedores extends javax.swing.JFrame {
                 nuevoActionPerformed(evt);
             }
         });
-        jPanel3.add(nuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 400, 70, 50));
+        jPanel3.add(nuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 410, 70, 40));
 
         correoEmpre.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         jPanel3.add(correoEmpre, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 290, 180, 30));
@@ -375,13 +368,32 @@ public class RegistroDeProveedores extends javax.swing.JFrame {
         jLabel17.setForeground(new java.awt.Color(255, 255, 255));
         jLabel17.setText("Nombre de la empresa");
         jPanel3.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 220, 180, -1));
+
+        ico1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Braian Canjay\\Desktop\\DES AP 1\\32x32.png")); // NOI18N
         jPanel3.add(ico1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 210, -1, 20));
+
+        ico2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Braian Canjay\\Desktop\\DES AP 1\\32x32.png")); // NOI18N
         jPanel3.add(ico2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 250, -1, 20));
+
+        ico3.setIcon(new javax.swing.ImageIcon("C:\\Users\\Braian Canjay\\Desktop\\DES AP 1\\32x32.png")); // NOI18N
         jPanel3.add(ico3, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 290, -1, 20));
+
+        ico4.setIcon(new javax.swing.ImageIcon("C:\\Users\\Braian Canjay\\Desktop\\DES AP 1\\32x32.png")); // NOI18N
         jPanel3.add(ico4, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 210, -1, 20));
+
+        ico5.setIcon(new javax.swing.ImageIcon("C:\\Users\\Braian Canjay\\Desktop\\DES AP 1\\32x32.png")); // NOI18N
         jPanel3.add(ico5, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 250, -1, 20));
+
+        ico6.setIcon(new javax.swing.ImageIcon("C:\\Users\\Braian Canjay\\Desktop\\DES AP 1\\32x32.png")); // NOI18N
         jPanel3.add(ico6, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 290, -1, 20));
+
+        ico7.setIcon(new javax.swing.ImageIcon("C:\\Users\\Braian Canjay\\Desktop\\DES AP 1\\32x32.png")); // NOI18N
         jPanel3.add(ico7, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 330, -1, 20));
+
+        cod.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
+        cod.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        cod.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel3.add(cod, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 330, 70, 30));
 
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 1040, 490));
 
@@ -503,14 +515,13 @@ public class RegistroDeProveedores extends javax.swing.JFrame {
     }//GEN-LAST:event_actualizarActionPerformed
 
     private void txtbuscarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtbuscarKeyPressed
-        buscar(combo.getSelectedItem().toString());
+        
     }//GEN-LAST:event_txtbuscarKeyPressed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Principal obj=new Principal();
-        obj.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void txtbuscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtbuscarKeyReleased
+        // TODO add your handling code here:
+        buscar(combo.getSelectedItem().toString());
+    }//GEN-LAST:event_txtbuscarKeyReleased
 
     /**
      * @param args the command line arguments
@@ -551,7 +562,7 @@ public class RegistroDeProveedores extends javax.swing.JFrame {
     private javax.swing.JButton actualizar;
     private javax.swing.JTextField apeProv;
     private javax.swing.JButton cancelar;
-    private javax.swing.JTextField cod;
+    private javax.swing.JLabel cod;
     private javax.swing.JComboBox<String> combo;
     private javax.swing.JTextField correoEmpre;
     private javax.swing.JTextField dirEmpre;

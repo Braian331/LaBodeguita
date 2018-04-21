@@ -60,6 +60,9 @@ public class calculo extends javax.swing.JFrame {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 reciboKeyPressed(evt);
             }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                reciboKeyReleased(evt);
+            }
         });
         jPanel1.add(recibo, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 100, 120, -1));
 
@@ -87,6 +90,15 @@ public class calculo extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void reciboKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_reciboKeyPressed
+        
+    }//GEN-LAST:event_reciboKeyPressed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void reciboKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_reciboKeyReleased
+        // TODO add your handling code here:
         double pag,rec,R;
         pag = Double.parseDouble(pagar.getText());
         rec = Double.parseDouble(recibo.getText());
@@ -97,11 +109,7 @@ public class calculo extends javax.swing.JFrame {
         if (R>0) cam.setText("Cambio");
         
         cambio.setText(""+R);
-    }//GEN-LAST:event_reciboKeyPressed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        this.dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_reciboKeyReleased
 
     /**
      * @param args the command line arguments
