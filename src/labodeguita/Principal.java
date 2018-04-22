@@ -231,19 +231,25 @@ public class Principal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
-        // TODO add your handling code here:
+       VentaDeProductos obj=new VentaDeProductos();
+        obj.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_jMenuItem10ActionPerformed
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
-        // TODO add your handling code here:
+       ControlDeVentas obj=new ControlDeVentas();
+        obj.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        // TODO add your handling code here:
+       RTrabajadores obj=new RTrabajadores();
+        obj.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
@@ -254,12 +260,12 @@ public class Principal extends javax.swing.JFrame {
         org.apache.poi.ss.usermodel.Sheet sheet =  book.createSheet("Reporte");
         String fe=fecha.getText();
         String file = fe+".xls";
-            Mejorar la principal
+            /*Mejorar la principal
             el focus
             lo de smar al eliminar
             ver stock
             int rowCount = 1;
-            
+            */
             try{
                Statement st = cn.createStatement();
                ResultSet rs = st.executeQuery(sql);
@@ -359,7 +365,9 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenu6ActionPerformed
 
     private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
-        // TODO add your handling code here:
+        RegistroDeProveedores obj=new RegistroDeProveedores();
+        obj.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jMenuItem11ActionPerformed
 
     private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
