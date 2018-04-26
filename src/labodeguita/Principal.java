@@ -16,7 +16,7 @@ import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.Timer;
 
-public class Principal extends javax.swing.JFrame {
+public class Principal extends javax.swing.JFrame{
 
     public Principal() {
         initComponents();
@@ -76,6 +76,7 @@ public class Principal extends javax.swing.JFrame {
         jMenuItem11 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuItem6 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -199,13 +200,21 @@ public class Principal extends javax.swing.JFrame {
         jMenu2.setText("Reporte");
         jMenu2.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
 
-        jMenuItem3.setText("Reporte de Ventas");
+        jMenuItem3.setText("Ver reportede Ventas");
         jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem3ActionPerformed(evt);
             }
         });
         jMenu2.add(jMenuItem3);
+
+        jMenuItem6.setText("Crear reporte de Ventas");
+        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem6ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem6);
 
         jMenuBar1.add(jMenu2);
 
@@ -231,41 +240,32 @@ public class Principal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
-       VentaDeProductos obj=new VentaDeProductos();
-        obj.setVisible(true);
-        this.dispose();
+        // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
-        
+        // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem10ActionPerformed
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
-       ControlDeVentas obj=new ControlDeVentas();
-        obj.setVisible(true);
-        this.dispose();
+        // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-       RTrabajadores obj=new RTrabajadores();
-        obj.setVisible(true);
-        this.dispose();
+        // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        String valor = "09";
+        String valor = null;
         System.out.println("Generando");
         String sql="select * from ventas where feVent Like '%"+ valor + "%'";
         Workbook book = new HSSFWorkbook();
         org.apache.poi.ss.usermodel.Sheet sheet =  book.createSheet("Reporte");
         String fe=fecha.getText();
         String file = fe+".xls";
-            /*Mejorar la principal
-            el focus
-            lo de smar al eliminar
-            ver stock
+            
             int rowCount = 1;
-            */
+            
             try{
                Statement st = cn.createStatement();
                ResultSet rs = st.executeQuery(sql);
@@ -365,14 +365,16 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenu6ActionPerformed
 
     private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
-        RegistroDeProveedores obj=new RegistroDeProveedores();
-        obj.setVisible(true);
-        this.dispose();
+        // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem11ActionPerformed
 
     private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem7ActionPerformed
+
+    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem6ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -428,6 +430,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
     public static javax.swing.JLabel trabajador;
     public static javax.swing.JTextField valor;

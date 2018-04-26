@@ -5,6 +5,10 @@
  */
 package labodeguita;
 
+import java.awt.event.KeyEvent;
+import javax.swing.InputMap;
+import javax.swing.KeyStroke;
+
 /**
  *
  * @author Braian Canjay
@@ -16,6 +20,14 @@ public class calculo extends javax.swing.JFrame {
      */
     public calculo() {
         initComponents();
+        this.setLocationRelativeTo(null);
+        
+        InputMap map = new InputMap();
+
+        map.put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0, false), "pressed");
+        map.put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0, true), "released");
+
+        ok.setInputMap(0, map);
     }
 
     /**
@@ -28,34 +40,47 @@ public class calculo extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
         cam = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         recibo = new javax.swing.JTextField();
         cambio = new javax.swing.JTextField();
         pagar = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        ok = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(153, 204, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        cam.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Century Gothic", 0, 22)); // NOI18N
+        jLabel4.setText("Recibo    $");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 100, 120, 30));
+
+        cam.setFont(new java.awt.Font("Century Gothic", 0, 22)); // NOI18N
+        cam.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         cam.setText("Cambio");
-        jPanel1.add(cam, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 150, 80, -1));
+        jPanel1.add(cam, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 150, 130, -1));
 
-        jLabel2.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        jLabel2.setText("Total a pagar");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 50, -1, -1));
+        jLabel2.setFont(new java.awt.Font("Century Gothic", 0, 22)); // NOI18N
+        jLabel2.setText("Total a pagar   $");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 50, 200, 30));
 
-        jLabel3.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        jLabel3.setText("Recibo");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 100, -1, -1));
+        jLabel3.setFont(new java.awt.Font("Century Gothic", 0, 22)); // NOI18N
+        jLabel3.setText(" $");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 150, 30, 30));
 
-        recibo.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        recibo.setFont(new java.awt.Font("Century Gothic", 0, 20)); // NOI18N
+        recibo.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         recibo.setText("0");
+        recibo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                reciboActionPerformed(evt);
+            }
+        });
         recibo.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 reciboKeyPressed(evt);
@@ -64,27 +89,32 @@ public class calculo extends javax.swing.JFrame {
                 reciboKeyReleased(evt);
             }
         });
-        jPanel1.add(recibo, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 100, 120, -1));
+        jPanel1.add(recibo, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 100, 160, -1));
 
-        cambio.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        cambio.setEditable(false);
+        cambio.setFont(new java.awt.Font("Century Gothic", 0, 20)); // NOI18N
+        cambio.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         cambio.setText("0");
-        jPanel1.add(cambio, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 150, 120, -1));
+        jPanel1.add(cambio, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 150, 160, -1));
 
-        pagar.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        pagar.setEditable(false);
+        pagar.setFont(new java.awt.Font("Century Gothic", 0, 20)); // NOI18N
+        pagar.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         pagar.setText("0");
-        jPanel1.add(pagar, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 50, 120, -1));
+        jPanel1.add(pagar, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 50, 160, -1));
 
-        jButton1.setBackground(new java.awt.Color(51, 255, 51));
-        jButton1.setText("OK");
-        jButton1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 255, 153), 3, true));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        ok.setBackground(new java.awt.Color(51, 255, 51));
+        ok.setFont(new java.awt.Font("Century Gothic", 0, 24)); // NOI18N
+        ok.setText("OK");
+        ok.setBorder(null);
+        ok.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                okActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 210, 80, 30));
+        jPanel1.add(ok, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 220, 110, 40));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 420, 260));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 520, 300));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -93,9 +123,12 @@ public class calculo extends javax.swing.JFrame {
         
     }//GEN-LAST:event_reciboKeyPressed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void okActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okActionPerformed
         this.dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+        VentaDeProductos obj=new VentaDeProductos();
+        obj.limpiar();
+        obj.verTotal();
+    }//GEN-LAST:event_okActionPerformed
 
     private void reciboKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_reciboKeyReleased
         // TODO add your handling code here:
@@ -110,6 +143,11 @@ public class calculo extends javax.swing.JFrame {
         
         cambio.setText(""+R);
     }//GEN-LAST:event_reciboKeyReleased
+
+    private void reciboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reciboActionPerformed
+        // TODO add your handling code here:
+        cambio.transferFocus();
+    }//GEN-LAST:event_reciboActionPerformed
 
     /**
      * @param args the command line arguments
@@ -149,11 +187,12 @@ public class calculo extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel cam;
     private javax.swing.JTextField cambio;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField pagar;
-    private javax.swing.JTextField recibo;
+    private javax.swing.JButton ok;
+    public static javax.swing.JTextField pagar;
+    public static javax.swing.JTextField recibo;
     // End of variables declaration//GEN-END:variables
 }

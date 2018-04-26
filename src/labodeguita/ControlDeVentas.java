@@ -26,6 +26,7 @@ public class ControlDeVentas extends javax.swing.JFrame {
         fecha.setText(formato.format(sistFecha));
         
         mostrardatosVenta("");
+        mostrardatosProductos("");
         sumar();
     }
     
@@ -72,6 +73,32 @@ public class ControlDeVentas extends javax.swing.JFrame {
         }
     }
     
+    void mostrardatosProductos(String valor) {
+        DefaultTableModel modelo = new DefaultTableModel();
+        modelo.addColumn("CODIGO");
+        modelo.addColumn("STOCK");
+        tbdatos2.setModel(modelo);
+        String sql = "";
+        if (valor.equals("")) {
+            sql = "SELECT * FROM productos";
+        } else {
+            sql = "SELECT * FROM productos WHERE cod_prod='" + valor + "'";
+        }
+
+        String[] datos = new String[3];
+        try {
+            Statement st = cn.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            while (rs.next()) {
+                datos[0] = rs.getString("cod_prod");
+                datos[1] = rs.getString("stock_prod");
+                modelo.addRow(datos);
+            }
+            tbdatos2.setModel(modelo);
+        } catch (SQLException ex) {
+            Logger.getLogger(ControlDeVentas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     
     public void buscar(String filtro){
     DefaultTableModel modelo= new DefaultTableModel();
@@ -124,6 +151,31 @@ public class ControlDeVentas extends javax.swing.JFrame {
         }
     }
     
+    public void buscarStock(String filtro){
+    DefaultTableModel modelo= new DefaultTableModel();
+       modelo.addColumn("CODIGO");
+        modelo.addColumn("STOCK");
+       tbdatos2.setModel(modelo);
+
+       String consultar = "SELECT * FROM productos WHERE cod_prod = " + code.getText();
+
+       String []datos= new String[15];
+       try {
+           Statement st=cn.createStatement();
+            ResultSet rs=st.executeQuery(consultar);
+            while(rs.next())
+            {
+                datos[0] = rs.getString("cod_prod");
+                datos[1] = rs.getString("stock_prod");
+                modelo.addRow(datos);
+            }
+            tbdatos2.setModel(modelo);
+
+        } catch (SQLException ex) {
+            Logger.getLogger(registro.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
     public void sumar(){
     double b=0,a;
         for(int i= 0; i<tbdatos.getRowCount();i++){
@@ -167,6 +219,8 @@ public class ControlDeVentas extends javax.swing.JFrame {
         fecha = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         cant = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tbdatos2 = new javax.swing.JTable();
 
         jMenuItem2.setText("Eliminar venta");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
@@ -211,7 +265,7 @@ public class ControlDeVentas extends javax.swing.JFrame {
         total.setForeground(new java.awt.Color(255, 255, 255));
         total.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         total.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
-        jPanel2.add(total, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 20, 90, 30));
+        jPanel2.add(total, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 20, 170, 30));
 
         combo.setBackground(new java.awt.Color(153, 255, 153));
         combo.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
@@ -238,24 +292,30 @@ public class ControlDeVentas extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Stock Prod");
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 420, -1, -1));
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 440, -1, -1));
 
         stockProd.setText("0");
-        jPanel2.add(stockProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 450, 140, -1));
+        jPanel2.add(stockProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 470, 140, -1));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Nuevo Stock");
-        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 420, -1, -1));
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 440, -1, -1));
 
         newStock.setText("0");
-        jPanel2.add(newStock, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 450, 140, -1));
-        jPanel2.add(code, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 450, 140, -1));
+        jPanel2.add(newStock, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 470, 140, -1));
+
+        code.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                codeKeyReleased(evt);
+            }
+        });
+        jPanel2.add(code, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 470, 140, -1));
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Cod");
-        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 420, -1, -1));
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 440, -1, -1));
 
         jLabel8.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
@@ -265,7 +325,7 @@ public class ControlDeVentas extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Total:   $");
-        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 20, -1, 30));
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 20, -1, 30));
 
         GReporte.setBackground(new java.awt.Color(0, 255, 51));
         GReporte.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
@@ -284,10 +344,25 @@ public class ControlDeVentas extends javax.swing.JFrame {
         jLabel10.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("Cant");
-        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 420, -1, -1));
-        jPanel2.add(cant, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 450, 140, -1));
+        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 440, -1, -1));
+        jPanel2.add(cant, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 470, 140, -1));
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 1060, 520));
+        tbdatos2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(tbdatos2);
+
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 510, 500, 50));
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 1060, 580));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -296,37 +371,40 @@ public class ControlDeVentas extends javax.swing.JFrame {
     }//GEN-LAST:event_txtbuscarKeyPressed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        int fila = tbdatos.getSelectedRow();
-        int cantidad,nuevo;
-        String cod="";
-        cod=tbdatos.getValueAt(fila, 0).toString();
-        
+        int fila =tbdatos.getSelectedRow();
         if(fila>=0){
             code.setText(tbdatos.getValueAt(fila, 8).toString());
             cant.setText(tbdatos.getValueAt(fila, 4).toString());
-            }
+            buscarStock("");
+            tbdatos2.selectAll();
+                int fila2 = tbdatos2.getSelectedRow();
+                if (fila2 >= 0) {
+                    stockProd.setText(tbdatos2.getValueAt(fila2, 1).toString());
+                }
+                
+                int cantidad = Integer.parseInt(cant.getText());
+                int stockP = Integer.parseInt(stockProd.getText());
+                
+                int nuevo=stockP+cantidad;
+                newStock.setText(""+nuevo);
+                
+                String cod="";
+                cod=tbdatos.getValueAt(fila, 0).toString();
+                
+                try {
+                    PreparedStatement pst = cn.prepareStatement("DELETE FROM ventas WHERE codVent='"+cod+"'");
+                    pst.executeUpdate();
+                    PreparedStatement pst2 = cn.prepareStatement("UPDATE productos SET stock_prod='"+newStock.getText()+"' WHERE cod_prod='"+code.getText()+"'");
+                    pst2.executeUpdate();
+                    mostrardatosProductos("");
+                    JOptionPane.showMessageDialog(null,"Registro eliminado");
+                    mostrardatosVenta("");
 
+                }catch (Exception e){}
+                
+        }
         else{
             JOptionPane.showMessageDialog(null,"no seleciono fila");
-        }
-        
-            cantidad = Integer.parseInt(cant.getText());
-            int stockP = Integer.parseInt(stockProd.getText());
-
-            nuevo=stockP+cantidad;
-
-            newStock.setText(""+nuevo);
-
-        try {
-            PreparedStatement pst = cn.prepareStatement("DELETE FROM ventas WHERE codVent='"+code+"'");
-            pst.executeUpdate();
-            PreparedStatement pst2 = cn.prepareStatement("UPDATE productos SET stock_prod='"+newStock.getText()+"' WHERE cod_prod='"+code.getText()+"'");
-            pst2.executeUpdate();
-
-            JOptionPane.showMessageDialog(null,"Registro eliminado");
-            mostrardatosVenta("");
-
-        }catch (Exception e){
         }
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
@@ -428,13 +506,18 @@ public class ControlDeVentas extends javax.swing.JFrame {
             
             FileOutputStream out = new FileOutputStream(file);
             book.write(out);
-            JOptionPane.showMessageDialog(null, "Reporte creado");
+            JOptionPane.showMessageDialog(null, "Reporte creado con el nombre ("+txtbuscar.getText()+")");
             out.close();
         } catch (Exception e) {
              
         }
     
     }//GEN-LAST:event_GReporteActionPerformed
+
+    private void codeKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_codeKeyReleased
+        // TODO add your handling code here: buscar en tbdtos 2 al ser autoselect
+        buscarStock("");
+    }//GEN-LAST:event_codeKeyReleased
 
     /**
      * @param args the command line arguments
@@ -489,10 +572,12 @@ public class ControlDeVentas extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPopupMenu jPopupMenu1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField newStock;
     private javax.swing.JTextField stockProd;
     private javax.swing.JTable tbdatos;
+    private javax.swing.JTable tbdatos2;
     private javax.swing.JLabel total;
     private javax.swing.JTextField txtbuscar;
     // End of variables declaration//GEN-END:variables
